@@ -3,16 +3,18 @@ import Link from "next/link";
 
 const HelloSection = () => {
   return (
-    <div className="h-auto md:h-screen w-screen flex flex-col md:flex-row justify-center">
+    <div
+      className="md:h-screen w-screen flex flex-col md:flex-row justify-center"
+      style={{ maxHeight: "550px" }}
+    >
       <div className="w-full md:w-1/2 h-full">
         <img
           src="https://i.ibb.co/Kyx4Zps/image.png"
-          sizes="100vw"
           className="w-full h-full object-cover"
           alt=""
         />
       </div>
-      <div className="w-full md:w-1/2 h-full p-16 flex flex-col justify-center">
+      <div className="w-full md:w-1/2 h-full p-16 flex flex-col justify-center my-auto">
         <h1 className=" text-orange-500 text-7xl italic font-bold">Hello!</h1>
         <p className="text-gray-500 font-semibold py-5 mb-6">WELCOME THERE!</p>
         <p className="text-gray-500 md:w-3/4">
