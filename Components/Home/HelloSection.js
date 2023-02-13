@@ -3,19 +3,19 @@ import Link from "next/link";
 
 const HelloSection = () => {
   return (
-    <div
-      className="md:h-screen w-screen flex flex-col md:flex-row justify-center"
-      style={{ maxHeight: "550px" }}
-    >
+    <div className="h-auto md:h-[80vh] w-screen flex flex-col md:flex-row">
       <div className="w-full md:w-1/2 h-full">
         <img
-          src="https://i.ibb.co/Kyx4Zps/image.png"
-          className="w-full h-full object-cover"
+          src="https://i.ibb.co/McJymL2/room-9.jpg"
           alt=""
+          sizes="100vw"
+          className="w-full h-full object-cover -scale-x-100"
         />
       </div>
       <div className="w-full md:w-1/2 h-full p-16 flex flex-col justify-center my-auto">
-        <h1 className=" text-orange-500 text-7xl italic font-bold">Hello!</h1>
+        <h1 className=" text-orange-500 text-8xl italic font-bold font-sansita">
+          Hello!
+        </h1>
         <p className="text-gray-500 font-semibold py-5 mb-6">WELCOME THERE!</p>
         <p className="text-gray-500 md:w-3/4">
           Our hostel is located in the citys finest and trendiest district.

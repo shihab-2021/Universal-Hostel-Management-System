@@ -5,7 +5,6 @@ import { roomData } from "../../data/room-data.js";
 export default function Rooms() {
   const [branchValue, setBranchValue] = useState();
   const [selectedRoom, setSelectedRoom] = useState();
-  console.log(selectedRoom);
 
   if (selectedRoom) {
     const { roomId } = selectedRoom;
