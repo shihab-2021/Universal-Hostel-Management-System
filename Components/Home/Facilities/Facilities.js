@@ -14,7 +14,7 @@ import { BiCctv } from "react-icons/bi";
 const Facilities = () => {
   return (
     <div className="my-20">
-      <h1 className="text-7xl text-orange-500 text-center font-bold ">
+      <h1 className="text-8xl font-sansita italic text-orange-500 text-center font-bold ">
         Facilities
       </h1>
       <p className="text-center font-bold text-gray-500 my-5">

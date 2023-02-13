@@ -1,8 +1,6 @@
 import { Inter } from "@next/font/google";
-import HelloSection from "../Components/Home/HelloSection";
 import Head from "next/head";
-import Facilities from "../Components/Home/Facilities/Facilities";
-import Contacts from "../Components/Home/Contacts";
+import MainHome from "../Components/Home/MainHome/MainHome";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -14,11 +12,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-orange-50 text-black">
-        <HelloSection />
-        <Facilities />
-        <Contacts />
-      </div>
+      <main>
+        <MainHome></MainHome>
+      </main>
     </>
   );
 }
