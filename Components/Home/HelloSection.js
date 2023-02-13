@@ -3,14 +3,13 @@ import Link from "next/link";
 
 const HelloSection = () => {
   return (
-    <div className="h-auto md:h-screen w-screen flex flex-col md:flex-row">
+    <div className="h-auto md:h-[80vh] w-screen flex flex-col md:flex-row">
       <div className="w-full md:w-1/2 h-full">
-        <Image
-          src="/4+dorm.jpg"
-          height={0}
-          width={0}
+        <img
+          src="https://i.ibb.co/McJymL2/room-9.jpg"
+          alt=""
           sizes="100vw"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover -scale-x-100"
         />
       </div>
       <div className="w-full md:w-1/2 h-full p-16 flex flex-col justify-center">
