@@ -9,7 +9,7 @@ import Footer from "../Footer";
 
 const MainHome = () => {
   return (
-    <div className="bg-white text-black">
+    <div className="text-white-500">
       <Carousel images={countries}></Carousel>
       <HelloSection></HelloSection>
       <Facilities />

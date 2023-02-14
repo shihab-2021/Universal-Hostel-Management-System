@@ -1,6 +1,6 @@
 const StayTuned = () => {
   return (
-    <div className="bg-lime-600 text-center py-10">
+    <div className="bg-[#12131cd9] text-center py-10">
       <h1 className="font-sansita text-5xl italic text-white">
         Stay tuned with updates
       </h1>

@@ -11,7 +11,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="Navbar w-screen bg-slate-900 flex justify-center">
+    <div className="Navbar w-screen bg-color2 flex justify-center fixed top-0 z-30">
       {menuIcon && (
         <button onClick={handleMenu} className="absolute left-1 top-0 ">
           <MdOutlineMenu size={"40px"} />
@@ -24,7 +24,7 @@ export default function Navbar() {
       )}
       <h1 className="my-auto py-2">Title</h1>
       <div
-        className={`menu flex flex-col fixed top-10 h-screen bg-slate-900 ${menu} gap-2 p-2`}
+        className={`menu flex flex-col fixed top-10 h-screen bg-color2 ${menu} gap-2 p-2`}
       >
         <Link href={"/dashboard"}>Dashboard</Link>
         <Link href={"/profile"}>Profile</Link>

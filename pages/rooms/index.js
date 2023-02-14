@@ -11,7 +11,7 @@ export default function Rooms() {
   }
 
   return (
-    <div className="flex items-center flex-col">
+    <div className="flex items-center flex-col pt-7">
       <div className="roomSubmit my-4 mb-8">
         <label htmlFor="branch">Choose a branch: </label>
         <select
@@ -35,10 +35,10 @@ export default function Rooms() {
             if (branch.branch === branchValue) {
               return (
                 <div key={branch.branchId}>
-                  <h1 className="text-center text-3xl">
+                  <h1 className="text-center text-3xl mb-5">
                     Rooms and Seats in {branchValue}
                   </h1>
-                  <div className="flex w-full">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-8">
                     {branch.rooms.map((room) => {
                       return (
                         <Room
