@@ -149,3 +149,26 @@ input {
   background-color: steelblue;
 }
 /* Carousel css end */
+/* room slider css start */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-horizontal {
+  padding: 40px 0 !important;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-pagination-bullet {
+  background-color: #ffffff !important;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background-color: orange !important;
+}
+/* room slider css end */
