@@ -48,7 +48,7 @@ const Reviews = () => {
               </div>
             </div>
           </div>
-          <div class="md:basis-1/4 flex items-center justify-center">
+          <div class="md:basis-1/4 flex items-center justify-center py-10">
             <div style={{ maxWidth: "400px", minWidth: "200px" }} className="">
               <img
                 className="object-cover border rounded-full"
