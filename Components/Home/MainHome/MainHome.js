@@ -6,12 +6,16 @@ import Facilities from "../Facilities/Facilities";
 import Contacts from "../Contacts";
 import StayTuned from "../StayTuned";
 import Footer from "../Footer";
+import Rooms from "../Rooms/Rooms";
+import Reviews from "../Reviews/Reviews";
 
 const MainHome = () => {
   return (
-    <div className="text-white-500">
+    <div className="text-white">
       <Carousel images={countries}></Carousel>
       <HelloSection></HelloSection>
+      <Rooms></Rooms>
+      <Reviews></Reviews>
       <Facilities />
       <StayTuned />
       <Contacts />
