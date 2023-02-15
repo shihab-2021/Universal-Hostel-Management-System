@@ -6,7 +6,7 @@ export default function Navbar() {
   const [menu, setMenu] = useState("left-full");
   const [menuIcon, setMenuIcon] = useState(true);
   const handleMenu = () => {
-    menu == "left-0" ? setMenu("left-full") : setMenu("left-0");
+    menu == "left-0" ? setMenu("-left-full") : setMenu("left-0");
     setMenuIcon(!menuIcon);
   };
 
@@ -22,7 +22,7 @@ export default function Navbar() {
           <MdOutlineMenuOpen size={"40px"} />
         </button>
       )}
-      <h1 className="my-auto py-2">Title</h1>
+      <h1 className="my-auto py-2">Super Hostel</h1>
       <div
         className={`menu flex flex-col fixed top-10 h-screen bg-color2 ${menu} gap-2 p-2`}
       >
