@@ -6,7 +6,7 @@ import ReviewSlider from "./ReviewSlider";
 const Reviews = () => {
   return (
     <div
-      style={{ backgroundColor: "#8abb6a", minHeight: "500px" }}
+      style={{ backgroundColor: "#12131cd9", minHeight: "500px" }}
       className="mt-20"
     >
       <div className="container mx-auto px-4">
@@ -16,7 +16,7 @@ const Reviews = () => {
               <div className="text-center flex flex-col items-center h-fit bg-white w-48 p-11 text-8xl rounded-full border border-white">
                 <h1
                   style={{
-                    color: "#8abb6a",
+                    color: "#12131cd9",
                   }}
                 >
                   9.2
