@@ -1,7 +1,7 @@
 const Meal = ({ itemPack, price, items, handleClick, id, type, typeName }) => {
   return (
     <div className="card w-[300px] flex flex-col justify-between">
-      <div className="">
+      <div>
         <h1 className="pb-2 text-lg border-b-2 font-bold">
           Package {itemPack}
         </h1>
