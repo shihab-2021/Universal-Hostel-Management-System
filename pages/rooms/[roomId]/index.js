@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import RoomFacilities from "../../../Components/Rooms/roomFacilities";
 import { roomData } from "../../../data/room-data";
 import { useRouter } from "next/router";
+import RoomFacilities from "../../../Components/Rooms/RoomFacilities";
 
 export default function RoomDetails() {
   const router = useRouter();
@@ -21,11 +21,8 @@ export default function RoomDetails() {
             {i.rooms.map((room) => {
               if (room.roomId === id) {
                 return (
-                  <div
-                      key={room.roomId} className="w-full">
-                    <div
-                      className="w-full lg:w-3/4 mx-auto flex px-5 flex-col md:flex-row"
-                    >
+                  <div key={room.roomId} className="w-full">
+                    <div className="w-full lg:w-3/4 mx-auto flex px-5 flex-col md:flex-row">
                       <div className="w-full md:w-1/2 px-5 mb-12">
                         <img
                           src={room.roomImage}
