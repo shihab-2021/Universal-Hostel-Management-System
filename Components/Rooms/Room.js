@@ -7,7 +7,7 @@ export default function Room(props) {
     <div className=" card" id={room.roomId}>
       <img
         src={room.roomImage}
-        className="object-cover mb-5 aspect-[4/3]"
+        className="object-cover m-5 aspect-[4/3]"
         alt="roomImage"
       />
       <h1>Attached bathroom: {room.bathroom}</h1>

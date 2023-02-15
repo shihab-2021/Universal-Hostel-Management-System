@@ -27,12 +27,12 @@ export default function Navbar() {
         className={`menu flex flex-col fixed top-10 h-screen bg-color2 ${menu} gap-2 p-2`}
       >
         <Link href={"/dashboard"}>Dashboard</Link>
-        <Link href={"/profile"}>Profile</Link>
+        <Link href={"/dashboard/profile"}>Profile</Link>
         <Link href={"/rooms"}>Rooms</Link>
-        <Link href={"#"}>Meal Plan</Link>
-        <Link href={"#"}>Laundry Time</Link>
-        <Link href={"#"}>Payment</Link>
-        <Link href={"#"}>Blog</Link>
+        <Link href={"/meal"}>Meal Plan</Link>
+        <Link href={"/laundry"}>Laundry Time</Link>
+        <Link href={"/payment"}>Payment</Link>
+        <Link href={"/blogs"}>Blog</Link>
         <Link href={"#"}>Log Out</Link>
       </div>
     </div>

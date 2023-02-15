@@ -1,9 +1,9 @@
-import { useState } from "react";
-import Room from "../../Components/room.js";
+import { useEffect, useState } from "react";
 import { roomData } from "../../data/room-data.js";
+import Room from "../../Components/Rooms/room.js";
 
 export default function Rooms() {
-  const [branchValue, setBranchValue] = useState();
+  const [branchValue, setBranchValue] = useState("mirpur-2");
   const [selectedRoom, setSelectedRoom] = useState();
 
   if (selectedRoom) {
@@ -11,8 +11,14 @@ export default function Rooms() {
   }
 
   return (
-    <div className="flex items-center flex-col pt-7">
-      <div className="roomSubmit my-4 mb-8">
+    <div className="flex items-center flex-col py-7">
+      <div className="relative h-40 bg-fixed bg-[url('https://i.ibb.co/p3qb5xF/back12.jpg')] bg-no-repeat bg-cover bg-bottom mb-10 w-screen">
+        <div className="bg-gray-800 h-full w-full opacity-80 "></div>
+        <h1 className="absolute left-1/2 top-1/2 text-4xl font-bold text-white -translate-x-1/2 -translate-y-1/2">
+          Rooms
+        </h1>
+      </div>
+      <div className="roomSubmit mb-8">
         <label htmlFor="branch">Choose a branch: </label>
         <select
           id="branch"
@@ -22,9 +28,6 @@ export default function Rooms() {
             setBranchValue(e.target.value);
           }}
         >
-          <option value="none" selected disabled hidden>
-            Select an Option
-          </option>
           <option value="mirpur-2">Mirpur 2</option>
           <option value="dhanmondi">Dhanmondi</option>
         </select>
@@ -38,7 +41,7 @@ export default function Rooms() {
                   <h1 className="text-center text-3xl mb-5">
                     Rooms and Seats in {branchValue}
                   </h1>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
                     {branch.rooms.map((room) => {
                       return (
                         <Room
