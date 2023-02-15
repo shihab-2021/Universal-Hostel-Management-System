@@ -21,9 +21,9 @@ export default function RoomDetails() {
             {i.rooms.map((room) => {
               if (room.roomId === id) {
                 return (
-                  <div className="w-full">
+                  <div
+                      key={room.roomId} className="w-full">
                     <div
-                      key={room.roomId}
                       className="w-full lg:w-3/4 mx-auto flex px-5 flex-col md:flex-row"
                     >
                       <div className="w-full md:w-1/2 px-5 mb-12">
