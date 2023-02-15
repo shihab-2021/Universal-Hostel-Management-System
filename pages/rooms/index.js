@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { roomData } from "../../data/room-data.js";
-import Room from "../../Components/Rooms/room.js";
+import Room from "../../Components/Rooms/Room";
 
 export default function Rooms() {
   const [branchValue, setBranchValue] = useState("mirpur-2");
