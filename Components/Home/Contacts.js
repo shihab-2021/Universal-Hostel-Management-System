@@ -8,18 +8,18 @@ const Contacts = () => {
       <div className="flex md:flex-row flex-col">
         <div className="lg:w-1/2 lg:px-20 md:px-5 w-full py-10 flex">
           <div className="my-auto lg:ml-auto md:mx-0 mx-auto">
-            <h1 className="text-8xl text-orange-500 font-black font-sansita italic mb-10">
+            <h1 className="text-8xl text-orange-500  font-sansita italic mb-10">
               Contacts
             </h1>
             <div className="flex flex-row my-5">
               <div className="h-full my-auto mx-3">
-                <h1 className="text-yellow-500 text-2xl">
+                <h1 className="text-yellow-300 text-2xl">
                   <FaMapMarkerAlt />
                 </h1>
               </div>
               <div>
-                <p className="font-bold text-lg text-gray-800">ADDRESS</p>
-                <p className="text-gray-600">
+                <p className="font-bold text-lg text-gray-300">ADDRESS</p>
+                <p className="text-gray-300">
                   HOUSE#3/D, ROAD#04, BLOCK#B, MIRPUR-2, DHAKA
                 </p>
               </div>
@@ -27,25 +27,25 @@ const Contacts = () => {
 
             <div className="flex flex-row my-5">
               <div className="h-full my-auto mx-3">
-                <h1 className="text-yellow-500 text-2xl">
+                <h1 className="text-yellow-300 text-2xl">
                   <BsFillTelephoneFill />
                 </h1>
               </div>
               <div>
-                <p className="font-bold text-lg text-gray-800">PHONE</p>
-                <p className="text-gray-600">018 6368 9582 </p>
+                <p className="font-bold text-lg text-gray-300">PHONE</p>
+                <p className="text-gray-300">018 6368 9582 </p>
               </div>
             </div>
 
             <div className="flex flex-row my-5">
               <div className="h-full my-auto mx-3">
-                <h1 className="text-yellow-500 text-2xl">
+                <h1 className="text-yellow-300 text-2xl">
                   <MdEmail />
                 </h1>
               </div>
               <div>
-                <p className="font-bold text-lg text-gray-800">EMAIL</p>
-                <p className="text-gray-600">admin@superhostel.com</p>
+                <p className="font-bold text-lg text-gray-300">EMAIL</p>
+                <p className="text-gray-300">admin@superhostel.com</p>
               </div>
             </div>
           </div>

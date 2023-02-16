@@ -14,6 +14,10 @@ module.exports = {
       fontFamily: {
         sansita: ["Sansita", "sans-serif"],
       },
+      colors: {
+        color1: "#1e2124",
+        color2: "#16171f",
+      },
     },
   },
   plugins: [],

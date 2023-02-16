@@ -17,7 +17,7 @@ const HelloSection = () => {
           Hello!
         </h1>
         <p className="text-gray-500 font-semibold py-5 mb-6">WELCOME THERE!</p>
-        <p className="text-gray-500 md:w-3/4">
+        <p className="text-gray-300 md:w-3/4">
           Our hostel is located in the citys finest and trendiest district.
           Everyone who is interested in being a part of the creative and
           cutting-edge world that is New York, you are welcome to CityHostel for

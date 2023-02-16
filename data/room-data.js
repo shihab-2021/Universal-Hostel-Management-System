@@ -1,6 +1,8 @@
 export const roomData = [
   {
     branch: "dhanmondi",
+    branchName: "Dhanmondi",
+    branchAddress: "Dhanmondi 27",
     branchId: 1,
     rooms: [
       {
@@ -9,8 +11,12 @@ export const roomData = [
         bathroom: "Yes",
         balcony: "No",
         floor: "3rd",
+        roomType: "Private",
+        roomClass: "Economic",
+        ac: false,
+        tv: false,
         rent: 2500,
-        roomImage: "http://www.wbbtrust.org/clock_uploads/images/DSC_0745.JPG",
+        roomImage: "https://i.ibb.co/M8DyDdh/image.png",
       },
       {
         roomId: "room2",
@@ -18,9 +24,12 @@ export const roomData = [
         bathroom: "Yes",
         balcony: "Yes",
         floor: "1st",
+        roomType: "Private",
+        roomClass: "Economic",
+        ac: true,
+        tv: true,
         rent: 3500,
-        roomImage:
-          "https://hotel71.com.bd/asset/images/hr/executive-single-hr1/executive-single-2_hr1.jpg",
+        roomImage: "https://i.ibb.co/tBWj2Ks/image.png",
       },
       {
         roomId: "room3",
@@ -28,14 +37,19 @@ export const roomData = [
         bathroom: "No",
         balcony: "No",
         floor: "2nd",
+        roomType: "Private",
+        roomClass: "Economic",
+        ac: false,
+        tv: false,
         rent: 2000,
-        roomImage:
-          "https://cf.bstatic.com/xdata/images/hotel/max1280x900/281627938.jpg?k=628909668deef832a36d00d37ed467eec761eaaa95e0621b8d6c720e954faa05&o=&hp=1",
+        roomImage: "https://i.ibb.co/f47JxR2/image.png",
       },
     ],
   },
   {
     branch: "mirpur-2",
+    branchName: "Mirpur-2",
+    branchAddress: "Mirpur-2 ",
     branchId: 2,
     rooms: [
       {
@@ -43,10 +57,13 @@ export const roomData = [
         roomNo: 1,
         bathroom: "No",
         balcony: "No",
-        floor: "1rd",
+        floor: "1st",
+        roomType: "Private",
+        roomClass: "Economic",
+        ac: false,
+        tv: false,
         rent: 3500,
-        roomImage:
-          "https://hotel71.com.bd/asset/images/hr/executive-single-hr1/executive-single-2_hr1.jpg",
+        roomImage: "https://i.ibb.co/f47JxR2/image.png",
       },
       {
         roomId: "room5",
@@ -54,9 +71,12 @@ export const roomData = [
         bathroom: "Yes",
         balcony: "Yes",
         floor: "1st",
+        roomType: "Private",
+        roomClass: "Economic",
+        ac: false,
+        tv: false,
         rent: 4500,
-        roomImage:
-          "https://cf.bstatic.com/xdata/images/hotel/max1280x900/281627938.jpg?k=628909668deef832a36d00d37ed467eec761eaaa95e0621b8d6c720e954faa05&o=&hp=1",
+        roomImage: "https://i.ibb.co/M8DyDdh/image.png",
       },
       {
         roomId: "room6",
@@ -64,8 +84,12 @@ export const roomData = [
         bathroom: "No",
         balcony: "No",
         floor: "2nd",
+        roomType: "Private",
+        roomClass: "Economic",
+        ac: false,
+        tv: false,
         rent: 2500,
-        roomImage: "http://www.wbbtrust.org/clock_uploads/images/DSC_0745.JPG",
+        roomImage: "https://i.ibb.co/tBWj2Ks/image.png",
       },
     ],
   },
