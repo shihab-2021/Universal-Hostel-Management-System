@@ -1,7 +1,6 @@
 export const mealData = [
   {
     type: "breakfast",
-    typeName: "Breakfast",
     menu: [
       {
         package: 1,
@@ -19,7 +18,6 @@ export const mealData = [
   },
   {
     type: "lunch",
-    typeName: "Lunch",
     menu: [
       {
         package: 1,
@@ -55,7 +53,6 @@ export const mealData = [
   },
   {
     type: "dinner",
-    typeName: "Dinner",
     menu: [
       {
         package: 1,

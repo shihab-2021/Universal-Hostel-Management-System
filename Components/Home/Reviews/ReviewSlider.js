@@ -28,9 +28,9 @@ const ReviewSlider = () => {
           <div className="text-left px-2 font-sansita">
             <h1 className=" font-bold text-orange-300 text-3xl">Robin hood</h1>
             <p className="text-2xl">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Inventore placeat similique error molestias! Voluptas amet
-              incidunt velit, a ratione quia.
+              “Inventore placeat similique error molestias! Lorem, ipsum dolor
+              sit amet consectetur adipisicing elit. Voluptas amet incidunt
+              velit, a ratione quia.”
             </p>
           </div>
         </SwiperSlide>
@@ -38,9 +38,9 @@ const ReviewSlider = () => {
           <div className="text-left px-2 font-sansita">
             <h1 className=" font-bold text-orange-300 text-3xl">Hood Rovin</h1>
             <p className="text-2xl">
-              Voluptas amet incidunt velit, a ratione quia. Lorem ipsum dolor
+              “Voluptas amet incidunt velit, a ratione quia. Lorem ipsum dolor
               sit amet. Lorem, ipsum dolor sit amet consectetur adipisicing
-              elit. Inventore placeat similique error molestias!{" "}
+              elit. Inventore placeat similique error molestias! ”
             </p>
           </div>
         </SwiperSlide>
