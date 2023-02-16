@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const HelloSection = () => {
   return (
-    <div className="h-auto md:h-[80vh] w-screen flex flex-col md:flex-row">
+    <div className="h-auto md:h-[80vh] bg-[#12131c40] w-screen flex flex-col md:flex-row">
       <div className="w-full md:w-1/2 h-full">
         <img
           src="https://i.ibb.co/McJymL2/room-9.jpg"
@@ -17,7 +17,7 @@ const HelloSection = () => {
           Hello!
         </h1>
         <p className="text-gray-500 font-semibold py-5 mb-6">WELCOME THERE!</p>
-        <p className="text-gray-300 md:w-3/4">
+        <p className="text-gray-300 md:w-3/4 text-xl font-sansita">
           Our hostel is located in the citys finest and trendiest district.
           Everyone who is interested in being a part of the creative and
           cutting-edge world that is New York, you are welcome to CityHostel for
