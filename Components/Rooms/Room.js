@@ -17,16 +17,17 @@ export default function Room(props) {
 
       <div>
         <button
-          className="bg-slate-700 hover:bg-color2 rounded p-2 mt-4 m-1"
+          className="button mt-4 m-1"
           onClick={() => {
             props.data.setSelectedRoom(room);
           }}
         >
           Select room
         </button>
-        <button className="bg-slate-700 hover:bg-color2 rounded p-2 mt-4 m-1">
-          <Link href={`/rooms/${room.roomId}`}>View Details</Link>
-        </button>
+
+        <Link href={`/rooms/${room.roomId}`}>
+          <button className="button mt-4 m-1">View Details</button>
+        </Link>
       </div>
     </div>
   );

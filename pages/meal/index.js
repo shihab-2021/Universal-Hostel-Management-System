@@ -31,7 +31,7 @@ export default function Meals() {
         <h1 className="text-2xl">Current Plan</h1>
         <div className="flex justify-between items-center my-3">
           <div>
-            <h1 className="text-2xl text-orange-300 font-bold">Breakfast:</h1>
+            <h1 className="text-2xl text-indigo-300 font-bold">Breakfast:</h1>
           </div>
 
           {breakfast ? (
@@ -50,7 +50,7 @@ export default function Meals() {
 
         <div className="flex justify-between items-center my-3">
           <div>
-            <h1 className="text-2xl text-orange-300 font-bold">Lunch:</h1>
+            <h1 className="text-2xl text-indigo-300 font-bold">Lunch:</h1>
           </div>
 
           {lunch ? (
@@ -67,7 +67,7 @@ export default function Meals() {
 
         <div className="flex justify-between items-center my-3">
           <div>
-            <h1 className="text-2xl text-orange-300 font-bold">Dinner:</h1>
+            <h1 className="text-2xl text-indigo-300 font-bold">Dinner:</h1>
           </div>
 
           {dinner ? (
@@ -92,7 +92,7 @@ export default function Meals() {
         {mealData.map((meal) => {
           return (
             <div key={meal.type}>
-              <h1 className="text-4xl font-bold text-orange-500 mb-8 mt-20">
+              <h1 className="text-4xl font-bold text-indigo-500 mb-8 mt-20">
                 {meal.typeName}
               </h1>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
