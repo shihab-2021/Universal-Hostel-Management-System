@@ -81,15 +81,16 @@ const MainProfile = (props) => {
     setImage(file.secure_url);
     setImageLoading(false);
   };
+  console.log(image);
   return (
     <div>
-      <div className="container mx-auto my-20 py-20">
+      <div className="container mx-auto my-5 font-sansita py-20">
         <div
           style={{
-            boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
-            backgroundColor: "#36393e",
+            // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
+            backgroundColor: "#36393e52",
           }}
-          className="my-5 rounded px-4 py-4 text-center"
+          className="my-5 rounded px-4 py-4 text-center shadow-xl"
         >
           <h4 className="text-3xl font-bold">
             Make Your Profile Look Batter by Filling the Form
@@ -99,10 +100,10 @@ const MainProfile = (props) => {
           <form
             onSubmit={handleSubmit()}
             style={{
-              boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
-              backgroundColor: "#36393e",
+              // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
+              backgroundColor: "#36393e52",
             }}
-            className="my-5 rounded bg-slate-200 dark:bg-darkBlue p-6 text-Dark dark:text-white"
+            className="my-5 rounded shadow-xl bg-slate-200 dark:bg-darkBlue p-6 text-Dark dark:text-white"
           >
             <div className="grid grid-cols-12 gap-3">
               {/* Profile picture  */}
@@ -114,7 +115,7 @@ const MainProfile = (props) => {
                   <img
                     style={{ height: "150px", width: "150px" }}
                     className="mx-auto rounded-full border-2 border-white object-cover"
-                    src="https://icon-library.com/images/person-png-icon/person-png-icon-29.jpg"
+                    src={image}
                     alt=""
                   />
                 </div>

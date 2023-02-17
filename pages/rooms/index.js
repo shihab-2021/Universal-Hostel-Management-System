@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { roomData } from "../../data/room-data.js";
 import Room from "../../Components/Rooms/Room";
+import authCheck from "../../Components/Firebase/authCheck.js";
 
-export default function Rooms() {
+const Rooms = () => {
   const [branchValue, setBranchValue] = useState("mirpur-2");
   const [selectedRoom, setSelectedRoom] = useState();
 
@@ -60,3 +61,5 @@ export default function Rooms() {
     </div>
   );
 }
+
+export default authCheck(Rooms);

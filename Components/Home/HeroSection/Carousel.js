@@ -6,7 +6,6 @@ function Carousel({ images }) {
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   let timeOut = null;
-  console.log(images);
 
   useEffect(() => {
     timeOut =
@@ -43,27 +42,24 @@ function Carousel({ images }) {
               key={index}
               className={
                 index == current
-                  ? "carousel_card carousel_card-active"
-                  : "carousel_card"
+                  ? "carousel_card font-bold carousel_card-active"
+                  : "carousel_card font-bold"
               }
             >
               <img className="card_image" src={image.image} alt="" />
               <div className="card_overlay">
                 <div className="container mx-auto p-4">
                   <div className="card_title">
-                    <h2 style={{ fontSize: "55px" }}>
+                    <h2 className="md:text-[100px] text-[50px]">
                       {image.title}
                       <br />
                       {image.title1}
                     </h2>
                     <br />
                     <br />
-                    <p className="">
-                      FOR{" "}
-                      <span style={{ fontSize: "30px", color: "orange" }}>
-                        {image.price}
-                      </span>{" "}
-                      PER MONTH
+                    <p className="text-xl">
+                      FOR <span className="text-4xl text-orange-500">{image.price}</span> PER
+                      MONTH
                     </p>
                     <br />
                     <br />
