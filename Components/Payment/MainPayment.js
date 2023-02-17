@@ -1,42 +1,41 @@
-import Head from 'next/head';
-import React from 'react';
+import Head from "next/head";
+import React from "react";
 
 const MainPayment = () => {
-    return (
-      <>
-        <Head>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-          ></link>
-        </Head>
-        <div className="container my-24 shadow-xl font-sansita mx-auto bg-[#36393e52] px-3 py-4 rounded">
-          <div className="px-3 md:w-1/2 pt-5 pb-10">
+  return (
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        ></link>
+      </Head>
+      <div className="p-5 ">
+        <div className="">
+          <div className="px-3 md:w-1/2 pt-5 pb-10 mx-auto">
             <h1 className="flex justify-between text-2xl">
-              <span>Room rant </span>
-              <span> $500</span>{" "}
+              <span>Room rent </span>
+              <span> $500</span>
             </h1>
             <h1 className="flex justify-between text-2xl">
               <span>Meal fee </span>
-              <span> $350</span>{" "}
+              <span> $350</span>
             </h1>
             <h1 className="flex justify-between text-2xl">
               <span>Laundry fee </span>
-              <span> $100</span>{" "}
+              <span> $100</span>
             </h1>
             <hr />
             <h1 className="flex justify-between text-2xl">
               <span>Total </span>
-              <span> $950</span>{" "}
+              <span> $950</span>
             </h1>
           </div>
-          <div className="">
+          <div className=" card">
             <form action="">
               <div className="flex flex-col md:flex-row">
                 <div className="px-3 md:w-1/2">
-                  <h3 className="pb-5 text-3xl font-bold font-sansita">
-                    Billing Address
-                  </h3>
+                  <h3 className="pb-5 text-3xl font-bold ">Billing Address</h3>
                   <label htmlFor="fname">
                     <i className="fa fa-user"></i> Full Name
                   </label>
@@ -101,9 +100,7 @@ const MainPayment = () => {
                   </div>
                 </div>
                 <div className="px-3 md:w-1/2">
-                  <h3 className="pb-5 text-3xl font-bold font-sansita">
-                    Payment
-                  </h3>
+                  <h3 className="pb-5 text-3xl font-bold ">Payment</h3>
                   <label htmlFor="fname">Accepted Cards</label>
                   <div className="icon-container">
                     <i
@@ -178,13 +175,14 @@ const MainPayment = () => {
               <input
                 type="submit"
                 value="Continue to checkout"
-                className="btn font-sansita uppercase transition duration-300 bg-gray-700 font-bold hover:bg-orange-500"
+                className="btn  uppercase transition duration-300 bg-gray-700 font-bold hover:bg-orange-500"
               />
             </form>
           </div>
         </div>
-      </>
-    );
+      </div>
+    </>
+  );
 };
 
 export default MainPayment;
