@@ -33,7 +33,7 @@ const Rooms = () => {
           <option value="dhanmondi">Dhanmondi</option>
         </select>
       </div>
-      <div className="roomContent">
+      <div className="roomContent container mx-auto px-3">
         <div className="rooms">
           {roomData.map((branch) => {
             if (branch.branch === branchValue) {

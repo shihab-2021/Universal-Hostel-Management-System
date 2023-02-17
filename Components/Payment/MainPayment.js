@@ -10,7 +10,7 @@ const MainPayment = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         ></link>
       </Head>
-      <div className="p-5 ">
+      <div className="py-5 px-3 container mx-auto">
         <div className="">
           <div className="px-3 md:w-1/2 pt-5 pb-10 mx-auto">
             <h1 className="flex justify-between text-2xl">

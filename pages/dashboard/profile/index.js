@@ -13,7 +13,11 @@ const Profile = () => {
         console.log(error.message);
       });
   }, [data, user?.email]);
-  return <div>{data && <MainProfile data={data}></MainProfile>}</div>;
+  return (
+    <div>
+      <MainProfile data={data}></MainProfile>
+    </div>
+  );
 };
 
 export default Profile;
