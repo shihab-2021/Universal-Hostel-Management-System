@@ -23,7 +23,11 @@ export default function Laundry() {
 
     setLaundryList([
       ...laundryList,
-      <LaundryItem laundryDay={laundryDay} laundryTime={laundryTime} />,
+      <LaundryItem
+        key={laundryDay}
+        laundryDay={laundryDay}
+        laundryTime={laundryTime}
+      />,
     ]);
   };
 
