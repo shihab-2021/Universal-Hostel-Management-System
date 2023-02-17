@@ -150,7 +150,7 @@ input {
 }
 
 .pagination_dot-active {
-  background-color: steelblue;
+  background-color: orange;
 }
 /* Carousel css end */
 /* room slider css start */
@@ -184,3 +184,20 @@ input {
   /* max-width: 800px; */
 }
 /* review carousel end */
+/* payment css start */
+.icon-container {
+  margin-bottom: 20px;
+  font-size: 34px;
+}
+.btn {
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* payment css end */
