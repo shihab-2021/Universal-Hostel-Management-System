@@ -81,18 +81,31 @@ const MainProfile = (props) => {
     setImage(file.secure_url);
     setImageLoading(false);
   };
+  console.log(image);
   return (
-    <div className="">
-      <div className="relative h-40 bg-fixed bg-[url('https://i.ibb.co/W3C7yHr/istockphoto-619755616-612x612.jpg')] bg-no-repeat bg-cover bg-bottom ">
-        <div className="bg-gray-800 h-full w-full opacity-80 "></div>
-        <h1 className="absolute left-1/2 top-1/2 text-4xl font-bold text-white -translate-x-1/2 -translate-y-1/2">
-          Update Profile
-        </h1>
-      </div>
-      <div className="p-5">
-        <div className="container mx-auto">
-          <div className="">
-            <form onSubmit={handleSubmit()} className="my-5 card block">
+    <div>
+      <div>
+        <div className="container mx-auto my-5 font-sansita py-20">
+          <div
+            style={{
+              // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
+              backgroundColor: "#36393e52",
+            }}
+            className="my-5 rounded px-4 py-4 text-center shadow-xl"
+          >
+            <h4 className="text-3xl font-bold">
+              Make Your Profile Look Batter by Filling the Form
+            </h4>
+          </div>
+          <div style={{}}>
+            <form
+              onSubmit={handleSubmit()}
+              style={{
+                // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
+                backgroundColor: "#36393e52",
+              }}
+              className="my-5 rounded shadow-xl bg-slate-200 dark:bg-darkBlue p-6 text-Dark dark:text-white"
+            >
               <div className="grid grid-cols-12 gap-3">
                 {/* Profile picture  */}
                 <div className="col-span-12 flex justify-center md:col-span-6">
@@ -103,8 +116,59 @@ const MainProfile = (props) => {
                     <img
                       style={{ height: "150px", width: "150px" }}
                       className="mx-auto rounded-full border-2 border-white object-cover"
-                      src="https://icon-library.com/images/person-png-icon/person-png-icon-29.jpg"
+                      src={image}
                       alt=""
+                    />
+                  </div>
+                </div>
+                {/* Profile Photo Update Handling  */}
+                <div className="col-span-12 flex flex-col md:col-span-6">
+                  <div className="rounded-lg border-2 border-dotted border-gray-400 p-3 text-center">
+                    <div
+                      // className="mt-12 text-center"
+                      onDragOver={dragOver}
+                      onDragEnter={dragEnter}
+                      onDragLeave={dragLeave}
+                      onDrop={imageFileDrop}
+                    >
+                      <div className="">
+                        {imageLoading && (
+                          <div>
+                            <img
+                              className="mx-auto animate-ping"
+                              style={{ height: "50px", width: "50px" }}
+                              src="https://i.ibb.co/gJLdW8G/cloud-upload-regular-240.png"
+                              alt=""
+                            />
+                            <p className="text-xl text-gray-400">Loading ...</p>
+                          </div>
+                        )}
+                        {!imageLoading && (
+                          <div>
+                            <img
+                              className="mx-auto animate-pulse"
+                              style={{ height: "50px", width: "50px" }}
+                              src="https://i.ibb.co/gJLdW8G/cloud-upload-regular-240.png"
+                              alt=""
+                            />
+                            <p className="text-md text-gray-400">
+                              Drag & Drop your profile photo
+                            </p>
+                          </div>
+                        )}
+                        <p className="py-4">
+                          <span className="rounded-lg bg-gray-400 px-2 py-2 font-semibold  text-Docy-Dark dark:text-white">
+                            Browse File
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <input
+                      className="hidden"
+                      type="file"
+                      name="thumbnail"
+                      placeholder="upload"
+                      onChange={uploadImage}
                     />
                   </div>
                 </div>

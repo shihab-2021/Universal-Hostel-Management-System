@@ -3,8 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import useAuth from "./Firebase/useAuth";
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
+  const userInfo = user;
   const [mobileView, setMobileView] = useState(false);
   const openMobileView = () => {
     setMobileView(true);
@@ -253,18 +256,36 @@ export default function Navbar() {
               </div>
               <div className="mt-auto">
                 <div className="pt-6">
-                  <a
-                    className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold  bg-gray-50 hover:bg-gray-100 rounded-xl text-black"
-                    href="#"
-                  >
-                    Sign in
-                  </a>
-                  <a
-                    className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
-                    href="#"
-                  >
-                    Sign Up
-                  </a>
+                  {!userInfo?.email && (
+                    <div>
+                      <Link
+                        onClick={() => {
+                          closeMobileView();
+                        }}
+                        className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold  bg-gray-50 hover:bg-gray-100 rounded-xl text-black"
+                        href={"/login"}
+                      >
+                        Sign in
+                      </Link>
+                      <Link
+                        onClick={() => {
+                          closeMobileView();
+                        }}
+                        className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
+                        href={"/signup"}
+                      >
+                        Sign Up
+                      </Link>
+                    </div>
+                  )}
+                  {userInfo?.email && (
+                    <a
+                      className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-600 hover:bg-red-700  rounded-xl"
+                      onClick={logout}
+                    >
+                      Sign Out
+                    </a>
+                  )}
                 </div>
                 <p className="my-4 text-xs text-center text-gray-400">
                   <span>Copyright © 2023</span>
