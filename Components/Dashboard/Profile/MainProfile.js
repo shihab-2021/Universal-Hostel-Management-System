@@ -81,7 +81,39 @@ const MainProfile = (props) => {
     setImage(file.secure_url);
     setImageLoading(false);
   };
-  console.log(image);
+
+  // Save User Information
+  const submitHandler = (info) => {
+    const userInfo = {
+      email: data?.email,
+      ...info,
+      birthDate: Date.parse(startDate),
+      image: image,
+    };
+    if (
+      (startDate && startDate !== data?.birthDate) ||
+      image !== data?.image ||
+      (userInfo?.address && userInfo?.address !== data?.address) ||
+      (userInfo?.biography && userInfo?.biography !== data?.biography) ||
+      (userInfo?.displayName && userInfo?.displayName !== data?.displayName) ||
+      (userInfo?.gender && userInfo?.gender !== data?.gender) ||
+      (userInfo?.profession && userInfo?.profession !== data?.profession) 
+    ) {
+      fetch("https://universal-hostel-server.vercel.app/profile-update", {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(userInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            alert("Profile updated successfully !");
+          }
+        });
+    } else {
+      alert("You didn't make any changes yet to update the profile !");
+    }
+  };
   return (
     <div>
       <div>
@@ -99,7 +131,7 @@ const MainProfile = (props) => {
           </div>
           <div style={{}}>
             <form
-              onSubmit={handleSubmit()}
+              onSubmit={handleSubmit(submitHandler)}
               style={{
                 // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
                 backgroundColor: "#36393e52",
@@ -116,7 +148,8 @@ const MainProfile = (props) => {
                     <img
                       style={{ height: "150px", width: "150px" }}
                       className="mx-auto rounded-full border-2 border-white object-cover"
-                      src="https://img.freepik.com/free-icon/important-person_318-10744.jpg?w=2000"
+                      src={image}
+                      // src="https://img.freepik.com/free-icon/important-person_318-10744.jpg?w=2000"
                       alt=""
                     />
                   </div>
@@ -178,7 +211,7 @@ const MainProfile = (props) => {
                   <label htmlFor="displayName">Name</label>
                   <input
                     // onBlur={blogTitle}
-                    // defaultValue={data?.displayName}
+                    defaultValue={data?.displayName}
                     required
                     placeholder="Name"
                     className="h-14 w-full rounded-md border-2 p-3 text-lg"
@@ -202,7 +235,7 @@ const MainProfile = (props) => {
                     className="rounded-md border p-2 text-lg"
                     type="text"
                     {...register("profession")}
-                    // defaultValue={data?.profession}
+                    defaultValue={data?.profession}
                   />
                 </div>
                 <div className="col-span-12 flex flex-col  md:col-span-6">
@@ -211,7 +244,7 @@ const MainProfile = (props) => {
                     className="rounded-md border p-2 text-lg"
                     type="text"
                     {...register("gender")}
-                    // defaultValue={data?.gender}
+                    defaultValue={data?.gender}
                   />
                 </div>
                 <div className="col-span-12 flex flex-col  md:col-span-6">
@@ -220,16 +253,16 @@ const MainProfile = (props) => {
                     className="rounded-md border p-2 text-lg"
                     type="text"
                     {...register("address")}
-                    // defaultValue={data?.address}
+                    defaultValue={data?.address}
                   />
                 </div>
                 <div className="col-span-12 flex flex-col  md:col-span-6">
-                  <label htmlFor="emergency_number">Emergency Number</label>
+                  <label htmlFor="phone">Phone</label>
                   <input
                     className="rounded-md border p-2 text-lg"
                     type="text"
-                    {...register("emergency_number")}
-                    // defaultValue={data?.website}
+                    {...register("phone")}
+                    defaultValue={data?.phone}
                   />
                 </div>
               </div>

@@ -26,6 +26,7 @@ const Sighup = () => {
       image: "https://i.ibb.co/DMYmT3x/Generic-Profile.jpg",
       role: "user",
       address: address,
+      phone: phone,
       biography: "",
       gender: "",
       profession: "",
@@ -35,7 +36,7 @@ const Sighup = () => {
     createUser(email, password);
     event.preventDefault();
 
-    fetch("https://universal-hostel-api.vercel.app/users-data", {
+    fetch("https://universal-hostel-server.vercel.app/users-data", {
       method: "POST",
       headers: {
         "content-type": "application/json",

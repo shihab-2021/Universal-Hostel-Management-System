@@ -30,7 +30,7 @@ const authCheck = (WrappedComponent) => {
       return <WrappedComponent />;
     }else
     {
-      router.replace("/")
+      router.replace("/login")
     }
 
     // return router.replace("/login");
