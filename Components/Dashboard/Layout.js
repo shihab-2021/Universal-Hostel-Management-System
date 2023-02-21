@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       </Head>
       <div>
         <div>
-          <nav className="bg-[#36393e52] relative border-b border-gray-200 lg:hidden z-30 w-full">
+          <nav className="bg-[#25282c] border-b border-gray-200 fixed z-30 w-full">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center justify-start">
@@ -67,13 +67,13 @@ const Layout = ({ children }) => {
           <div className="flex overflow-hidden">
             <aside
               id="sidebar"
-              className="fixed hidden z-20 pt-36 lg:pt-20 h-full top-0 left-0 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"
+              className="fixed hidden z-20 pt-16 h-full top-0 bg-[#25282c] shadow-lg left-0 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75"
               aria-label="Sidebar"
             >
               <div className=" flex-1 flex flex-col min-h-0 pt-0">
                 <div className="flex-1 flex flex-col pt-6 pb-4 overflow-y-auto">
-                  <div className="flex-1 py-2 shadow-lg rounded-lg bg-[#25282c] lg:bg-[#36393e52] divide-y space-y-1">
-                    <ul className="space-y-2 px-3 text-white">
+                  <div className="flex-1  divide-y space-y-1">
+                    <ul className="space-y-2 px-3 py-2 text-white">
                       <li>
                         <Link
                           href="/dashboard"
@@ -233,7 +233,7 @@ const Layout = ({ children }) => {
               className="h-full w-full relative overflow-y-auto lg:ml-64"
             >
               <main>
-                <div className="pt-6 px-4">{children}</div>
+                <div className=" pt-20 px-4">{children}</div>
               </main>
               <footer className="bg-[#36393e52] md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
                 <ul className="flex items-center flex-wrap mb-6 md:mb-0">
