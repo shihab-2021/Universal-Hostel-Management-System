@@ -2,6 +2,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import { AiFillHome } from "react-icons/ai";
+import { RiAdminFill } from "react-icons/ri";
 
 const Layout = ({ children }) => {
   return (
@@ -71,7 +73,7 @@ const Layout = ({ children }) => {
               aria-label="Sidebar"
             >
               <div className=" flex-1 flex flex-col min-h-0 pt-0">
-                <div className="flex-1 flex flex-col pt-6 pb-4 overflow-y-auto">
+                <div className="flex-1 flex flex-col pb-4 overflow-y-auto">
                   <div className="flex-1  divide-y space-y-1">
                     <ul className="space-y-2 px-3 py-2 text-white">
                       <li>
@@ -110,31 +112,9 @@ const Layout = ({ children }) => {
                         </Link>
                       </li>
                       <li>
-                        <Link
-                          href="/dashboard/profile"
-                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
-                        >
-                          <svg
-                            className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path>
-                            <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
-                          </svg>
-                          <span className="ml-3 flex-1 whitespace-nowrap">
-                            Inbox
-                          </span>
-                          <span className="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full">
-                            Pro
-                          </span>
-                        </Link>
-                      </li>
-                      {/* <li>
                         <a
                           href="#"
-                          className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                         >
                           <svg
                             className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
@@ -149,14 +129,33 @@ const Layout = ({ children }) => {
                             ></path>
                           </svg>
                           <span className="ml-3 flex-1 whitespace-nowrap">
-                            Users
+                            Manage Users
                           </span>
                         </a>
                       </li>
                       <li>
+                        <Link
+                          href="/dashboard/profile"
+                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                        >
+                          <svg
+                            className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path>
+                            <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
+                          </svg>
+                          <span className="ml-3 flex-1 whitespace-nowrap">
+                            Add Notice
+                          </span>
+                        </Link>
+                      </li>
+                      <li>
                         <a
                           href="#"
-                          className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                         >
                           <svg
                             className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
@@ -171,36 +170,14 @@ const Layout = ({ children }) => {
                             ></path>
                           </svg>
                           <span className="ml-3 flex-1 whitespace-nowrap">
-                            Products
+                            Add Meal
                           </span>
                         </a>
                       </li>
                       <li>
                         <a
                           href="#"
-                          className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
-                        >
-                          <svg
-                            className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                              clip-rule="evenodd"
-                            ></path>
-                          </svg>
-                          <span className="ml-3 flex-1 whitespace-nowrap">
-                            Sign In
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                         >
                           <svg
                             className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
@@ -215,10 +192,32 @@ const Layout = ({ children }) => {
                             ></path>
                           </svg>
                           <span className="ml-3 flex-1 whitespace-nowrap">
-                            Sign Up
+                            Manage Rooms
                           </span>
                         </a>
-                      </li> */}
+                      </li>
+                      <li>
+                        <Link
+                          href="/dashboard/addAdmin"
+                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                        >
+                          <RiAdminFill className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" />
+                          <span className="ml-3 flex-1 whitespace-nowrap">
+                            Add Admin
+                          </span>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/"
+                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                        >
+                          <AiFillHome className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" />
+                          <span className="ml-3 flex-1 whitespace-nowrap">
+                            Home
+                          </span>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
