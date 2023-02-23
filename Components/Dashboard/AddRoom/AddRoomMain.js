@@ -2,6 +2,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import adminCheck from "../../Firebase/adminCheck";
 
 const AddRoomMain = () => {
   // const { data } = props;
@@ -128,7 +129,7 @@ const AddRoomMain = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Room have been submitted.");
+          alert("Room has been submitted.");
           router.replace("/rooms");
         }
       });
@@ -325,4 +326,4 @@ const AddRoomMain = () => {
   );
 };
 
-export default AddRoomMain;
+export default adminCheck(AddRoomMain);
