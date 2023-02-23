@@ -75,7 +75,17 @@ const useFirebase = () => {
       }
     });
     return () => unsubscribed;
-  }, [auth]);
+  }, [auth, !user.email]);
+
+  const [userInfo, setUserInfo] = useState();
+  useEffect(() => {
+    fetch(`https://universal-hostel-api.onrender.com/users-data/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setUserInfo(data))
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, [user?.email]);
 
   // For Logout
   const logout = () => {
@@ -92,6 +102,7 @@ const useFirebase = () => {
   return {
     user,
     isLoading,
+    userInfo,
     authError,
     loginUser,
     logout,
