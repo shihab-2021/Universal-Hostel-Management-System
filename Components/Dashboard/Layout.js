@@ -95,6 +95,24 @@ const Layout = ({ children }) => {
                       </li>
                       <li>
                         <Link
+                          href="/dashboard/profile"
+                          className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                        >
+                          <svg
+                            className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                          </svg>
+                          <span className="ml-3 flex-1 whitespace-nowrap">
+                            Profile
+                          </span>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
                           href="/dashboard/addRoom"
                           className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                         >
@@ -112,8 +130,8 @@ const Layout = ({ children }) => {
                         </Link>
                       </li>
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          href="/dashboard/manage-user"
                           className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                         >
                           <svg
@@ -131,11 +149,12 @@ const Layout = ({ children }) => {
                           <span className="ml-3 flex-1 whitespace-nowrap">
                             Manage Users
                           </span>
-                        </a>
+                        </Link>
                       </li>
+
                       <li>
                         <Link
-                          href="/dashboard/profile"
+                          href="/dashboard/addNotice"
                           className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                         >
                           <svg
@@ -231,7 +250,7 @@ const Layout = ({ children }) => {
               id="main-content"
               className="h-full w-full relative overflow-y-auto lg:ml-64"
             >
-              <main>
+              <main className="min-h-screen">
                 <div className=" pt-20 px-4">{children}</div>
               </main>
               <footer className="bg-[#36393e52] md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">

@@ -6,11 +6,16 @@
 
 @layer components {
   .card {
-    background-color: #151d29;
+    background-color: #36393e52;
     border-radius: theme("borderRadius.lg");
     padding: theme("spacing.6");
-    box-shadow: 0 0 10px 0px #00000054;
+    /* box-shadow: 0 0 10px 0px #00000054; */
     @apply p-3 flex flex-col items-center;
+  }
+
+  .card-design {
+    background-color: #36393e52;
+    border-radius: theme("borderRadius.lg");
   }
 
   .button {
@@ -43,6 +48,21 @@ a {
 input {
   margin-bottom: 10px;
 }
+
+/* Table Style Start */
+td,
+th {
+  padding: 5px 10px;
+}
+
+th {
+  padding: 10px 10px;
+}
+
+tr {
+  margin: 5px 0;
+}
+/* Table Style End */
 
 /* Carousel css start */
 .carousel {
