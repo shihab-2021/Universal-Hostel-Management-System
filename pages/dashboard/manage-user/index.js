@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../../../Components/Dashboard/Layout";
 import ManageUserMain from "../../../Components/Dashboard/ManageUser/ManageUserMain";
 
-const manageUser = () => {
+const ManageUser = () => {
   return (
     <div>
       <Layout>
@@ -12,4 +12,4 @@ const manageUser = () => {
   );
 };
 
-export default manageUser;
+export default ManageUser;

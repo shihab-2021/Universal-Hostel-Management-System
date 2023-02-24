@@ -19,7 +19,7 @@ export default function RoomDetails() {
       .then((data) => {
         console.log(data);
       });
-  }, []);
+  }, [id]);
 
   return (
     <MainLayout>

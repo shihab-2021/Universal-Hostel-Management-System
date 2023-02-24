@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Layout from "../../Components/Dashboard/Layout";
 
-const addNotice = () => {
+const AddNotice = () => {
   useEffect(() => {
     fetch("https://universal-hostel-api.onrender.com/users")
       .then((res) => res.json())
@@ -21,4 +21,4 @@ const addNotice = () => {
   );
 };
 
-export default addNotice;
+export default AddNotice;
