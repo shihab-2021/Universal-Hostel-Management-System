@@ -1,22 +1,59 @@
 import { useEffect, useState } from "react";
 import MainLayout from "../../Components/MainLayout/MainLayout";
 import Meal from "../../Components/Meal/Meal";
-import { mealData } from "../../data/meal-data";
+import useAuth from "../../Components/Firebase/useAuth";
 
 export default function Meals() {
-  const [breakfast, setBreakfast] = useState();
-  const [lunch, setLunch] = useState();
-  const [dinner, setDinner] = useState();
+  const [breakfast, setBreakfast] = useState({ price: "0" });
+  const [lunch, setLunch] = useState({ price: "0" });
+  const [dinner, setDinner] = useState({ price: "0" });
+  const [mealData, setMealData] = useState([]);
+  const [selectedMeals, setSelectedMeals] = useState({});
+  const { userInfo } = useAuth();
 
-  const handleClick = (id, type, typeName, itemPack, price) => {
-    if (type === "breakfast") {
+  console.log("user", userInfo);
+  useEffect(() => {
+    fetch("http://localhost:5000/meals")
+      .then((res) => res.json())
+      .then((data) => setMealData(data));
+  }, []);
+
+  const handleClick = (id, type, itemPack, price) => {
+    if (type === "Breakfast") {
       setBreakfast({ id, price, itemPack });
     }
-    if (type === "lunch") {
+    if (type === "Lunch") {
       setLunch({ id, price, itemPack });
     }
-    if (type === "dinner") {
+    if (type === "Dinner") {
       setDinner({ id, price, itemPack });
+    }
+  };
+
+  const clearMealPlan = () => {
+    setBreakfast({ price: "0" });
+    setLunch({ price: "0" });
+    setDinner({ price: "0" });
+  };
+
+  const confimrMealPlan = () => {
+    if (userInfo) {
+      fetch("http://localhost:5000/meals", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          breakfast,
+          lunch,
+          dinner,
+          currentUser: userInfo._id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    } else {
+      window.alert("User not found. Please refresh the page and try again.");
     }
   };
 
@@ -36,17 +73,17 @@ export default function Meals() {
               <h1 className="text-2xl text-indigo-300 font-bold">Breakfast:</h1>
             </div>
 
-            {breakfast ? (
+            {JSON.stringify(breakfast) !== JSON.stringify({}) ? (
               <div>
                 <h1 className="text-xs text-gray-400 leading-3">
                   Package {breakfast.itemPack}
                 </h1>
                 <h1 className="text-xl text-gray-400">
-                  Tk {breakfast.price} / week
+                  Tk {breakfast.price} / day
                 </h1>
               </div>
             ) : (
-              <h1 className="text-lg text-red-500">Please select one!</h1>
+              <h1 className="text-lg text-red-400">Not selected!</h1>
             )}
           </div>
 
@@ -55,17 +92,17 @@ export default function Meals() {
               <h1 className="text-2xl text-indigo-300 font-bold">Lunch:</h1>
             </div>
 
-            {lunch ? (
+            {JSON.stringify(lunch) !== JSON.stringify({}) ? (
               <div>
                 <h1 className="text-xs text-gray-400 leading-3">
                   Package {lunch.itemPack}
                 </h1>
                 <h1 className="text-xl text-gray-400">
-                  Tk {lunch.price} / week
+                  Tk {lunch.price} / day
                 </h1>
               </div>
             ) : (
-              <h1 className="text-lg text-red-500">Please select one!</h1>
+              <h1 className="text-lg text-red-400">Not selected!</h1>
             )}
           </div>
 
@@ -74,50 +111,106 @@ export default function Meals() {
               <h1 className="text-2xl text-indigo-300 font-bold">Dinner:</h1>
             </div>
 
-            {dinner ? (
+            {JSON.stringify(dinner) !== JSON.stringify({}) ? (
               <div>
                 <h1 className="text-xs text-gray-400 leading-3">
                   Package {dinner.itemPack}
                 </h1>
                 <h1 className="text-xl text-gray-400">
-                  Tk {dinner.price} / week
+                  Tk {dinner.price} / day
                 </h1>
               </div>
             ) : (
-              <h1 className="text-lg text-red-500">Please select one!</h1>
+              <h1 className="text-lg text-red-400">Not selected!</h1>
             )}
           </div>
           <div className="flex border-t-2 justify-between text-2xl font-bold">
             <h1>Total:</h1>
-            <h1>Tk {breakfast?.price + lunch?.price + dinner?.price} / week</h1>
+            <h1>
+              Tk{" "}
+              {parseInt(breakfast?.price) +
+                parseInt(lunch?.price) +
+                parseInt(dinner?.price)}{" "}
+              / day
+            </h1>
+          </div>
+          <div>
+            <button onClick={clearMealPlan}>Clear</button>
+            <button onClick={confimrMealPlan}>Confirm</button>
           </div>
         </div>
         <div className="flex flex-col items-center text-center">
-          {mealData.map((meal) => {
-            return (
-              <div key={meal.type}>
-                <h1 className="text-4xl font-bold text-indigo-500 mb-8 mt-20">
-                  {meal.typeName}
-                </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-                  {meal.menu.map((item) => {
-                    return (
-                      <Meal
-                        key={item.id}
-                        items={item.items}
-                        price={item.price}
-                        itemPack={item.package}
-                        handleClick={handleClick}
-                        id={item.id}
-                        type={meal.type}
-                        typeName={meal.typeName}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
+          <h1 className="text-4xl font-bold text-indigo-500 mb-8 mt-20">
+            BREAKFAST
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {mealData?.map((meal) => {
+              let idx = 0;
+              if (meal.time == "Breakfast") {
+                idx++;
+                return (
+                  <div key={meal._id}>
+                    <Meal
+                      items={meal.about}
+                      price={meal.cost}
+                      itemPack={idx}
+                      handleClick={handleClick}
+                      id={meal._id}
+                      type={meal.time}
+                    />
+                  </div>
+                );
+              }
+            })}
+          </div>
+
+          <h1 className="text-4xl font-bold text-indigo-500 mb-8 mt-20">
+            LUNCH
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {mealData?.map((meal) => {
+              let idx = 0;
+              if (meal.time == "Lunch") {
+                idx++;
+                return (
+                  <div key={meal._id}>
+                    <Meal
+                      items={meal.about}
+                      price={meal.cost}
+                      itemPack={idx}
+                      handleClick={handleClick}
+                      id={meal._id}
+                      type={meal.time}
+                    />
+                  </div>
+                );
+              }
+            })}
+          </div>
+
+          <h1 className="text-4xl font-bold text-indigo-500 mb-8 mt-20">
+            DINNER
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {mealData?.map((meal, i) => {
+              let idx = 0;
+              if (meal.time == "Dinner") {
+                idx++;
+                return (
+                  <div key={meal._id}>
+                    <Meal
+                      items={meal.about}
+                      price={meal.cost}
+                      itemPack={idx}
+                      handleClick={handleClick}
+                      id={meal._id}
+                      type={meal.time}
+                    />
+                  </div>
+                );
+              }
+            })}
+          </div>
         </div>
       </div>
     </MainLayout>

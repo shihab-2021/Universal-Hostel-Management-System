@@ -40,7 +40,6 @@ const useFirebase = () => {
         console.log(error.message);
       })
       .finally(() => setIsLoading(false));
-
   };
 
   // Login user with Email Password
@@ -70,6 +69,7 @@ const useFirebase = () => {
         });
         setIsLoading(false);
       } else {
+        console.log("Please log in");
         setUser({});
         setIsLoading(false);
       }

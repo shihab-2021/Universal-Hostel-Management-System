@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
-import { roomData } from "../../data/room-data.js";
+import { useContext, useState } from "react";
 import Room from "../../Components/Rooms/Room";
 import authCheck from "../../Components/Firebase/authCheck.js";
 import MainLayout from "../../Components/MainLayout/MainLayout.js";
+import RoomContext from "../../Components/contexts/RoomContext";
 
 const Rooms = () => {
-  const [branchValue, setBranchValue] = useState("mirpur-2");
-  const [selectedRoom, setSelectedRoom] = useState();
-
-  if (selectedRoom) {
-    const { roomId } = selectedRoom;
-  }
+  const [branchValue, setBranchValue] = useState("Mirpur 2");
+  const { roomData } = useContext(RoomContext);
 
   return (
     <MainLayout>
@@ -31,33 +27,22 @@ const Rooms = () => {
               setBranchValue(e.target.value);
             }}
           >
-            <option value="mirpur-2">Mirpur 2</option>
-            <option value="dhanmondi">Dhanmondi</option>
+            <option value="Mirpur 2">Mirpur 2</option>
+            <option value="Dhanmondi">Dhanmondi</option>
           </select>
         </div>
         <div className="roomContent container mx-auto px-3">
           <div className="rooms">
-            {roomData.map((branch) => {
-              if (branch.branch === branchValue) {
-                return (
-                  <div key={branch.branchId}>
-                    <h1 className="text-center text-3xl mb-5">
-                      Rooms and Seats in {branchValue}
-                    </h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
-                      {branch.rooms.map((room) => {
-                        return (
-                          <Room
-                            key={room.roomId}
-                            data={{ room, setSelectedRoom }}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              }
-            })}
+            <h1 className="text-center text-3xl mb-5">
+              Rooms and Seats in {branchValue}
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
+              {roomData?.map((room) => {
+                if (room.branch === branchValue) {
+                  return <Room key={room._id} data={{ room }} />;
+                }
+              })}
+            </div>
           </div>
         </div>
       </div>

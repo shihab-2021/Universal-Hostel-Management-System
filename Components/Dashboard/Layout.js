@@ -116,8 +116,8 @@ const Layout = ({ children }) => {
                           </Link>
                         </li>
                         <li>
-                          <a
-                            href="#"
+                          <Link
+                            href="/dashboard/manage-user"
                             className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                           >
                             <svg
@@ -135,7 +135,7 @@ const Layout = ({ children }) => {
                             <span className="ml-3 flex-1 whitespace-nowrap">
                               Manage Users
                             </span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
                           <Link
@@ -224,6 +224,7 @@ const Layout = ({ children }) => {
                         </li>
                       </ul>
                     )}
+                    {console.log(userInfo)}
                     {userInfo?.role !== "admin" && (
                       <ul className="space-y-2 px-3 py-2 text-white">
                         <li>
@@ -268,7 +269,7 @@ const Layout = ({ children }) => {
               id="main-content"
               className="h-full w-full relative overflow-y-auto lg:ml-64"
             >
-              <main>
+              <main className="min-h-screen">
                 <div className=" pt-20 px-4">{children}</div>
               </main>
               <footer className="bg-[#36393e52] md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">

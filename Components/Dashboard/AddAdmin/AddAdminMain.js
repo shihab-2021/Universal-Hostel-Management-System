@@ -19,7 +19,7 @@ const AddAdminMain = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-        //   setSuccess(true);
+          //   setSuccess(true);
           alert("Made Admin successfully!");
         } else {
           alert("Please enter a valid email!");
@@ -29,11 +29,11 @@ const AddAdminMain = () => {
     e.preventDefault();
   };
   return (
-    <div className="h-[80vh]">
-      <div className="pt-5">
-        <h2 className=" text-2xl">MAKE AN ADMIN</h2>
+    <div className="card-design w-full md:w-2/3 lg:w-1/2 p-3 m-auto my-5">
+      <div className="pt-5 ">
+        <h2 className=" text-xl text-center">MAKE AN ADMIN</h2>
         <form
-          className="my-5"
+          className="my-5 text-center mx-auto"
           onSubmit={handleAdminSubmit}
           style={{ maxWidth: "25rem" }}
         >
@@ -47,7 +47,7 @@ const AddAdminMain = () => {
           <br />
           <br />
           <button
-            className=" border py-2 px-3 rounded-lg border-teal-500 text-xl text-teal-500"
+            className=" border py-2 px-3 rounded-lg border-teal-500 text-xl text-teal-500 mx-auto"
             type="submit"
           >
             Make Admin
