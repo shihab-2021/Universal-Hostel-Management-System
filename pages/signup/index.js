@@ -37,7 +37,7 @@ const Sighup = () => {
     createUser(email, password);
     event.preventDefault();
 
-    fetch("https://universal-hostel-server.vercel.app/users-data", {
+    fetch("https://universal-hostel-api.onrender.com/users-data", {
       method: "POST",
       headers: {
         "content-type": "application/json",

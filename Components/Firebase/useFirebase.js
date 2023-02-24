@@ -40,7 +40,6 @@ const useFirebase = () => {
         console.log(error.message);
       })
       .finally(() => setIsLoading(false));
-
   };
 
   // Login user with Email Password
@@ -70,12 +69,23 @@ const useFirebase = () => {
         });
         setIsLoading(false);
       } else {
+        console.log("Please log in");
         setUser({});
         setIsLoading(false);
       }
     });
     return () => unsubscribed;
-  }, [auth]);
+  }, [auth, !user.email]);
+
+  const [userInfo, setUserInfo] = useState();
+  useEffect(() => {
+    fetch(`https://universal-hostel-api.onrender.com/users-data/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setUserInfo(data))
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, [user?.email]);
 
   // For Logout
   const logout = () => {
@@ -92,6 +102,7 @@ const useFirebase = () => {
   return {
     user,
     isLoading,
+    userInfo,
     authError,
     loginUser,
     logout,
