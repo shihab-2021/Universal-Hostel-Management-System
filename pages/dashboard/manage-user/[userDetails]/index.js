@@ -3,7 +3,7 @@ import Layout from "../../../../Components/Dashboard/Layout";
 import { useEffect, useState } from "react";
 import Loading from "../../../../Components/Loading/Loading";
 
-export default function userDetailsPage({}) {
+export default function UserDetailsPage({}) {
   const router = useRouter();
   const id = router.query.userDetails;
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ export default function userDetailsPage({}) {
         setLoading(false);
         setUser(data);
       });
-  }, []);
+  }, [id]);
   return (
     <Layout>
       <div className="card-design">
