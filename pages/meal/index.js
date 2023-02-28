@@ -8,15 +8,55 @@ export default function Meals() {
   const [lunch, setLunch] = useState({ price: "0" });
   const [dinner, setDinner] = useState({ price: "0" });
   const [mealData, setMealData] = useState([]);
-  const [selectedMeals, setSelectedMeals] = useState({});
-  const { userInfo } = useAuth();
+  const { userInfo, user } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
-  console.log("user", userInfo);
   useEffect(() => {
     fetch("http://localhost:5000/meals")
       .then((res) => res.json())
       .then((data) => setMealData(data));
-  }, []);
+
+    mealData.map((meal) => {
+      // console.log(meal);
+      if (meal.time === "Breakfast") {
+        if (meal.bookedBy.some((element) => element.uid === userInfo?._id)) {
+          setBreakfast({
+            id: meal._id,
+            price: meal.cost,
+            itemPack: meal.time,
+          });
+        }
+      }
+
+      if (meal.time === "Lunch") {
+        if (meal.bookedBy.some((element) => element.uid === userInfo?._id)) {
+          setLunch({
+            id: meal._id,
+            price: meal.cost,
+            itemPack: meal.time,
+          });
+        }
+      }
+
+      if (meal.time === "Dinner") {
+        if (meal.bookedBy.some((element) => element.uid === userInfo?._id)) {
+          setDinner({
+            id: meal._id,
+            price: meal.cost,
+            itemPack: meal.time,
+          });
+        }
+      }
+    });
+
+    const today = new Date();
+    const todayDate = today.toDateString();
+    const tomorrow = new Date(
+      `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate() + 1}`
+    );
+    const tomorrowDate = tomorrow.toDateString();
+    console.log(todayDate < tomorrowDate);
+  }, [userInfo]);
 
   const handleClick = (id, type, itemPack, price) => {
     if (type === "Breakfast") {
@@ -38,6 +78,7 @@ export default function Meals() {
 
   const confimrMealPlan = () => {
     if (userInfo) {
+      setIsLoading(true);
       fetch("http://localhost:5000/meals", {
         method: "PUT",
         headers: {
@@ -51,11 +92,15 @@ export default function Meals() {
         }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then(() => setIsLoading(false));
     } else {
       window.alert("User not found. Please refresh the page and try again.");
     }
   };
+
+  let idx1 = 0;
+  let idx2 = 0;
+  let idx3 = 0;
 
   return (
     <MainLayout>
@@ -66,6 +111,7 @@ export default function Meals() {
             Meal Plan
           </h1>
         </div>
+        {userInfo && <h1>User found</h1>}
         <div className="text-center w-2/3 md:w-1/2 max-w-lg mx-auto my-10">
           <h1 className="text-2xl">Current Plan</h1>
           <div className="flex justify-between items-center my-3">
@@ -134,26 +180,30 @@ export default function Meals() {
               / day
             </h1>
           </div>
-          <div>
-            <button onClick={clearMealPlan}>Clear</button>
-            <button onClick={confimrMealPlan}>Confirm</button>
+          <div className="my-5">
+            <button onClick={clearMealPlan} className="button m-2">
+              Clear
+            </button>
+            <button onClick={confimrMealPlan} className="button m-2">
+              Confirm
+            </button>
           </div>
         </div>
+        {isLoading && <h1>IS LOADING</h1>}
         <div className="flex flex-col items-center text-center">
           <h1 className="text-4xl font-bold text-indigo-500 mb-8 mt-20">
             BREAKFAST
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {mealData?.map((meal) => {
-              let idx = 0;
               if (meal.time == "Breakfast") {
-                idx++;
+                idx1++;
                 return (
                   <div key={meal._id}>
                     <Meal
                       items={meal.about}
                       price={meal.cost}
-                      itemPack={idx}
+                      itemPack={idx1}
                       handleClick={handleClick}
                       id={meal._id}
                       type={meal.time}
@@ -169,15 +219,14 @@ export default function Meals() {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {mealData?.map((meal) => {
-              let idx = 0;
               if (meal.time == "Lunch") {
-                idx++;
+                idx2++;
                 return (
                   <div key={meal._id}>
                     <Meal
                       items={meal.about}
                       price={meal.cost}
-                      itemPack={idx}
+                      itemPack={idx2}
                       handleClick={handleClick}
                       id={meal._id}
                       type={meal.time}
@@ -193,15 +242,14 @@ export default function Meals() {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {mealData?.map((meal, i) => {
-              let idx = 0;
               if (meal.time == "Dinner") {
-                idx++;
+                idx3++;
                 return (
                   <div key={meal._id}>
                     <Meal
                       items={meal.about}
                       price={meal.cost}
-                      itemPack={idx}
+                      itemPack={idx3}
                       handleClick={handleClick}
                       id={meal._id}
                       type={meal.time}
