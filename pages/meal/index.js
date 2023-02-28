@@ -13,7 +13,7 @@ export default function Meals() {
 
   console.log("user", userInfo);
   useEffect(() => {
-    fetch("http://localhost:5000/meals")
+    fetch("https://universal-hostel-api.onrender.com/meals")
       .then((res) => res.json())
       .then((data) => setMealData(data));
   }, []);
@@ -38,7 +38,7 @@ export default function Meals() {
 
   const confimrMealPlan = () => {
     if (userInfo) {
-      fetch("http://localhost:5000/meals", {
+      fetch("https://universal-hostel-api.onrender.com/meals", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -56,6 +56,10 @@ export default function Meals() {
       window.alert("User not found. Please refresh the page and try again.");
     }
   };
+
+  let idx1 = 0;
+  let idx2 = 0;
+  let idx3 = 0;
 
   return (
     <MainLayout>
@@ -145,15 +149,14 @@ export default function Meals() {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {mealData?.map((meal) => {
-              let idx = 0;
               if (meal.time == "Breakfast") {
-                idx++;
+                idx1++;
                 return (
                   <div key={meal._id}>
                     <Meal
                       items={meal.about}
                       price={meal.cost}
-                      itemPack={idx}
+                      itemPack={idx1}
                       handleClick={handleClick}
                       id={meal._id}
                       type={meal.time}
@@ -169,15 +172,14 @@ export default function Meals() {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {mealData?.map((meal) => {
-              let idx = 0;
               if (meal.time == "Lunch") {
-                idx++;
+                idx2++;
                 return (
                   <div key={meal._id}>
                     <Meal
                       items={meal.about}
                       price={meal.cost}
-                      itemPack={idx}
+                      itemPack={idx2}
                       handleClick={handleClick}
                       id={meal._id}
                       type={meal.time}
@@ -193,15 +195,14 @@ export default function Meals() {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {mealData?.map((meal, i) => {
-              let idx = 0;
               if (meal.time == "Dinner") {
-                idx++;
+                idx3++;
                 return (
                   <div key={meal._id}>
                     <Meal
                       items={meal.about}
                       price={meal.cost}
-                      itemPack={idx}
+                      itemPack={idx3}
                       handleClick={handleClick}
                       id={meal._id}
                       type={meal.time}

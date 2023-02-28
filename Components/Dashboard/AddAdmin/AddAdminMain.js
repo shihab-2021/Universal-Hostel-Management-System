@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import adminCheck from "../../Firebase/adminCheck";
+import authCheck from "../../Firebase/authCheck";
 
 const AddAdminMain = () => {
   const [email, setEmail] = useState("");
@@ -61,4 +63,4 @@ const AddAdminMain = () => {
   );
 };
 
-export default AddAdminMain;
+export default authCheck(adminCheck(AddAdminMain));
