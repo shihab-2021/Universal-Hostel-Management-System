@@ -16,15 +16,6 @@ export default function Room(props) {
       <h1>Rent per week: {room.cost} Tk</h1>
 
       <div>
-        <button
-          className="button mt-4 m-1"
-          onClick={() => {
-            props.data.setSelectedRoom(room);
-          }}
-        >
-          Select room
-        </button>
-
         <Link href={`/rooms/${room._id}`}>
           <button className="button mt-4 m-1">View Details</button>
         </Link>
