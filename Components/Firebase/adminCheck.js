@@ -10,13 +10,14 @@ const adminCheck = (WrappedComponent) => {
     const router = useRouter();
 
     useEffect(() => {
+      console.log(userInfo);
       if (userInfo?.email && userInfo?.role !== "admin") {
         router.replace("/");
       }
-      if (!user?.email) {
-        router.replace("/");
-      }
-    }, [router, userInfo?.role]);
+      // if (!user?.email) {
+      //   router.replace("/");
+      // }
+    }, [userInfo]);
 
     if (userInfo?.email && userInfo?.role === "admin") {
       return <WrappedComponent />;

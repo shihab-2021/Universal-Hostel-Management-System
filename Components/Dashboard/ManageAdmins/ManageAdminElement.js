@@ -7,7 +7,7 @@ const ManageAdminElement = ({ data }) => {
     );
 
     if (agree) {
-      fetch(`http://localhost:5000/users`, {
+      fetch(`https://universal-hostel-api.onrender.com/users`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

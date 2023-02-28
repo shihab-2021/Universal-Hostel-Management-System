@@ -17,7 +17,7 @@ const authCheck = (WrappedComponent) => {
         <div className="my-5 py-5">
           <div className="d-flex justify-content-center my-5 py-5">
             {/* <Spinner animation="border" variant="danger" /> */}
-            Loading
+            <Loading></Loading>
           </div>
         </div>
       );

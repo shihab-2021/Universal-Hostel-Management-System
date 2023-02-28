@@ -21,6 +21,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const [token, setToken] = useState("");
+  const [userInfo, setUserInfo] = useState();
   const router = useRouter();
 
   const auth = getAuth();
@@ -67,17 +68,15 @@ const useFirebase = () => {
         getIdToken(user).then((idToken) => {
           setToken(idToken);
         });
-        setIsLoading(false);
       } else {
-        console.log("Please log in");
         setUser({});
-        setIsLoading(false);
+        console.log("Please login");
       }
+      setIsLoading(false);
     });
     return () => unsubscribed;
-  }, [auth, !user.email]);
+  }, [auth]);
 
-  const [userInfo, setUserInfo] = useState();
   useEffect(() => {
     fetch(`https://universal-hostel-api.onrender.com/users-data/${user?.email}`)
       .then((res) => res.json())
@@ -85,7 +84,7 @@ const useFirebase = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [user?.email]);
+  }, [!userInfo, user?.email, auth]);
 
   // For Logout
   const logout = () => {

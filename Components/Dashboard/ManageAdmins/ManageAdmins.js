@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import adminCheck from "../../Firebase/adminCheck";
+import authCheck from "../../Firebase/authCheck";
 import Loading from "../../Loading/Loading";
 import ManageAdminElement from "./ManageAdminElement";
 
@@ -8,7 +10,7 @@ const ManageAdmins = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/users")
+    fetch("https://universal-hostel-api.onrender.com/users")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
@@ -48,4 +50,4 @@ const ManageAdmins = () => {
   );
 };
 
-export default ManageAdmins;
+export default authCheck(adminCheck(ManageAdmins));

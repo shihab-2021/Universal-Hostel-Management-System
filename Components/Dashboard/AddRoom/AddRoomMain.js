@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import adminCheck from "../../Firebase/adminCheck";
+import authCheck from "../../Firebase/authCheck";
 
 const AddRoomMain = () => {
   // const { data } = props;
@@ -119,7 +120,7 @@ const AddRoomMain = () => {
       );
       return;
     }
-    fetch("http://localhost:5000/rooms", {
+    fetch("https://universal-hostel-api.onrender.com/rooms", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -147,7 +148,7 @@ const AddRoomMain = () => {
         >
           <div className="grid grid-cols-12 gap-3">
             {/* Profile Photo Update Handling  */}
-            <div className="col-span-12 flex flex-col md:col-span-6">
+            <label className="col-span-12 flex flex-col md:col-span-6">
               Upload Room Photo
               <div className="rounded-lg border-2 border-dotted border-gray-400 p-3 text-center">
                 <div
@@ -197,7 +198,7 @@ const AddRoomMain = () => {
                   onChange={uploadImage}
                 />
               </div>
-            </div>
+            </label>
             {/* Profile picture  */}
             <div className="col-span-12 flex justify-center md:col-span-6">
               <div className="mx-auto flex self-center overflow-hidden sm:mx-0">
@@ -326,4 +327,4 @@ const AddRoomMain = () => {
   );
 };
 
-export default adminCheck(AddRoomMain);
+export default authCheck(adminCheck(AddRoomMain));

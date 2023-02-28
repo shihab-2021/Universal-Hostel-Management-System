@@ -5,7 +5,7 @@ const ManageUserElement = ({ data }) => {
     const agree = window.confirm("Are you sure you want to delete this user?");
 
     if (agree) {
-      fetch(`http://localhost:5000/users/${data._id}`, {
+      fetch(`https://universal-hostel-api.onrender.com/users/${data._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
