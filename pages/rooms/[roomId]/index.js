@@ -2,24 +2,29 @@
 import { useRouter } from "next/router";
 import RoomFacilities from "../../../Components/Rooms/RoomFacilities";
 import MainLayout from "../../../Components/MainLayout/MainLayout";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import RoomContext, {
   RoomProvider,
 } from "../../../Components/contexts/RoomContext";
+import useAuth from "../../../Components/Firebase/useAuth";
 
 export default function RoomDetails() {
   const router = useRouter();
-  const id = router.query.roomId;
-
+  const [id, setId] = useState("");
   const { roomData } = useContext(RoomContext);
+  const { userInfo, user } = useAuth();
+  const [selectedRoom, setSelectedRoom] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`https://universal-hostel-api.onrender.com/rooms/${id}`)
+    setId(router.query.roomId);
+    setData(roomData);
+    fetch(`http://localhost:5000/rooms/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setSelectedRoom(data);
       });
-  }, [id]);
+  }, [roomData, id]);
 
   return (
     <MainLayout>
@@ -30,7 +35,7 @@ export default function RoomDetails() {
             Room Details
           </h1>
         </div>
-        {roomData?.map((room) => {
+        {data?.map((room) => {
           if (id == room._id) {
             return (
               <div key={room._id} className="w-full">
@@ -92,9 +97,17 @@ export default function RoomDetails() {
                   </div>
                 </div>
                 <div className="w-full flex justify-center mt-10">
-                  <button className="bg-yellow-400 border-2 border-transparent hover:border-yellow-400 hover:text-yellow-400 hover:bg-color1 w-fit p-3 rounded text-color1 font-bold ">
-                    Select Room
-                  </button>
+                  {room.bookedBy.length ? (
+                    <button
+                      className="border-2 p-2 rounded mx-2 bg-gray-500 border-gray-500"
+                      type="button"
+                      disabled
+                    >
+                      Room Booked
+                    </button>
+                  ) : (
+                    <button className="button mx-2">Select Room</button>
+                  )}
                 </div>
               </div>
             );
