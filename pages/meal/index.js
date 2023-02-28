@@ -78,12 +78,7 @@ export default function Meals() {
 
   const confimrMealPlan = () => {
     if (userInfo) {
-<<<<<<< HEAD
       fetch("https://universal-hostel-api.onrender.com/meals", {
-=======
-      setIsLoading(true);
-      fetch("http://localhost:5000/meals", {
->>>>>>> 0a771c97e02da234f07f16f53f2f62ff7bc5eab6
         method: "PUT",
         headers: {
           "content-type": "application/json",
