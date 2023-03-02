@@ -2,10 +2,8 @@ import { useRouter } from "next/router";
 import Layout from "../../../../Components/Dashboard/Layout";
 import { useEffect, useState } from "react";
 import Loading from "../../../../Components/Loading/Loading";
-import adminCheck from "../../../../Components/Firebase/adminCheck";
-import authCheck from "../../../../Components/Firebase/authCheck";
 
-const UserDetailsPage = ({}) => {
+export default function UserDetailsPage({}) {
   const router = useRouter();
   const id = router.query.userDetails;
   const [loading, setLoading] = useState(false);
@@ -13,14 +11,13 @@ const UserDetailsPage = ({}) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://universal-hostel-api.onrender.com/users/${id}`)
+    fetch(`http://localhost:5000/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
         setUser(data);
       });
   }, [id]);
-  const date = new Date(user?.birthDate)?.toLocaleDateString();
   return (
     <Layout>
       <div className="card-design">
@@ -45,7 +42,7 @@ const UserDetailsPage = ({}) => {
           </div>
           <div className="card-design text-center p-2 py-5">
             <h1 className="text-xs text-gray-500">BIRTHDAY</h1>
-            <h1 className="text-xl">{date != "Invalid Date" && date}</h1>
+            <h1 className="text-xl">{user.birthDate}</h1>
           </div>
           <div className="card-design text-center p-2 py-5">
             <h1 className="text-xs text-gray-500">ADDRESS</h1>
@@ -60,5 +57,3 @@ const UserDetailsPage = ({}) => {
     </Layout>
   );
 }
-
-export default authCheck(adminCheck(UserDetailsPage));

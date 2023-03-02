@@ -254,7 +254,7 @@ const Layout = ({ children }) => {
                         </li>
                       </ul>
                     )}
-                    {console.log(userInfo)}
+
                     {userInfo?.role !== "admin" && (
                       <ul className="space-y-2 px-3 py-2 text-white">
                         <li>

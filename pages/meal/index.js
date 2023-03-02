@@ -12,7 +12,7 @@ export default function Meals() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetch("https://universal-hostel-api.onrender.com/meals")
+    fetch("http://localhost:5000/meals")
       .then((res) => res.json())
       .then((data) => setMealData(data));
 
@@ -78,7 +78,8 @@ export default function Meals() {
 
   const confimrMealPlan = () => {
     if (userInfo) {
-      fetch("https://universal-hostel-api.onrender.com/meals", {
+      setIsLoading(true);
+      fetch("http://localhost:5000/meals", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
