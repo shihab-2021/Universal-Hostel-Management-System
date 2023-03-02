@@ -84,7 +84,7 @@ export default function OccupantDetails() {
             <tbody className="">
               {room.category === "Economic" ? (
                 sharedRoomUsers.map((e) => {
-                  return <Occupants user={e} />;
+                  return <Occupants user={e} key={e._id} />;
                 })
               ) : (
                 <Occupants user={privateRoomUser} />

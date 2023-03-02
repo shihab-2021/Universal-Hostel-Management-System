@@ -67,7 +67,7 @@ export default function MealOrders() {
                     const date = new Date(e.mealDay);
                     console.log(e);
                     return (
-                      <tr>
+                      <tr key={e.uid}>
                         <td>{idx1}</td>
                         <td>{data.displayName}</td>
                         <td>{data.room?.branch}</td>
@@ -103,7 +103,7 @@ export default function MealOrders() {
                     const date = new Date(e.mealDay);
                     console.log(e);
                     return (
-                      <tr>
+                      <tr key={e.uid}>
                         <td>{idx2}</td>
                         <td>{data.displayName}</td>
                         <td>{data.room?.branch}</td>
@@ -139,7 +139,7 @@ export default function MealOrders() {
                     const date = new Date(e.mealDay);
                     console.log(e);
                     return (
-                      <tr>
+                      <tr key={e.uid}>
                         <td>{idx3}</td>
                         <td>{data.displayName}</td>
                         <td>{data.room?.branch}</td>
