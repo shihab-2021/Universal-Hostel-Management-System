@@ -10,21 +10,70 @@ import useAuth from "../../../Components/Firebase/useAuth";
 
 export default function RoomDetails() {
   const router = useRouter();
-  const [id, setId] = useState("");
+  const [id, setId] = useState(router.query.roomId);
   const { roomData } = useContext(RoomContext);
   const { userInfo, user } = useAuth();
-  const [selectedRoom, setSelectedRoom] = useState({});
-  const [data, setData] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+    if (!router.isReady) return;
+    console.log("userinfo: ", userInfo);
+    console.log("router: ", id);
     setId(router.query.roomId);
-    setData(roomData);
-    fetch(`http://localhost:5000/rooms/${id}`)
+    fetch(`https://universal-hostel-api.onrender.com/rooms/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setSelectedRoom(data);
+        setIsLoading(false);
+        console.log(data);
       });
-  }, [roomData, id]);
+  }, [router.isReady]);
+
+  const handleClick = () => {
+    if (userInfo) {
+      if (window.confirm("Are you sure you want to select this room?")) {
+        if (selectedRoom.category === "Business") {
+          if (userInfo.room == "") {
+            fetch("http://localhost:5000/rooms", {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({
+                roomId: selectedRoom._id,
+                currentUser: userInfo._id,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => console.log(data));
+          } else {
+            window.alert("You already have a booked room!");
+          }
+        } else {
+          if (userInfo.room == "") {
+            fetch("http://localhost:5000/rooms", {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({
+                roomId: selectedRoom._id,
+                currentUser: userInfo._id,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => console.log(data));
+          } else {
+            window.alert("You already have a booked room!");
+          }
+        }
+      }
+    } else {
+      window.alert("User not found. Please refresh the page and try again.");
+    }
+  };
 
   return (
     <MainLayout>
@@ -35,11 +84,12 @@ export default function RoomDetails() {
             Room Details
           </h1>
         </div>
-        {data?.map((room) => {
+        {roomData?.map((room) => {
           if (id == room._id) {
             return (
               <div key={room._id} className="w-full">
                 <div className="w-full lg:w-3/4 mx-auto flex px-5 flex-col md:flex-row">
+                  {isLoading && <h1>Loading Data</h1>}
                   <div className="w-full md:w-1/2 px-5 mb-12">
                     <img
                       src={room.image}
@@ -97,16 +147,32 @@ export default function RoomDetails() {
                   </div>
                 </div>
                 <div className="w-full flex justify-center mt-10">
-                  {room.bookedBy.length ? (
+                  {room.category == "Business" ? (
+                    room.bookedBy.length ? (
+                      <button
+                        className="border-2 p-2 rounded mx-2 bg-gray-500 border-gray-500"
+                        type="button"
+                        disabled
+                      >
+                        Room Unavailable
+                      </button>
+                    ) : (
+                      <button className="button mx-2" onClick={handleClick}>
+                        Book Room
+                      </button>
+                    )
+                  ) : room.bookedBy.length < 4 ? (
+                    <button className="button mx-2" onClick={handleClick}>
+                      Book Bed
+                    </button>
+                  ) : (
                     <button
                       className="border-2 p-2 rounded mx-2 bg-gray-500 border-gray-500"
                       type="button"
                       disabled
                     >
-                      Room Booked
+                      Room Unavailable
                     </button>
-                  ) : (
-                    <button className="button mx-2">Select Room</button>
                   )}
                 </div>
               </div>

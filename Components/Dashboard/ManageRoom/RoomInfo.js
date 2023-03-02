@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function RoomInfo(props) {
   const room = props.data.room;
+
   return (
     <div
       style={{
@@ -17,16 +19,26 @@ export default function RoomInfo(props) {
         }}
       ></div>
       <div className="py-10 px-10 text-white h-64 flex justify-center flex-col text-center">
-        <p className="uppercase tracking-wide text-xl font-bold pb-4">
+        <p className="uppercase tracking-wide text-xl font-bold ">
           {room?.title}
         </p>
-        <p className="text-xl uppercase font-bold text-gray-200 pb-6">
+        <p className="text-xs uppercase font-bold text-gray-200 pb-3">
           per month{" "}
-          <span className="text-3xl text-orange-500">{room?.cost}tk</span>
+          <span className="text-xl text-orange-500 mx-2">{room?.cost}tk</span>
         </p>
+        <p className="py-3">{room?.branch}</p>
+        <div className="">
+          <p>{room?.category === "Economic" ? "Available Seats" : ""}</p>
+          {room?.category === "Economic" ? (
+            <p className="text-xl">{room.seat}/4</p>
+          ) : (
+            ""
+          )}
+        </div>
+
         <div className="text-center">
           <button
-            className="button mt-4 m-1"
+            className="button-danger mt-4 m-1"
             onClick={() => {
               props.deleteItem(room._id);
             }}
@@ -35,7 +47,10 @@ export default function RoomInfo(props) {
           </button>
 
           <Link href={`/rooms/${room._id}`}>
-            <button className="button mt-4 m-1">View Details</button>
+            <button className="button mt-4 m-1">Room Details</button>
+          </Link>
+          <Link href={`/dashboard/occupants/${room._id}`}>
+            <button className="button mt-4 m-1">Occupants</button>
           </Link>
         </div>
       </div>

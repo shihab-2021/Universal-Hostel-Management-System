@@ -32,6 +32,7 @@ const Sighup = () => {
       gender: "",
       profession: "",
       birthDate: "",
+      room: "",
     };
 
     createUser(email, password);
