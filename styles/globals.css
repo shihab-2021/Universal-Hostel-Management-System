@@ -21,6 +21,10 @@
   .button {
     @apply bg-transparent border-2 border-indigo-500  hover:text-slate-800 hover:bg-indigo-500 w-fit p-2 rounded text-indigo-500 font-bold;
   }
+
+  .button-danger {
+    @apply bg-transparent border-2 border-red-500  hover:text-slate-800 hover:bg-red-500 w-fit p-2 rounded text-red-500 font-bold;
+  }
 }
 
 html,
