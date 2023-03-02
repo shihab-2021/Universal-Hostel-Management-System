@@ -1,10 +1,11 @@
 import Link from "next/link";
 
-const ManageUserElement = ({ data }) => {
+const ManageUserElement = ({ data, remainingUsers }) => {
   const deleteItem = () => {
     const agree = window.confirm("Are you sure you want to delete this user?");
 
     if (agree) {
+      remainingUsers(data._id);
       fetch(`https://universal-hostel-api.onrender.com/users/${data._id}`, {
         method: "DELETE",
       })

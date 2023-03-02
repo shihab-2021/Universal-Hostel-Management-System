@@ -10,7 +10,7 @@ const Rooms = () => {
 
   return (
     <MainLayout>
-      <div className="flex items-center flex-col pb-10">
+      <div className="flex items-center flex-col pb-10 font-sansita">
         <div className="relative h-40 bg-fixed bg-[url('https://i.ibb.co/p3qb5xF/back12.jpg')] bg-no-repeat bg-cover bg-bottom mb-10 w-screen">
           <div className="bg-gray-800 h-full w-full opacity-80 "></div>
           <h1 className="absolute left-1/2 top-1/2 text-4xl font-bold text-white -translate-x-1/2 -translate-y-1/2">
@@ -18,8 +18,11 @@ const Rooms = () => {
           </h1>
         </div>
         <div className="roomSubmit mb-8">
-          <label htmlFor="branch">Choose a branch: </label>
+          <label className="text-xl" htmlFor="branch">
+            Choose a branch:{" "}
+          </label>
           <select
+            className="px-2 py-1 rounded border"
             id="branch"
             name="branch"
             value={branchValue}

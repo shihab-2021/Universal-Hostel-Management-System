@@ -11,6 +11,7 @@ const AddAdminMain = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
+
     fetch("https://universal-hostel-api.onrender.com/users/admin", {
       method: "PUT",
       headers: {

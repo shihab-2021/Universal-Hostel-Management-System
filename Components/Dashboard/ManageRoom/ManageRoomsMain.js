@@ -10,8 +10,8 @@ const ManageRoomsMain = () => {
         <div><h1 className="text-center text-5xl pb-5">Rooms</h1></div>
       <div className="flex items-center flex-col pb-10">
         <div className="roomSubmit mb-8">
-          <label htmlFor="branch">Choose a branch: </label>
-          <select
+          <label className="text-xl" htmlFor="branch">Choose a branch: </label>
+          <select className="px-2 py-1 rounded border"
             id="branch"
             name="branch"
             value={branchValue}
