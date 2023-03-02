@@ -39,18 +39,18 @@ const UserInformation = () => {
   };
 
   return (
-    <div className="p-5 flex gap-5 flex-col">
-      <div className="flex flex-col md:flex-row gap-5">
-        <div className="px-5 card md:w-1/2 w-full flex justify-between">
-          <div className="flex flex-row items-center justify-center w-full">
-            <div className="w-1/2">
+    <div className="flex gap-5 flex-col">
+      <div className="flex flex-col xl:flex-row gap-5">
+        <div className="px-5 card xl:w-1/2 w-full flex justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-center w-full">
+            <div className="sm:w-1/2">
               <img
                 src={userInfo.image}
                 className="aspect-square rounded-full max-w-[200px] w-3/4 m-auto"
                 alt=""
               />
             </div>
-            <div className="w-1/2 my-5 flex flex-row justify-center">
+            <div className="sm:w-1/2 my-5 flex flex-row justify-center">
               <div className="">
                 {userInfo.displayName && (
                   <div className="flex items-center flex-col my-1">
@@ -89,7 +89,9 @@ const UserInformation = () => {
               </div>
             </div>
           </div>
-          <button className="button my-3">Modify Profile</button>
+          <Link href="/dashboard/updateProfile">
+            <button className="button my-3">Modify Profile</button>
+          </Link>
         </div>
 
         <div className="card w-full md:w-1/2 flex justify-between">

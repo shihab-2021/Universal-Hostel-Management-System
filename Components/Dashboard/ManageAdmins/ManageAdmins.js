@@ -17,6 +17,11 @@ const ManageAdmins = () => {
         setUsers(data);
       });
   }, []);
+
+  const remainingUsers = (id) => {
+    const remaining = users.filter((user) => user._id !== id);
+    setUsers(remaining);
+  }
   return (
     <div className="md:p-10 p-2">
       <div className="flex items-center justify-center">
@@ -37,7 +42,11 @@ const ManageAdmins = () => {
             ) : (
               users.map((user) => {
                 return user.role == "admin" ? (
-                  <ManageAdminElement data={user} key={user._id} />
+                  <ManageAdminElement
+                    data={user}
+                    key={user._id}
+                    remainingUsers={remainingUsers}
+                  />
                 ) : (
                   ""
                 );

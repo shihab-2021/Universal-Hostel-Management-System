@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -58,19 +59,24 @@ function Carousel({ images }) {
                     <br />
                     <br />
                     <p className="text-xl">
-                      FOR <span className="text-4xl text-orange-500">{image.price}</span> PER
-                      MONTH
+                      FOR{" "}
+                      <span className="text-4xl text-orange-500">
+                        {image.price}
+                      </span>{" "}
+                      PER MONTH
                     </p>
                     <br />
                     <br />
-                    <button
-                      style={{
-                        transition: "0.5s ease-in-out",
-                      }}
-                      className="border p-3 hover:bg-orange-400"
-                    >
-                      BOOK NOW!
-                    </button>
+                    <Link href="/rooms">
+                      <button
+                        style={{
+                          transition: "0.5s ease-in-out",
+                        }}
+                        className="border p-3 hover:bg-orange-400"
+                      >
+                        BOOK NOW!
+                      </button>
+                    </Link>
                   </div>
                 </div>
 

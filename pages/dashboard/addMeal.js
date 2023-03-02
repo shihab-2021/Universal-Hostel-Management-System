@@ -1,6 +1,8 @@
 import React from 'react';
 import AddMealMain from '../../Components/Dashboard/AddMeal/AddMealMain';
 import Layout from '../../Components/Dashboard/Layout';
+import adminCheck from '../../Components/Firebase/adminCheck';
+import authCheck from '../../Components/Firebase/authCheck';
 
 const AddMeal = () => {
     return (
@@ -12,4 +14,4 @@ const AddMeal = () => {
     );
 };
 
-export default AddMeal;
+export default authCheck(adminCheck(AddMeal));

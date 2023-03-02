@@ -1,12 +1,13 @@
 import Link from "next/link";
 
-const ManageAdminElement = ({ data }) => {
+const ManageAdminElement = ({ data, remainingUsers }) => {
   const removeAdmin = () => {
     const agree = window.confirm(
       "Are you sure you want to remove this user from Admin position?"
     );
 
     if (agree) {
+      remainingUsers(data._id);
       fetch(`https://universal-hostel-api.onrender.com/users`, {
         method: "PUT",
         headers: {

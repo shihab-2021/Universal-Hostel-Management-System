@@ -97,9 +97,9 @@ const MainProfile = (props) => {
       (userInfo?.biography && userInfo?.biography !== data?.biography) ||
       (userInfo?.displayName && userInfo?.displayName !== data?.displayName) ||
       (userInfo?.gender && userInfo?.gender !== data?.gender) ||
-      (userInfo?.profession && userInfo?.profession !== data?.profession) 
+      (userInfo?.profession && userInfo?.profession !== data?.profession)
     ) {
-      fetch("https://universal-hostel-server.vercel.app/profile-update", {
+      fetch("https://universal-hostel-api.onrender.com/profile-update", {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(userInfo),
@@ -117,7 +117,7 @@ const MainProfile = (props) => {
   return (
     <div>
       <div>
-        <div className="container mx-auto my-5 font-sansita py-20">
+        <div className="container mx-auto my-5 font-sansita">
           <div
             style={{
               // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
