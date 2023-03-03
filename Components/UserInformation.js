@@ -96,7 +96,7 @@ const UserInformation = () => {
 
         <div className="card w-full md:w-1/2 flex justify-between">
           <h1 className="text-3xl underline">Current Room</h1>
-          {userInfo.room ? (
+          {userInfo.room._id ? (
             <>
               <div className="flex flex-col items-center">
                 <DashboardItem
