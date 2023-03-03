@@ -20,7 +20,7 @@ const UserInformation = () => {
 
     const date2 = new Date(userInfo.bookedTill);
     setBookedTill(date2.toDateString());
-  }, [userInfo.room]);
+  }, [userInfo?.room]);
 
   const breakfast = allMeals.filter((e) => {
     return e.time == "Breakfast";
@@ -51,7 +51,7 @@ const UserInformation = () => {
         "Are you sure you want to cancel your room subscription? You will lose access to your room and meal plan if you select OK!"
       )
     ) {
-      fetch("http://localhost:5000/cancelRoom", {
+      fetch("https://universal-hostel-api.onrender.com/cancelRoom", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -158,7 +158,7 @@ const UserInformation = () => {
               </div>
             </>
           ) : (
-            <h1 className="text-lg">NO ROOM SELECTED!</h1>
+            <h1 className="text-2xl">NO ROOM SELECTED!</h1>
           )}
         </div>
       </div>

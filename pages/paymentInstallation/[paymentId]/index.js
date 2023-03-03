@@ -19,7 +19,7 @@ const PaymentInstallation = () => {
           setIsLoading(false);
           console.log(data);
         });
-    }, [router.isReady]);
+    }, []);
     return (
       <MainLayout>
         <div className=' font-sansita'>

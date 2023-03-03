@@ -11,7 +11,7 @@ export default function UserDetailsPage({}) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/users/${id}`)
+    fetch(`https://universal-hostel-api.onrender.com/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

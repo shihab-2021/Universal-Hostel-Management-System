@@ -9,15 +9,15 @@ const ManageRoomsMain = () => {
   const [occupiedRooms, setOccupiedRooms] = useState([]);
   const [fullRooms, setFullRooms] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/unoccupiedRooms")
+    fetch("https://universal-hostel-api.onrender.com/unoccupiedRooms")
       .then((res) => res.json())
       .then((data) => setUnoccupiedRooms(data));
 
-    fetch("http://localhost:5000/occupiedRooms")
+    fetch("https://universal-hostel-api.onrender.com/occupiedRooms")
       .then((res) => res.json())
       .then((data) => setOccupiedRooms(data));
 
-    fetch("http://localhost:5000/fullRooms")
+    fetch("https://universal-hostel-api.onrender.com/fullRooms")
       .then((res) => res.json())
       .then((data) => setFullRooms(data));
   }, []);

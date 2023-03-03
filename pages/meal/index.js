@@ -15,7 +15,7 @@ export default function Meals() {
 
   const router = useRouter();
   useEffect(() => {
-    fetch("http://localhost:5000/meals")
+    fetch("https://universal-hostel-api.onrender.com/meals")
       .then((res) => res.json())
       .then((data) => setMealData(data));
 
@@ -82,7 +82,7 @@ export default function Meals() {
   const confimrMealPlan = () => {
     if (userInfo) {
       setIsLoading(true);
-      fetch("http://localhost:5000/meals", {
+      fetch("https://universal-hostel-api.onrender.com/meals", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
