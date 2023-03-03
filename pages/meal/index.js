@@ -3,6 +3,7 @@ import MainLayout from "../../Components/MainLayout/MainLayout";
 import Meal from "../../Components/Meal/Meal";
 import useAuth from "../../Components/Firebase/useAuth";
 import Layout from "../../Components/Dashboard/Layout";
+import { useRouter } from "next/router";
 
 export default function Meals() {
   const [breakfast, setBreakfast] = useState({ price: "0" });
@@ -12,13 +13,14 @@ export default function Meals() {
   const { userInfo, user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
+  const router = useRouter();
   useEffect(() => {
     fetch("http://localhost:5000/meals")
       .then((res) => res.json())
       .then((data) => setMealData(data));
 
     mealData.map((meal) => {
-      // console.log(meal);
+      console.log(meal);
       if (meal.time === "Breakfast") {
         if (meal.bookedBy.some((element) => element.uid === userInfo?._id)) {
           setBreakfast({
@@ -94,6 +96,9 @@ export default function Meals() {
       })
         .then((res) => res.json())
         .then(() => setIsLoading(false));
+
+      window.alert("Order Placed");
+      router.replace("/dashboard");
     } else {
       window.alert("User not found. Please refresh the page and try again.");
     }
@@ -190,7 +195,7 @@ export default function Meals() {
             </button>
           </div>
         </div>
-        {isLoading && <h1>IS LOADING</h1>}
+        {/* {isLoading && <h1>IS LOADING</h1>} */}
         <div className="flex flex-col items-center text-center">
           <h1 className="text-4xl font-bold text-indigo-500 mb-8 mt-20">
             BREAKFAST

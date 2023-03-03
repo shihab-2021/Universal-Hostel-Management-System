@@ -8,14 +8,42 @@ const UserInformation = () => {
 
   const [bookedOn, setBookedOn] = useState("");
   const [bookedTill, setBookedTill] = useState("");
+  const [allMeals, setAllMeals] = useState([]);
 
   useEffect(() => {
+    fetch("https://universal-hostel-api.onrender.com/meals")
+      .then((res) => res.json())
+      .then((data) => setAllMeals(data));
+
     const date1 = new Date(userInfo.bookedOn);
     setBookedOn(date1.toDateString());
 
     const date2 = new Date(userInfo.bookedTill);
     setBookedTill(date2.toDateString());
   }, [userInfo.room]);
+
+  const breakfast = allMeals.filter((e) => {
+    return e.time == "Breakfast";
+  });
+
+  const lunch = allMeals.filter((e) => {
+    return e.time == "Lunch";
+  });
+
+  const dinner = allMeals.filter((e) => {
+    return e.time == "Dinner";
+  });
+
+  let total = 0;
+
+  allMeals.map((meal) => {
+    return meal.bookedBy.map((user) => {
+      if (user.uid == userInfo._id) {
+        total = total + parseInt(meal.cost);
+      }
+    });
+  });
+  console.log(allMeals);
 
   const cancelRoom = () => {
     if (
@@ -38,6 +66,9 @@ const UserInformation = () => {
     }
   };
 
+  let idx1 = 0;
+  let idx2 = 0;
+  let idx3 = 0;
   return (
     <div className="flex gap-5 flex-col">
       <div className="flex flex-col xl:flex-row gap-5">
@@ -135,12 +166,56 @@ const UserInformation = () => {
         <div className="card w-full md:w-1/2 flex justify-between">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl underline">Current Meal Plan</h1>
-            <DashboardItem first={"Breakfast"} second={"Package 1"} />
-            <DashboardItem first={"Lunch"} second={"Package 3"} />
-            <DashboardItem first={"Dinner"} second={"Package 2"} />
-            <h1 className=" mt-5 text-xl text-indigo-500">Tk 1000 / week</h1>
+            {breakfast.map((meal) => {
+              idx1++;
+              return meal.bookedBy.map((user) => {
+                if (user.uid == userInfo._id) {
+                  return (
+                    <DashboardItem
+                      first={"Breakfast"}
+                      second={`Package #${idx1}`}
+                      key={meal._id}
+                    />
+                  );
+                }
+              });
+            })}
+
+            {lunch.map((meal) => {
+              idx2++;
+              return meal.bookedBy.map((user) => {
+                if (user.uid == userInfo._id) {
+                  return (
+                    <DashboardItem
+                      first={"Lunch"}
+                      second={`Package #${idx2}`}
+                      key={meal._id}
+                    />
+                  );
+                }
+              });
+            })}
+
+            {dinner.map((meal) => {
+              idx3++;
+              return meal.bookedBy.map((user) => {
+                if (user.uid == userInfo._id) {
+                  return (
+                    <DashboardItem
+                      first={"Dinner"}
+                      second={`Package #${idx3}`}
+                      key={meal._id}
+                    />
+                  );
+                }
+              });
+            })}
+
+            <h1 className=" mt-5 text-xl text-indigo-500">Tk {total} / day</h1>
           </div>
-          <button className="button my-3">View Room</button>
+          <Link href={"/meal"}>
+            <button className="button my-3">View Meal Plan</button>
+          </Link>
         </div>
       </div>
     </div>
