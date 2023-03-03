@@ -36,7 +36,7 @@ export default function RoomDetails() {
   //     if (window.confirm("Are you sure you want to select this room?")) {
   //       if (selectedRoom.category === "Business") {
   //         if (userInfo.room == "") {
-  //           fetch("http://localhost:5000/rooms", {
+  //           fetch("https://universal-hostel-api.onrender.com/rooms", {
   //             method: "PUT",
   //             headers: {
   //               "content-type": "application/json",
@@ -53,7 +53,7 @@ export default function RoomDetails() {
   //         }
   //       } else {
   //         if (userInfo.room == "") {
-  //           fetch("http://localhost:5000/rooms", {
+  //           fetch("https://universal-hostel-api.onrender.com/rooms", {
   //             method: "PUT",
   //             headers: {
   //               "content-type": "application/json",

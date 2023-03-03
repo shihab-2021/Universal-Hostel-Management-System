@@ -10,7 +10,7 @@ const payment = () => {
           Payment
         </h1>
       </div>
-      <MainPayment></MainPayment>
+      {/* <MainPayment></MainPayment> */}
     </div>
   );
 };

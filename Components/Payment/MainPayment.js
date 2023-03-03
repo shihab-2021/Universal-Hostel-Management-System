@@ -8,43 +8,43 @@ const MainPayment = ({ room }) => {
   const router = useRouter();
   const handleSubmit = (event) => {
     if (userInfo) {
-          if (window.confirm("Are you sure you want to select this room?")) {
-            if (room?.category === "Business") {
-              if (userInfo?.room == "") {
-                fetch("http://localhost:5000/rooms", {
-                  method: "PUT",
-                  headers: {
-                    "content-type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    roomId: room._id,
-                    currentUser: userInfo._id,
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((data) => console.log(data));
-              } else {
-                window.alert("You already have a booked room!");
-              }
-            } else {
-              if (userInfo?.room == "") {
-                fetch("http://localhost:5000/rooms", {
-                  method: "PUT",
-                  headers: {
-                    "content-type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    roomId: room._id,
-                    currentUser: userInfo._id,
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((data) => console.log(data));
-              } else {
-                window.alert("You already have a booked room!");
-              }
-            }
+      if (window.confirm("Are you sure you want to select this room?")) {
+        if (room?.category === "Business") {
+          if (userInfo?.room == "") {
+            fetch("https://universal-hostel-api.onrender.com/rooms", {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({
+                roomId: room._id,
+                currentUser: userInfo._id,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => console.log(data));
+          } else {
+            window.alert("You already have a booked room!");
           }
+        } else {
+          if (userInfo?.room == "") {
+            fetch("https://universal-hostel-api.onrender.com/rooms", {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({
+                roomId: room._id,
+                currentUser: userInfo._id,
+              }),
+            })
+              .then((res) => res.json())
+              .then((data) => console.log(data));
+          } else {
+            window.alert("You already have a booked room!");
+          }
+        }
+      }
       if (userInfo.room == "") {
         event.preventDefault();
         const form = event.target;
@@ -76,7 +76,7 @@ const MainPayment = ({ room }) => {
         console.log(paymentData);
         event.preventDefault();
 
-        fetch("http://localhost:5000/payment", {
+        fetch("https://universal-hostel-api.onrender.com/payment", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -272,14 +272,32 @@ const MainPayment = ({ room }) => {
                     required
                   />
                   <label htmlFor="expmonth">Exp Month</label>
-                  <input
+                  <select
+                    name="expmonth"
+                    className=" h-14 w-full cursor-pointer rounded-lg border-2 p-3 text-lg "
+                  >
+                    <option className="hidden">Select Month</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                  </select>
+                  {/* <input
                     type="text"
                     className="w-full p-3 mb-4 border rounded mt-1"
                     id="expmonth"
                     name="expmonth"
                     placeholder="September"
                     required
-                  />
+                  /> */}
                   <div className="flex flex-col md:flex-row">
                     <div className="md:pr-2 md:w-1/2">
                       <label htmlFor="expyear">Exp Year</label>

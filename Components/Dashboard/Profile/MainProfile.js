@@ -156,7 +156,7 @@ const MainProfile = (props) => {
                 </div>
                 {/* Profile Photo Update Handling  */}
                 <div className="col-span-12 flex flex-col md:col-span-6">
-                  <div className="rounded-lg border-2 border-dotted border-gray-400 p-3 text-center">
+                  <label className="rounded-lg border-2 border-dotted border-gray-400 p-3 text-center">
                     <div
                       // className="mt-12 text-center"
                       onDragOver={dragOver}
@@ -203,7 +203,7 @@ const MainProfile = (props) => {
                       placeholder="upload"
                       onChange={uploadImage}
                     />
-                  </div>
+                  </label>
                 </div>
               </div>
               <div className="grid grid-cols-12 gap-3 py-2">
@@ -220,9 +220,10 @@ const MainProfile = (props) => {
                   />
                 </div>
                 <div className="col-span-12 flex flex-col  md:col-span-6">
-                  <label htmlFor="title">Date of Birth</label>
+                  <label htmlFor="title">Date of Birth(mm/dd/yyyy)</label>
                   <DatePicker
                     className="h-14 w-full rounded-md border-2 p-3 text-lg"
+                    placeholderText="mm/dd/yyyy"
                     selected={startDate}
                     onChange={(date, Date) => {
                       setStartDate(date);
@@ -234,6 +235,7 @@ const MainProfile = (props) => {
                   <input
                     className="rounded-md border p-2 text-lg"
                     type="text"
+                    placeholder="Profession"
                     {...register("profession")}
                     defaultValue={data?.profession}
                   />
@@ -243,6 +245,7 @@ const MainProfile = (props) => {
                   <input
                     className="rounded-md border p-2 text-lg"
                     type="text"
+                    placeholder="Gender"
                     {...register("gender")}
                     defaultValue={data?.gender}
                   />
@@ -252,6 +255,7 @@ const MainProfile = (props) => {
                   <input
                     className="rounded-md border p-2 text-lg"
                     type="text"
+                    placeholder="Address"
                     {...register("address")}
                     defaultValue={data?.address}
                   />
@@ -261,6 +265,7 @@ const MainProfile = (props) => {
                   <input
                     className="rounded-md border p-2 text-lg"
                     type="text"
+                    placeholder="Phone"
                     {...register("phone")}
                     defaultValue={data?.phone}
                   />

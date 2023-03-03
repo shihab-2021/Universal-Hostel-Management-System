@@ -9,7 +9,7 @@ const Payment = () => {
         <div className="text-center text-5xl">
           <h1>Payment</h1>
         </div>
-        <MainPayment></MainPayment>
+        {/* <MainPayment></MainPayment> */}
       </div>
     </Layout>
   );
