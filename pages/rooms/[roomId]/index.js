@@ -31,53 +31,62 @@ export default function RoomDetails() {
       });
   }, [router.isReady]);
 
+  // const handleClick = () => {
+  //   if (userInfo) {
+  //     if (window.confirm("Are you sure you want to select this room?")) {
+  //       if (selectedRoom.category === "Business") {
+  //         if (userInfo.room == "") {
+  //           fetch("http://localhost:5000/rooms", {
+  //             method: "PUT",
+  //             headers: {
+  //               "content-type": "application/json",
+  //             },
+  //             body: JSON.stringify({
+  //               roomId: selectedRoom._id,
+  //               currentUser: userInfo._id,
+  //             }),
+  //           })
+  //             .then((res) => res.json())
+  //             .then((data) => console.log(data));
+  //         } else {
+  //           window.alert("You already have a booked room!");
+  //         }
+  //       } else {
+  //         if (userInfo.room == "") {
+  //           fetch("http://localhost:5000/rooms", {
+  //             method: "PUT",
+  //             headers: {
+  //               "content-type": "application/json",
+  //             },
+  //             body: JSON.stringify({
+  //               roomId: selectedRoom._id,
+  //               currentUser: userInfo._id,
+  //             }),
+  //           })
+  //             .then((res) => res.json())
+  //             .then((data) => console.log(data));
+  //         } else {
+  //           window.alert("You already have a booked room!");
+  //         }
+  //       }
+  //     }
+  //   } else {
+  //     window.alert("User not found. Please refresh the page and try again.");
+  //   }
+  // };
   const handleClick = () => {
     if (userInfo) {
-      if (window.confirm("Are you sure you want to select this room?")) {
-        if (selectedRoom.category === "Business") {
-          if (userInfo.room == "") {
-            fetch("http://localhost:5000/rooms", {
-              method: "PUT",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify({
-                roomId: selectedRoom._id,
-                currentUser: userInfo._id,
-              }),
-            })
-              .then((res) => res.json())
-              .then((data) => console.log(data));
-          } else {
-            window.alert("You already have a booked room!");
-          }
-        } else {
-          if (userInfo.room == "") {
-            fetch("http://localhost:5000/rooms", {
-              method: "PUT",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify({
-                roomId: selectedRoom._id,
-                currentUser: userInfo._id,
-              }),
-            })
-              .then((res) => res.json())
-              .then((data) => console.log(data));
-          } else {
-            window.alert("You already have a booked room!");
-          }
-        }
+      if (userInfo.room == "") {
+        router.replace(`/paymentInstallation/${id}`);
+      } else {
+        window.alert("You already have a booked room!");
       }
-    } else {
-      window.alert("User not found. Please refresh the page and try again.");
     }
   };
 
   return (
     <MainLayout>
-      <div className="w-screen pb-10">
+      <div className="w-screen pb-10 font-sansita">
         <div className="relative h-40 bg-fixed bg-[url('https://i.ibb.co/p3qb5xF/back12.jpg')] bg-no-repeat bg-cover bg-bottom mb-20">
           <div className="bg-gray-800 h-full w-full opacity-80 "></div>
           <h1 className="absolute left-1/2 top-1/2 text-4xl font-bold text-white -translate-x-1/2 -translate-y-1/2">
@@ -89,13 +98,22 @@ export default function RoomDetails() {
             return (
               <div key={room._id} className="w-full">
                 <div className="w-full lg:w-3/4 mx-auto flex px-5 flex-col md:flex-row">
-                  {isLoading && <h1>Loading Data</h1>}
+                  {/* {isLoading && <h1>Loading Data</h1>} */}
                   <div className="w-full md:w-1/2 px-5 mb-12">
                     <img
                       src={room.image}
-                      className="w-full pt-2 max-h-[600px] object-contain "
+                      className="w-full mt-2 max-h-[600px] object-contain rounded"
                       alt="roomImage"
                     />
+                    <div className="my-10">
+                      <p className="text-xl">
+                        We take 5000Tk advance fee for security purpose. We give
+                        room rent in pre-paid system. So to book room you have
+                        to pay in total {parseInt(room?.cost) + 5000}
+                        <span className=" text-orange-500">Tk</span>. Please
+                        click in booking if you agree.
+                      </p>
+                    </div>
                   </div>
                   <div className="w-full md:w-1/2 px-5 ">
                     <div className="flex mb-5">
@@ -105,7 +123,7 @@ export default function RoomDetails() {
                       </h1>
                       <div className="flex items-center">
                         <h1 className="text-sm text-gray-400 leading-3 pr-2">
-                          Per <br /> week
+                          Per <br /> month
                         </h1>
                         <h1 className="text-3xl tracking-tighter text-orange-500">
                           Tk {room.cost}

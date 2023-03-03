@@ -1,0 +1,38 @@
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import useAuth from '../../../Components/Firebase/useAuth';
+import MainLayout from '../../../Components/MainLayout/MainLayout';
+import MainPayment from '../../../Components/Payment/MainPayment';
+
+const PaymentInstallation = () => {
+    const { user, userInfo } = useAuth();
+    const router = useRouter();
+    const id = router.query.paymentId;
+    const [room, setRoom] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+      setIsLoading(true);
+      fetch(`https://universal-hostel-api.onrender.com/rooms/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRoom(data);
+          setIsLoading(false);
+          console.log(data);
+        });
+    }, [router.isReady]);
+    return (
+      <MainLayout>
+        <div className=' font-sansita'>
+          <div className="relative h-40 bg-fixed bg-[url('https://i.ibb.co/mF5GQj9/image.png')] bg-no-repeat bg-cover bg-center ">
+            <div className="bg-gray-800 h-full w-full opacity-80 "></div>
+            <h1 className="absolute left-1/2 top-1/2 text-4xl font-bold text-white -translate-x-1/2 -translate-y-1/2">
+              Payment
+            </h1>
+          </div>
+          <MainPayment room={room}></MainPayment>
+        </div>
+      </MainLayout>
+    );
+};
+
+export default PaymentInstallation;

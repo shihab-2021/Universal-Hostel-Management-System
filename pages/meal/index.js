@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MainLayout from "../../Components/MainLayout/MainLayout";
 import Meal from "../../Components/Meal/Meal";
 import useAuth from "../../Components/Firebase/useAuth";
+import Layout from "../../Components/Dashboard/Layout";
 
 export default function Meals() {
   const [breakfast, setBreakfast] = useState({ price: "0" });
@@ -103,7 +104,7 @@ export default function Meals() {
   let idx3 = 0;
 
   return (
-    <MainLayout>
+    <Layout>
       <div className="pb-10">
         <div className="relative h-40 bg-fixed bg-[url('https://i.ibb.co/F0WC8Rv/image.png')] bg-no-repeat bg-cover bg-center ">
           <div className="bg-gray-800 h-full w-full opacity-80 "></div>
@@ -111,7 +112,7 @@ export default function Meals() {
             Meal Plan
           </h1>
         </div>
-        {userInfo && <h1>User found</h1>}
+        {/* {userInfo && <h1>User found</h1>} */}
         <div className="text-center w-2/3 md:w-1/2 max-w-lg mx-auto my-10">
           <h1 className="text-2xl">Current Plan</h1>
           <div className="flex justify-between items-center my-3">
@@ -261,6 +262,6 @@ export default function Meals() {
           </div>
         </div>
       </div>
-    </MainLayout>
+    </Layout>
   );
 }

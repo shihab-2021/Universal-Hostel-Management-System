@@ -1,7 +1,104 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React from "react";
+import useAuth from "../Firebase/useAuth";
 
-const MainPayment = () => {
+const MainPayment = ({ room }) => {
+  const { user, userInfo } = useAuth();
+  const router = useRouter();
+  const handleSubmit = (event) => {
+    if (userInfo) {
+          if (window.confirm("Are you sure you want to select this room?")) {
+            if (room?.category === "Business") {
+              if (userInfo?.room == "") {
+                fetch("http://localhost:5000/rooms", {
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    roomId: room._id,
+                    currentUser: userInfo._id,
+                  }),
+                })
+                  .then((res) => res.json())
+                  .then((data) => console.log(data));
+              } else {
+                window.alert("You already have a booked room!");
+              }
+            } else {
+              if (userInfo?.room == "") {
+                fetch("http://localhost:5000/rooms", {
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    roomId: room._id,
+                    currentUser: userInfo._id,
+                  }),
+                })
+                  .then((res) => res.json())
+                  .then((data) => console.log(data));
+              } else {
+                window.alert("You already have a booked room!");
+              }
+            }
+          }
+      if (userInfo.room == "") {
+        event.preventDefault();
+        const form = event.target;
+        const email = user?.email;
+        const uid = userInfo?._id;
+
+        let time = new Date();
+        const date = new Date().toLocaleDateString();
+        const currentTime = time.toLocaleString("en-US", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        });
+
+        const paymentData = {
+          email,
+          uid,
+          due: "0",
+          rent: "0",
+          advance: "5000",
+          paymentHistory: [
+            {
+              date: date,
+              time: currentTime,
+              amount: parseInt(room.cost) + 5000,
+            },
+          ],
+        };
+        console.log(paymentData);
+        event.preventDefault();
+
+        fetch("http://localhost:5000/payment", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(paymentData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              alert("Payment successfully!");
+              form.reset();
+              router.replace("/dashboard");
+            }
+          })
+          .catch((error) => console.error(error));
+      } else {
+        window.alert("You already have a booked room!");
+      }
+    } else {
+      window.alert("User not found! Please refresh the page and try again.");
+    }
+  };
   return (
     <>
       <Head>
@@ -10,32 +107,68 @@ const MainPayment = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         ></link>
       </Head>
-      <div className="py-5 px-3 container mx-auto">
+      <div className="py-5 px-3 container mx-auto my-10">
         <div className="">
-          <div className="px-3 md:w-1/2 pt-5 pb-10 mx-auto">
+          {/* <div className="px-3 md:w-1/2 pt-5 pb-10 mx-auto">
+            <h1 className="flex justify-between text-2xl">
+              <span>Advance Fee </span>
+              <span>
+                5000 <span className=" text-orange-500">Tk</span>
+              </span>
+            </h1>
             <h1 className="flex justify-between text-2xl">
               <span>Room rent </span>
-              <span> $500</span>
+              <span>
+                {room?.cost} <span className=" text-orange-500">Tk</span>
+              </span>
             </h1>
-            <h1 className="flex justify-between text-2xl">
-              <span>Meal fee </span>
-              <span> $350</span>
-            </h1>
-            <h1 className="flex justify-between text-2xl">
-              <span>Laundry fee </span>
-              <span> $100</span>
-            </h1>
-            <hr />
+            <hr className="my-1" />
             <h1 className="flex justify-between text-2xl">
               <span>Total </span>
-              <span> $950</span>
+              <span>
+                {parseInt(room?.cost) + 5000}{" "}
+                <span className=" text-orange-500">Tk</span>
+              </span>
             </h1>
-          </div>
+          </div> */}
           <div className=" card">
-            <form action="">
-              <div className="flex flex-col md:flex-row">
-                <div className="px-3 md:w-1/2">
-                  <h3 className="pb-5 text-3xl font-bold ">Billing Address</h3>
+            <form onSubmit={handleSubmit} className="w-full">
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="px-3 md:w-1/2 w-full">
+                  <h3 className="pb-5 text-3xl font-bold ">Billing</h3>
+                  <div className="px-3 w-full pt-5 pb-10 mx-auto">
+                    <h1 className="flex justify-between text-2xl">
+                      <span>Advance Fee </span>
+                      <span>
+                        5000 <span className=" text-orange-500">Tk</span>
+                      </span>
+                    </h1>
+                    <h1 className="flex justify-between text-2xl">
+                      <span>Room rent </span>
+                      <span>
+                        {room?.cost}{" "}
+                        <span className=" text-orange-500">Tk</span>
+                      </span>
+                    </h1>
+                    <hr className="my-1" />
+                    <h1 className="flex justify-between text-2xl">
+                      <span>Total </span>
+                      <span>
+                        {parseInt(room?.cost) + 5000}{" "}
+                        <span className=" text-orange-500">Tk</span>
+                      </span>
+                    </h1>
+                  </div>
+                  <div>
+                    <p className="text-xl">
+                      We take 5000Tk advance fee for security purpose. We give
+                      room rent in pre-paid system. So to book room you have to
+                      pay in total {parseInt(room?.cost) + 5000}
+                      <span className=" text-orange-500">Tk</span>. Please fill
+                      up the form to book room, and good luck.
+                    </p>
+                  </div>
+                  {/* <h3 className="pb-5 text-3xl font-bold ">Billing Address</h3>
                   <label htmlFor="fname">
                     <i className="fa fa-user"></i> Full Name
                   </label>
@@ -97,7 +230,7 @@ const MainPayment = () => {
                         placeholder="10001"
                       />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="px-3 md:w-1/2">
                   <h3 className="pb-5 text-3xl font-bold ">Payment</h3>
@@ -127,6 +260,7 @@ const MainPayment = () => {
                     id="cname"
                     name="cardname"
                     placeholder="John More Doe"
+                    required
                   />
                   <label htmlFor="ccnum">Credit card number</label>
                   <input
@@ -135,6 +269,7 @@ const MainPayment = () => {
                     id="ccnum"
                     name="cardnumber"
                     placeholder="1111-2222-3333-4444"
+                    required
                   />
                   <label htmlFor="expmonth">Exp Month</label>
                   <input
@@ -143,6 +278,7 @@ const MainPayment = () => {
                     id="expmonth"
                     name="expmonth"
                     placeholder="September"
+                    required
                   />
                   <div className="flex flex-col md:flex-row">
                     <div className="md:pr-2 md:w-1/2">
@@ -153,6 +289,7 @@ const MainPayment = () => {
                         id="expyear"
                         name="expyear"
                         placeholder="2018"
+                        required
                       />
                     </div>
                     <div className="md:pl-2 md:w-1/2">
@@ -163,15 +300,16 @@ const MainPayment = () => {
                         id="cvv"
                         name="cvv"
                         placeholder="352"
+                        required
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <label className="p-3">
+              {/* <label className="p-3">
                 <input type="checkbox" name="sameadr" /> Shipping address same
                 as billing
-              </label>
+              </label> */}
               <input
                 type="submit"
                 value="Continue to checkout"
