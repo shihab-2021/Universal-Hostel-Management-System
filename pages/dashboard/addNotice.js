@@ -1,21 +1,12 @@
 import { useEffect } from "react";
+import AddNoticeMain from "../../Components/Dashboard/AddNotice/AddNoticeMain";
 import Layout from "../../Components/Dashboard/Layout";
 
 const AddNotice = () => {
-  useEffect(() => {
-    fetch("https://universal-hostel-api.onrender.com/users")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
   return (
     <div>
       <Layout>
-        <div className="card-design">
-          <h1>Send Notification</h1>
-          <div>{}</div>
-        </div>
+        <AddNoticeMain></AddNoticeMain>
       </Layout>
     </div>
   );

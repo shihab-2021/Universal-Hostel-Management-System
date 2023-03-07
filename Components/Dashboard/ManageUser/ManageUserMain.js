@@ -58,4 +58,4 @@ const ManageUserMain = () => {
   );
 };
 
-export default authCheck(adminCheck(ManageUserMain));
+export default ManageUserMain;

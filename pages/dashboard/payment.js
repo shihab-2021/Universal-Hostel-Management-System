@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../../Components/Dashboard/Layout";
+import authCheck from "../../Components/Firebase/authCheck";
 import MainPayment from "../../Components/Payment/MainPayment";
 
 const Payment = () => {
@@ -15,4 +16,4 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default authCheck(Payment);

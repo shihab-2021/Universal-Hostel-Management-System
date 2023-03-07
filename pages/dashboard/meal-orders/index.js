@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Layout from "../../../Components/Dashboard/Layout";
+import adminCheck from "../../../Components/Firebase/adminCheck";
+import authCheck from "../../../Components/Firebase/authCheck";
 
-export default function MealOrders() {
+const MealOrders = () => {
   const [orders, setOrders] = useState([]);
   const [userData, setUserData] = useState([]);
 
@@ -157,4 +159,6 @@ export default function MealOrders() {
       </div>
     </Layout>
   );
-}
+};
+
+export default authCheck(adminCheck(MealOrders));

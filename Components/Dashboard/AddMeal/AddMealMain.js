@@ -116,7 +116,7 @@ const AddMealMain = () => {
             <div className="col-span-12 flex flex-col">
               <label htmlFor="about">About</label>
               <textarea
-                className="rounded-md h-14 border-2 p-2 text-lg"
+                className="rounded-md border-2 p-2 text-lg"
                 type="text"
                 rows={5}
                 placeholder="About"
@@ -250,4 +250,4 @@ const AddMealMain = () => {
   );
 };
 
-export default adminCheck(AddMealMain);
+export default AddMealMain;

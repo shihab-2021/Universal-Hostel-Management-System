@@ -2,11 +2,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome, AiFillNotification, AiOutlineNotification } from "react-icons/ai";
 import { RiAdminFill } from "react-icons/ri";
 import { MdPayment } from "react-icons/md";
 import { GiHotMeal } from "react-icons/gi";
 import useAuth from "../Firebase/useAuth";
+import authCheck from "../Firebase/authCheck";
 
 const Layout = ({ children }) => {
   const { user, userInfo, logout } = useAuth();
@@ -101,7 +102,7 @@ const Layout = ({ children }) => {
                         </li>
                         <li>
                           <Link
-                            href="/dashboard"
+                            href="/dashboard/addNotice"
                             className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                           >
                             <svg
@@ -262,6 +263,15 @@ const Layout = ({ children }) => {
                               <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                             </svg>
                             <span className="ml-3">Dashboard</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/dashboard/notice"
+                            className="text-base hover:text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
+                          >
+                            <AiFillNotification className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" />
+                            <span className="ml-3">Notice</span>
                           </Link>
                         </li>
                         <li>

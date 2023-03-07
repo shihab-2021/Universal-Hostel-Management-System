@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../../Components/Firebase/useAuth";
 import Loading from "../../../../Components/Loading/Loading";
 import Occupants from "../../../../Components/Occupants/Occupants";
-export default function OccupantDetails() {
+import adminCheck from "../../../../Components/Firebase/adminCheck";
+import authCheck from "../../../../Components/Firebase/authCheck";
+const OccupantDetails = () => {
   const router = useRouter();
   const [id, setId] = useState(router.query.occupantDetails);
   const { userInfo, user } = useAuth();
@@ -95,4 +97,6 @@ export default function OccupantDetails() {
       </div>
     </Layout>
   );
-}
+};
+
+export default authCheck(adminCheck(OccupantDetails));
