@@ -15,9 +15,11 @@ export default function Meals() {
 
   const router = useRouter();
   useEffect(() => {
-    fetch("https://universal-hostel-api.onrender.com/meals")
+    fetch("http://localhost:5000/meals")
       .then((res) => res.json())
       .then((data) => setMealData(data));
+
+    // console.log(mealData);
 
     mealData.map((meal) => {
       console.log(meal);
@@ -26,7 +28,8 @@ export default function Meals() {
           setBreakfast({
             id: meal._id,
             price: meal.cost,
-            itemPack: meal.time,
+            itemPack: meal.mealNo,
+            type: meal.time,
           });
         }
       }
@@ -36,7 +39,8 @@ export default function Meals() {
           setLunch({
             id: meal._id,
             price: meal.cost,
-            itemPack: meal.time,
+            itemPack: meal.mealNo,
+            type: meal.time,
           });
         }
       }
@@ -46,7 +50,8 @@ export default function Meals() {
           setDinner({
             id: meal._id,
             price: meal.cost,
-            itemPack: meal.time,
+            itemPack: meal.mealNo,
+            type: meal.time,
           });
         }
       }
@@ -63,13 +68,13 @@ export default function Meals() {
 
   const handleClick = (id, type, itemPack, price) => {
     if (type === "Breakfast") {
-      setBreakfast({ id, price, itemPack });
+      setBreakfast({ id, price, itemPack, type });
     }
     if (type === "Lunch") {
-      setLunch({ id, price, itemPack });
+      setLunch({ id, price, itemPack, type });
     }
     if (type === "Dinner") {
-      setDinner({ id, price, itemPack });
+      setDinner({ id, price, itemPack, type });
     }
   };
 
@@ -82,7 +87,7 @@ export default function Meals() {
   const confimrMealPlan = () => {
     if (userInfo) {
       setIsLoading(true);
-      fetch("https://universal-hostel-api.onrender.com/meals", {
+      fetch("http://localhost:5000/meals", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
