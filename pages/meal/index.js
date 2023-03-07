@@ -19,8 +19,6 @@ export default function Meals() {
       .then((res) => res.json())
       .then((data) => setMealData(data));
 
-    // console.log(mealData);
-
     mealData.map((meal) => {
       console.log(meal);
       if (meal.time === "Breakfast") {
