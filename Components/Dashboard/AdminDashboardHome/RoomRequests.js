@@ -1,16 +1,16 @@
 import React from "react";
 
-const RoomRequests = () => {
+const RoomRequests = ({ payments }) => {
   return (
     <>
       <div className=" bg-[#36393e52] shadow-lg rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
         <div className="flex items-center justify-between mb-4">
           <div className="flex-shrink-0">
             <span className="text-2xl sm:text-3xl leading-none font-bold text-white">
-              Room Requests
+              Latest Booked
             </span>
             <h3 className="text-base font-normal text-gray-500">
-              Pending requests
+              Booked Information
             </h3>
           </div>
           <div className="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -30,7 +30,7 @@ const RoomRequests = () => {
           </div>
         </div>
         <div className="flex flex-col mt-8">
-          <div className="overflow-x-auto rounded-lg">
+          <div className="overflow-x-auto rounded-lg h-52">
             <div className="align-middle inline-block min-w-full">
               <div className="shadow overflow-hidden sm:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200 text-white">
@@ -40,7 +40,7 @@ const RoomRequests = () => {
                         scope="col"
                         className="p-4 text-left text-xs font-medium text-white uppercase tracking-wider"
                       >
-                        Transaction
+                        Mail Id
                       </th>
                       <th
                         scope="col"
@@ -57,7 +57,23 @@ const RoomRequests = () => {
                     </tr>
                   </thead>
                   <tbody className=" bg-[#36393e52]">
-                    <tr>
+                    {payments?.map((payment, i) => {
+                      const date = new Date(payment?.paymentHistory[0]?.date);
+                      return (
+                        <tr className={`${i%2 && "bg-[#36393e82]"}`} key={payment._id}>
+                          <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
+                            {payment?.email}
+                          </td>
+                          <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
+                            {date.toDateString()}
+                          </td>
+                          <td className="p-4 whitespace-nowrap text-sm font-semibold text-white">
+                            {payment?.paymentHistory[0]?.amount}Tk
+                          </td>
+                        </tr>
+                      );
+                    })}
+                    {/* <tr>
                       <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
                         Payment from{" "}
                         <span className="font-semibold">Bonnie Green</span>
@@ -92,7 +108,7 @@ const RoomRequests = () => {
                       <td className="p-4 whitespace-nowrap text-sm font-semibold text-white">
                         $234
                       </td>
-                    </tr>
+                    </tr> */}
                     {/* <tr className="bg-gray-50">
                                     <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
                                       Payment from{" "}

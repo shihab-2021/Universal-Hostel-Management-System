@@ -2,8 +2,11 @@ import { useRouter } from "next/router";
 import Layout from "../../../../Components/Dashboard/Layout";
 import { useEffect, useState } from "react";
 import Loading from "../../../../Components/Loading/Loading";
+import adminCheck from "../../../../Components/Firebase/adminCheck";
+import authCheck from "../../../../Components/Firebase/authCheck";
 
-export default function UserDetailsPage({}) {
+// export default function UserDetailsPage({}) {
+const UserDetailsPage = ({}) => {
   const router = useRouter();
   const id = router.query.userDetails;
   const [loading, setLoading] = useState(false);
@@ -57,3 +60,5 @@ export default function UserDetailsPage({}) {
     </Layout>
   );
 }
+
+export default UserDetailsPage;

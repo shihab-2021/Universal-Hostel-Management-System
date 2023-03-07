@@ -127,26 +127,26 @@ const UserInformation = () => {
 
         <div className="card w-full md:w-1/2 flex justify-between">
           <h1 className="text-3xl underline">Current Room</h1>
-          {userInfo.room._id ? (
+          {userInfo?.room?._id ? (
             <>
               <div className="flex flex-col items-center">
                 <DashboardItem
                   first={"Room No"}
-                  second={userInfo.room.roomNo}
+                  second={userInfo?.room?.roomNo}
                 />
                 <DashboardItem
                   first={"Room Type"}
                   second={
-                    userInfo.room.category === "Business" ? "Private" : "Shared"
+                    userInfo?.room?.category === "Business" ? "Private" : "Shared"
                   }
                 />
-                <DashboardItem first={"Branch"} second={userInfo.room.branch} />
+                <DashboardItem first={"Branch"} second={userInfo?.room?.branch} />
                 <h1 className=" mt-5 text-xl text-indigo-500">
                   {bookedOn} - {bookedTill}
                 </h1>
               </div>
               <div>
-                <Link href={`/rooms/${userInfo.room._id}`}>
+                <Link href={`/rooms/${userInfo?.room?._id}`}>
                   <button className="button my-3 mx-2">View Room</button>
                 </Link>
                 <button
@@ -166,45 +166,45 @@ const UserInformation = () => {
         <div className="card w-full md:w-1/2 flex justify-between">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl underline">Current Meal Plan</h1>
-            {breakfast.map((meal) => {
+            {breakfast?.map((meal) => {
               idx1++;
-              return meal.bookedBy.map((user) => {
-                if (user.uid == userInfo._id) {
+              return meal?.bookedBy.map((user) => {
+                if (user?.uid == userInfo?._id) {
                   return (
                     <DashboardItem
                       first={"Breakfast"}
                       second={`Package #${idx1}`}
-                      key={meal._id}
+                      key={meal?._id}
                     />
                   );
                 }
               });
             })}
 
-            {lunch.map((meal) => {
+            {lunch?.map((meal) => {
               idx2++;
-              return meal.bookedBy.map((user) => {
-                if (user.uid == userInfo._id) {
+              return meal?.bookedBy?.map((user) => {
+                if (user?.uid == userInfo?._id) {
                   return (
                     <DashboardItem
                       first={"Lunch"}
                       second={`Package #${idx2}`}
-                      key={meal._id}
+                      key={meal?._id}
                     />
                   );
                 }
               });
             })}
 
-            {dinner.map((meal) => {
+            {dinner?.map((meal) => {
               idx3++;
-              return meal.bookedBy.map((user) => {
-                if (user.uid == userInfo._id) {
+              return meal?.bookedBy?.map((user) => {
+                if (user?.uid == userInfo?._id) {
                   return (
                     <DashboardItem
                       first={"Dinner"}
                       second={`Package #${idx3}`}
-                      key={meal._id}
+                      key={meal?._id}
                     />
                   );
                 }

@@ -1,16 +1,16 @@
 import React from "react";
 
-const Counting = () => {
+const Counting = ({ users, meals, rooms }) => {
   return (
     <>
       <div className=" bg-[#36393e52] shadow-lg rounded-lg p-4 sm:p-6 xl:p-8 ">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <span className="text-2xl sm:text-3xl leading-none font-bold text-white">
-              2,340
+              {rooms?.length}
             </span>
             <h3 className="text-base font-normal text-gray-500">
-              New products this week
+              Number of room
             </h3>
           </div>
           <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -34,10 +34,10 @@ const Counting = () => {
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <span className="text-2xl sm:text-3xl leading-none font-bold text-white">
-              5,355
+              {meals?.length}
             </span>
             <h3 className="text-base font-normal text-gray-500">
-              Visitors this week
+              Packages of meal
             </h3>
           </div>
           <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -61,10 +61,10 @@ const Counting = () => {
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <span className="text-2xl sm:text-3xl leading-none font-bold text-white">
-              385
+              {users?.length}
             </span>
             <h3 className="text-base font-normal text-gray-500">
-              User signups this week
+              User signed up
             </h3>
           </div>
           <div className="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
