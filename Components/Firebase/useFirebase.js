@@ -50,7 +50,7 @@ const useFirebase = () => {
       .then(() => {
         alert("Login Successful!");
         setIsLoading(false);
-        router.replace("/");
+        router.replace("/dashboard");
       })
       .catch((error) => {
         setAuthError(error.message);
