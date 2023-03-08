@@ -28,10 +28,25 @@ const useFirebase = () => {
   const auth = getAuth();
 
   // Signup user with Email Password
-  const createUser = (email, password) => {
+  const createUser = (email, password, userData) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
+        fetch("https://universal-hostel-api.onrender.com/users-data", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              console.log("Register successfully");
+              form.reset();
+            }
+          })
+          .catch((error) => console.error(error));
         swal("Create Account Successful!", {
           icon: "success",
         });
