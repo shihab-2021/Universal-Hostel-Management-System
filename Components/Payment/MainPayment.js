@@ -8,95 +8,115 @@ const MainPayment = ({ room }) => {
   const router = useRouter();
   const handleSubmit = (event) => {
     if (userInfo) {
-      if (window.confirm("Are you sure you want to select this room?")) {
-        if (room?.category === "Business") {
-          if (Object.keys(userInfo?.room).length == 0) {
-            fetch("https://universal-hostel-api.onrender.com/rooms", {
-              method: "PUT",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify({
-                roomId: room._id,
-                currentUser: userInfo._id,
-              }),
-            })
-              .then((res) => res.json())
-              .then((data) => console.log(data));
+      swal({
+        title: "Are you sure?",
+        text: "You want to select this?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          if (room?.category === "Business") {
+            if (Object.keys(userInfo?.room).length == 0) {
+              fetch("https://universal-hostel-api.onrender.com/rooms", {
+                method: "PUT",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                  roomId: room._id,
+                  currentUser: userInfo._id,
+                }),
+              })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+            } else {
+              swal("You already have a booked room!", {
+                icon: "warning",
+              });
+            }
           } else {
-            window.alert("You already have a booked room!");
+            if (Object.keys(userInfo?.room).length == 0) {
+              fetch("https://universal-hostel-api.onrender.com/rooms", {
+                method: "PUT",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                  roomId: room._id,
+                  currentUser: userInfo._id,
+                }),
+              })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+            } else {
+              swal("You already have a booked room!", {
+                icon: "warning",
+              });
+            }
           }
-        } else {
+
           if (Object.keys(userInfo?.room).length == 0) {
-            fetch("https://universal-hostel-api.onrender.com/rooms", {
-              method: "PUT",
+            const form = event.target;
+            const email = user?.email;
+            const uid = userInfo?._id;
+
+            let time = new Date();
+            const date = new Date().toLocaleDateString();
+            const currentTime = time.toLocaleString("en-US", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            });
+
+            const paymentData = {
+              email,
+              uid,
+              due: "0",
+              rent: "0",
+              advance: "5000",
+              paymentHistory: [
+                {
+                  date: date,
+                  time: currentTime,
+                  amount: parseInt(room.cost) + 5000,
+                },
+              ],
+            };
+            console.log(paymentData);
+            event.preventDefault();
+
+            fetch("https://universal-hostel-api.onrender.com/payment", {
+              method: "POST",
               headers: {
                 "content-type": "application/json",
               },
-              body: JSON.stringify({
-                roomId: room._id,
-                currentUser: userInfo._id,
-              }),
+              body: JSON.stringify(paymentData),
             })
               .then((res) => res.json())
-              .then((data) => console.log(data));
+              .then((data) => {
+                if (data.acknowledged) {
+                  swal("Payment successful!", {
+                    icon: "success",
+                  });
+                  form.reset();
+                  router.replace("/dashboard");
+                }
+              })
+              .catch((error) => console.error(error));
           } else {
-            window.alert("You already have a booked room!");
+            swal("You already have a booked room!", {
+              icon: "warning",
+            });
           }
         }
-      }
-      if (Object.keys(userInfo?.room).length == 0) {
-        event.preventDefault();
-        const form = event.target;
-        const email = user?.email;
-        const uid = userInfo?._id;
-
-        let time = new Date();
-        const date = new Date().toLocaleDateString();
-        const currentTime = time.toLocaleString("en-US", {
-          hour: "numeric",
-          minute: "numeric",
-          hour12: true,
-        });
-
-        const paymentData = {
-          email,
-          uid,
-          due: 0,
-          rent: 0,
-          advance: 5000,
-          paymentHistory: [
-            {
-              time: time,
-              amount: parseInt(room.cost) + 5000,
-            },
-          ],
-        };
-        console.log(paymentData);
-        event.preventDefault();
-
-        fetch("https://universal-hostel-api.onrender.com/payment", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(paymentData),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.acknowledged) {
-              alert("Payment successfully!");
-              form.reset();
-              router.replace("/dashboard");
-            }
-          })
-          .catch((error) => console.error(error));
-      } else {
-        window.alert("You already have a booked room!");
-      }
+      });
     } else {
-      window.alert("User not found! Please refresh the page and try again.");
+      swal("User not found! Please refresh the page and try again.", {
+        icon: "warning",
+      });
     }
+    event.preventDefault();
   };
   return (
     <>

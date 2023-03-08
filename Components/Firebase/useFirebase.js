@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import initializeFirebase from "../Firebase/firebase.init";
+import swal from "sweetalert";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -31,13 +32,17 @@ const useFirebase = () => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        alert("Create Account Successful!");
+        swal("Create Account Successful!", {
+          icon: "success",
+        });
         setIsLoading(false);
         router.replace("/");
       })
       .catch((error) => {
         setAuthError(error.message);
-        alert(error.message);
+        swal(`${error.message}`, {
+          icon: "error",
+        });
         console.log(error.message);
       })
       .finally(() => setIsLoading(false));
@@ -48,13 +53,17 @@ const useFirebase = () => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        alert("Login Successful!");
+        swal("Login Successful!", {
+          icon: "success",
+        });
         setIsLoading(false);
         router.replace("/dashboard");
       })
       .catch((error) => {
         setAuthError(error.message);
-        alert(error.message);
+        swal(`${error.message}`, {
+          icon: "error",
+        });
         console.log(error.message);
       })
       .finally(() => setIsLoading(false));

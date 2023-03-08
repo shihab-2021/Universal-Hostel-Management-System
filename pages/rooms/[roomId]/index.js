@@ -19,8 +19,6 @@ export default function RoomDetails() {
   useEffect(() => {
     setIsLoading(true);
     if (!router.isReady) return;
-    console.log("userinfo: ", userInfo);
-    console.log("router: ", id);
     setId(router.query.roomId);
     fetch(`https://universal-hostel-api.onrender.com/rooms/${id}`)
       .then((res) => res.json())
@@ -30,57 +28,16 @@ export default function RoomDetails() {
         console.log(data);
       });
   }, [router.isReady]);
-
-  // const handleClick = () => {
-  //   if (userInfo) {
-  //     if (window.confirm("Are you sure you want to select this room?")) {
-  //       if (selectedRoom.category === "Business") {
-  //         if (userInfo.room == "") {
-  //           fetch("https://universal-hostel-api.onrender.com/rooms", {
-  //             method: "PUT",
-  //             headers: {
-  //               "content-type": "application/json",
-  //             },
-  //             body: JSON.stringify({
-  //               roomId: selectedRoom._id,
-  //               currentUser: userInfo._id,
-  //             }),
-  //           })
-  //             .then((res) => res.json())
-  //             .then((data) => console.log(data));
-  //         } else {
-  //           window.alert("You already have a booked room!");
-  //         }
-  //       } else {
-  //         if (userInfo.room == "") {
-  //           fetch("https://universal-hostel-api.onrender.com/rooms", {
-  //             method: "PUT",
-  //             headers: {
-  //               "content-type": "application/json",
-  //             },
-  //             body: JSON.stringify({
-  //               roomId: selectedRoom._id,
-  //               currentUser: userInfo._id,
-  //             }),
-  //           })
-  //             .then((res) => res.json())
-  //             .then((data) => console.log(data));
-  //         } else {
-  //           window.alert("You already have a booked room!");
-  //         }
-  //       }
-  //     }
-  //   } else {
-  //     window.alert("User not found. Please refresh the page and try again.");
-  //   }
-  // };
+  
   const handleClick = () => {
     if (userInfo) {
       console.log(Object.keys(userInfo.room));
       if (Object.keys(userInfo.room).length == 0) {
         router.replace(`/paymentInstallation/${id}`);
       } else {
-        window.alert("You already have a booked room!");
+        swal("You already have a booked room!", {
+          icon: "warning",
+        });
       }
     }
   };
