@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import adminCheck from "../../Firebase/adminCheck";
 import authCheck from "../../Firebase/authCheck";
+import swal from "sweetalert";
 
 const AddNoticeMain = () => {
   const {
@@ -34,8 +35,9 @@ const AddNoticeMain = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Notice has been submitted.");
-          // router.replace("/meal");
+          swal("Notice has been submitted!", {
+            icon: "success",
+          });
         }
       })
       .then(() => reset());

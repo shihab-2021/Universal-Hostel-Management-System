@@ -2,16 +2,37 @@ import Link from "next/link";
 
 const ManageUserElement = ({ data, remainingUsers }) => {
   const deleteItem = () => {
-    const agree = window.confirm("Are you sure you want to delete this user?");
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        remainingUsers(data._id);
+        fetch(`https://universal-hostel-api.onrender.com/users/${data._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then(() =>
+            swal("User delete successful!", {
+              icon: "success",
+            })
+          )
+          .then((data) => console.log(data));
+      }
+    });
+    // const agree = window.confirm("Are you sure you want to delete this user?");
 
-    if (agree) {
-      remainingUsers(data._id);
-      fetch(`https://universal-hostel-api.onrender.com/users/${data._id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-    }
+    // if (agree) {
+    //   remainingUsers(data._id);
+    //   fetch(`https://universal-hostel-api.onrender.com/users/${data._id}`, {
+    //     method: "DELETE",
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data));
+    // }
   };
   return (
     <tr>

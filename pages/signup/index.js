@@ -16,7 +16,9 @@ const Sighup = () => {
     const confirm_password = form.confirm_password.value;
     const phone = form.phone.value;
     if (password !== confirm_password) {
-      alert("Please enter your password correctly!");
+      swal("Please enter your password correctly!", {
+        icon: "warning",
+      });
       return;
     }
 
@@ -33,26 +35,26 @@ const Sighup = () => {
       profession: "",
       birthDate: "",
       room: "",
+      pid: "",
     };
 
-    createUser(email, password);
-    event.preventDefault();
-
-    fetch("https://universal-hostel-api.onrender.com/users-data", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          console.log("Register successfully");
-          form.reset();
-        }
+    createUser(email, password).then(() => {
+      fetch("https://universal-hostel-api.onrender.com/users-data", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userData),
       })
-      .catch((error) => console.error(error));
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            console.log("Register successfully");
+            form.reset();
+          }
+        })
+        .catch((error) => console.error(error));
+    });
   };
   return (
     <div>

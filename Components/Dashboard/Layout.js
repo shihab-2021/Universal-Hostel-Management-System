@@ -148,7 +148,7 @@ const Layout = ({ children }) => {
                           >
                             <RiAdminFill className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" />
                             <span className="ml-3 flex-1 whitespace-nowrap">
-                              Add Admin
+                              Manage Admin
                             </span>
                           </Link>
                         </li>
