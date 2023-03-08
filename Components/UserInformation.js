@@ -46,24 +46,46 @@ const UserInformation = () => {
   console.log(allMeals);
 
   const cancelRoom = () => {
-    if (
-      confirm(
-        "Are you sure you want to cancel your room subscription? You will lose access to your room and meal plan if you select OK!"
-      )
-    ) {
-      fetch("https://universal-hostel-api.onrender.com/cancelRoom", {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          roomId: userInfo.room._id,
-          currentUser: userInfo._id,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once canceled you will lose access to your room and meal plan if you select OK!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch("https://universal-hostel-api.onrender.com/cancelRoom", {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            roomId: userInfo.room._id,
+            currentUser: userInfo._id,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+      }
+    });
+    // if (
+    //   confirm(
+    //     "Are you sure you want to cancel your room subscription? You will lose access to your room and meal plan if you select OK!"
+    //   )
+    // ) {
+    //   fetch("https://universal-hostel-api.onrender.com/cancelRoom", {
+    //     method: "PUT",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       roomId: userInfo.room._id,
+    //       currentUser: userInfo._id,
+    //     }),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => console.log(data));
+    // }
   };
 
   let idx1 = 0;

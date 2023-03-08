@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 import React from "react";
 import useAuth from "../../Components/Firebase/useAuth";
 import MainLayout from "../../Components/MainLayout/MainLayout";
+import Loading from "../../Components/Shared/Loading/Loading";
 
 const Sighup = () => {
-  const { user, createUser } = useAuth();
+  const { user, createUser, isLoading } = useAuth();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -38,27 +39,33 @@ const Sighup = () => {
       pid: "",
     };
 
-    createUser(email, password).then(() => {
-      fetch("https://universal-hostel-api.onrender.com/users-data", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.acknowledged) {
-            console.log("Register successfully");
-            form.reset();
-          }
-        })
-        .catch((error) => console.error(error));
-    });
+    createUser(email, password, userData);
+    // .then(() => {
+    //   fetch("https://universal-hostel-api.onrender.com/users-data", {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(userData),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       if (data.acknowledged) {
+    //         console.log("Register successfully");
+    //         form.reset();
+    //       }
+    //     })
+    //     .catch((error) => console.error(error));
+    // });
   };
   return (
     <div>
       <MainLayout>
+        {isLoading && (
+          <div className="absolute left-[48%] top-[30%] z-10">
+            <Loading></Loading>
+          </div>
+        )}
         <div className="flex my-20 w-full items-center justify-center">
           <div className="rounded-xl bg-gray-800 bg-opacity-50 px-10 py-10 shadow-lg backdrop-blur-md max-sm:px-8">
             <div className="text-white font-sansita">

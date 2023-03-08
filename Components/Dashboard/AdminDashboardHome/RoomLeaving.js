@@ -24,7 +24,7 @@ const RoomLeaving = ({ payments }) => {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {payments?.map((payment, i) => {
-                const p = (parseInt(payment?.due) / 5000) * 100 + 100;
+                const p = parseInt(((5000 - parseInt(payment?.due)) / 5000) * 100);
                 return (
                   <tr key={payment?._id} className="text-gray-50">
                     <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">

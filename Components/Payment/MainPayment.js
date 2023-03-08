@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import useAuth from "../Firebase/useAuth";
 
-const MainPayment = ({ room }) => {
+const MainPayment = ({ room, payInfo }) => {
   const { user, userInfo } = useAuth();
   const router = useRouter();
   const handleSubmit = (event) => {
@@ -98,9 +98,10 @@ const MainPayment = ({ room }) => {
                 if (data.acknowledged) {
                   swal("Payment successful!", {
                     icon: "success",
+                  }).then(() => {
+                    form.reset();
+                    router.replace("/dashboard");
                   });
-                  form.reset();
-                  router.replace("/dashboard");
                 }
               })
               .catch((error) => console.error(error));
@@ -128,40 +129,28 @@ const MainPayment = ({ room }) => {
       </Head>
       <div className="py-5 px-3 container mx-auto my-10">
         <div className="">
-          {/* <div className="px-3 md:w-1/2 pt-5 pb-10 mx-auto">
-            <h1 className="flex justify-between text-2xl">
-              <span>Advance Fee </span>
-              <span>
-                5000 <span className=" text-orange-500">Tk</span>
-              </span>
-            </h1>
-            <h1 className="flex justify-between text-2xl">
-              <span>Room rent </span>
-              <span>
-                {room?.cost} <span className=" text-orange-500">Tk</span>
-              </span>
-            </h1>
-            <hr className="my-1" />
-            <h1 className="flex justify-between text-2xl">
-              <span>Total </span>
-              <span>
-                {parseInt(room?.cost) + 5000}{" "}
-                <span className=" text-orange-500">Tk</span>
-              </span>
-            </h1>
-          </div> */}
           <div className=" card">
             <form onSubmit={handleSubmit} className="w-full">
               <div className="flex flex-col md:flex-row items-center">
                 <div className="px-3 md:w-1/2 w-full">
                   <h3 className="pb-5 text-3xl font-bold ">Billing</h3>
                   <div className="px-3 w-full pt-5 pb-10 mx-auto">
-                    <h1 className="flex justify-between text-2xl">
-                      <span>Advance Fee </span>
-                      <span>
-                        5000 <span className=" text-orange-500">Tk</span>
-                      </span>
-                    </h1>
+                    {!payInfo && (
+                      <h1 className="flex justify-between text-2xl">
+                        <span>Advance Fee </span>
+                        <span>
+                          5000 <span className=" text-orange-500">Tk</span>
+                        </span>
+                      </h1>
+                    )}
+                    {payInfo && (
+                      <h1 className="flex justify-between text-2xl">
+                        <span>Advance Fee </span>
+                        <span>
+                          0 <span className=" text-orange-500">Tk</span>
+                        </span>
+                      </h1>
+                    )}
                     <h1 className="flex justify-between text-2xl">
                       <span>Room rent </span>
                       <span>
@@ -170,13 +159,24 @@ const MainPayment = ({ room }) => {
                       </span>
                     </h1>
                     <hr className="my-1" />
-                    <h1 className="flex justify-between text-2xl">
-                      <span>Total </span>
-                      <span>
-                        {parseInt(room?.cost) + 5000}{" "}
-                        <span className=" text-orange-500">Tk</span>
-                      </span>
-                    </h1>
+                    {payInfo && (
+                      <h1 className="flex justify-between text-2xl">
+                        <span>Total </span>
+                        <span>
+                          {parseInt(room?.cost)}{" "}
+                          <span className=" text-orange-500">Tk</span>
+                        </span>
+                      </h1>
+                    )}
+                    {!payInfo && (
+                      <h1 className="flex justify-between text-2xl">
+                        <span>Total </span>
+                        <span>
+                          {parseInt(room?.cost) + 5000}{" "}
+                          <span className=" text-orange-500">Tk</span>
+                        </span>
+                      </h1>
+                    )}
                   </div>
                   <div>
                     <p className="text-xl">
