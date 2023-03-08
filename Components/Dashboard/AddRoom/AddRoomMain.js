@@ -115,8 +115,11 @@ const AddRoomMain = () => {
       !roomInfo?.cost ||
       !roomInfo?.floor
     ) {
-      alert(
-        "Your have to fill all field. Please enter the date if anyone is missing. Thank you."
+      swal(
+        "Your have to fill all field. Please enter the date if anyone is missing. Thank you.",
+        {
+          icon: "warning",
+        }
       );
       return;
     }
@@ -130,7 +133,9 @@ const AddRoomMain = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Room has been submitted.");
+          swal("Room has been submitted!", {
+            icon: "success",
+          });
           router.replace("/rooms");
         }
       });

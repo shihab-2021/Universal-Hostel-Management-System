@@ -107,11 +107,15 @@ const MainProfile = (props) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.acknowledged) {
-            alert("Profile updated successfully !");
+            swal("Profile updated successfully!", {
+              icon: "success",
+            });
           }
         });
     } else {
-      alert("You didn't make any changes yet to update the profile !");
+      swal("You didn't make any changes yet to update the profile!", {
+        icon: "warning",
+      });
     }
   };
   return (

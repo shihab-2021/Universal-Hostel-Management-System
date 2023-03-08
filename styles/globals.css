@@ -240,3 +240,71 @@ tr {
 }
 
 /* payment css end */
+
+/* sweet alert css start */
+.swal-modal {
+  background-color: #2c3639;
+}
+.swal-icon--success:after {
+  background-color: #2c3639;
+}
+.swal-icon--success:before {
+  background-color: #2c3639;
+}
+.swal-icon--success__hide-corners {
+  background-color: #2c3639;
+}
+.swal-title,
+.swal-text,
+.swal-footer {
+  color: white;
+  font-family: sansita;
+  text-align: center;
+}
+/* sweet alert css end */
+
+/* Booking stages css start */
+.media {
+    width: 80px;
+    margin-right: 30px;
+    overflow: visible;
+    position: relative;
+}
+.media::after {
+    content: '';
+    position: absolute;
+    /* bottom: -80px; */
+    bottom: -70px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 3px;
+    background: #ddeaf6;
+    height: 100%;
+    z-index: -1;
+}
+.media-1 {
+    width: 80px;
+    margin-right: 30px;
+    overflow: visible;
+    position: relative;
+    /* background: #ddeaf6; */
+}
+.theme-element {
+    background: #ddeaf6;
+    color: #235784;
+    border-radius: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-family: Mulish,sans-serif;
+    margin-right: 7px;
+}
+/* Booking stages css end */

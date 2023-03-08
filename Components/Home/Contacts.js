@@ -8,7 +8,7 @@ const Contacts = () => {
       <div className="flex md:flex-row flex-col">
         <div className="lg:w-1/2 lg:px-20 md:px-5 w-full py-10 flex">
           <div className="my-auto lg:ml-auto md:mx-0 mx-auto">
-            <h1 className="text-8xl text-orange-500  font-sansita italic mb-10">
+            <h1 className="text-5xl md:text-8xl text-orange-500  font-sansita italic mb-10">
               Contacts
             </h1>
             <div className="flex flex-row my-5">

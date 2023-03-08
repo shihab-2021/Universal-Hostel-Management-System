@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import adminCheck from "../../Firebase/adminCheck";
+import swal from "sweetalert";
 
 const AddMealMain = () => {
   const router = useRouter();
@@ -29,8 +30,11 @@ const AddMealMain = () => {
       bookedBy: [],
     };
     if (!roomInfo?.time || !roomInfo?.about || !roomInfo?.cost) {
-      alert(
-        "Your have to fill all field. Please enter the date if anyone is missing. Thank you."
+      swal(
+        "Your have to fill all field. Please enter the date if anyone is missing. Thank you.",
+        {
+          icon: "warning",
+        }
       );
       return;
     }
@@ -44,7 +48,9 @@ const AddMealMain = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Meal has been submitted.");
+          swal("Meal has been added!", {
+            icon: "success",
+          });
           router.replace("/meal");
         }
       });
@@ -57,20 +63,29 @@ const AddMealMain = () => {
   }, []);
 
   const deleteItem = (id) => {
-    const agree = window.confirm("Are you sure you want to delete this meal?");
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`https://universal-hostel-api.onrender.com/delete-meal/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then(() =>
+            swal("Meal delete successful!", {
+              icon: "success",
+            })
+          )
+          .then((data) => console.log(data));
 
-    if (agree) {
-      console.log(id);
-      fetch(`https://universal-hostel-api.onrender.com/delete-meal/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then(() => alert("Meal delete successful!"))
-        .then((data) => console.log(data));
-
-      const remainingMeal = mealData.filter((meal) => meal._id !== id);
-      setMealData(remainingMeal);
-    }
+        const remainingMeal = mealData.filter((meal) => meal._id !== id);
+        setMealData(remainingMeal);
+      }
+    });
   };
 
   let idx1 = 0;

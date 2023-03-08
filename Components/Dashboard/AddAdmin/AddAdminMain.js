@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import adminCheck from "../../Firebase/adminCheck";
 import authCheck from "../../Firebase/authCheck";
+import swal from "sweetalert";
 
 const AddAdminMain = () => {
   const [email, setEmail] = useState("");
@@ -23,9 +24,15 @@ const AddAdminMain = () => {
       .then((data) => {
         if (data.modifiedCount) {
           //   setSuccess(true);
-          alert("Made Admin successfully!");
+          swal("Made Admin successfully!", {
+            icon: "success",
+          });
+          document.getElementById("make-admin").reset();
         } else {
-          alert("Please enter a valid email!");
+          swal("Please enter a valid email!", {
+            icon: "error",
+          });
+          document.getElementById("make-admin").reset();
         }
       });
 
@@ -36,6 +43,7 @@ const AddAdminMain = () => {
       <div className="pt-5 ">
         <h2 className=" text-xl text-center">MAKE AN ADMIN</h2>
         <form
+          id="make-admin"
           className="my-5 text-center mx-auto"
           onSubmit={handleAdminSubmit}
           style={{ maxWidth: "25rem" }}

@@ -8,16 +8,22 @@ import StayTuned from "../StayTuned";
 import Rooms from "../Rooms/Rooms";
 import Reviews from "../Reviews/Reviews";
 import Rating from "../Rating";
+import BookingStages from "../BookingStages";
+import Meal from "../Meal";
+import PhotoGallery from "../Photogallery";
 
 const MainHome = () => {
   return (
     <div className="text-white">
       <Carousel images={countries}></Carousel>
       <Rating></Rating>
+      <BookingStages></BookingStages>
       <HelloSection></HelloSection>
       <Rooms></Rooms>
       <Reviews></Reviews>
       <Facilities />
+      <Meal></Meal>
+      <PhotoGallery></PhotoGallery>
       <StayTuned />
       <Contacts />
     </div>

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import swal from "sweetalert";
 
 const RoomContext = createContext();
 
@@ -18,20 +19,29 @@ export const RoomProvider = ({ children }) => {
     getRooms();
   }, []);
   const deleteItem = (id) => {
-    const agree = window.confirm("Are you sure you want to delete this room?");
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`https://universal-hostel-api.onrender.com/delete-room/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then(() =>
+            swal("Room delete successful!", {
+              icon: "success",
+            })
+          )
+          .then((data) => console.log(data));
 
-    if (agree) {
-      fetch(`https://universal-hostel-api.onrender.com/delete-room/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then(() => alert("Room delete successful!"))
-        .then((data) => console.log(data));
-
-      const remainingRoom = roomData.filter((room) => room._id !== id);
-      setRoomData(remainingRoom);
-
-    }
+        const remainingRoom = roomData.filter((room) => room._id !== id);
+        setRoomData(remainingRoom);
+      }
+    });
   };
 
   return (
