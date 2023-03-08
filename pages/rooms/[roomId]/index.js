@@ -76,7 +76,8 @@ export default function RoomDetails() {
   // };
   const handleClick = () => {
     if (userInfo) {
-      if (userInfo.room == "") {
+      console.log(Object.keys(userInfo.room));
+      if (Object.keys(userInfo.room).length == 0) {
         router.replace(`/paymentInstallation/${id}`);
       } else {
         window.alert("You already have a booked room!");

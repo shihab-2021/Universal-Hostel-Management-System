@@ -32,7 +32,10 @@ const Sighup = () => {
       gender: "",
       profession: "",
       birthDate: "",
-      room: "",
+      room: {},
+      bookedOn: "",
+      bookedTill: "",
+      pid: "",
     };
 
     createUser(email, password);

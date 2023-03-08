@@ -10,7 +10,7 @@ const MainPayment = ({ room }) => {
     if (userInfo) {
       if (window.confirm("Are you sure you want to select this room?")) {
         if (room?.category === "Business") {
-          if (userInfo?.room == "") {
+          if (Object.keys(userInfo?.room).length == 0) {
             fetch("https://universal-hostel-api.onrender.com/rooms", {
               method: "PUT",
               headers: {
@@ -27,7 +27,7 @@ const MainPayment = ({ room }) => {
             window.alert("You already have a booked room!");
           }
         } else {
-          if (userInfo?.room == "") {
+          if (Object.keys(userInfo?.room).length == 0) {
             fetch("https://universal-hostel-api.onrender.com/rooms", {
               method: "PUT",
               headers: {
@@ -45,7 +45,7 @@ const MainPayment = ({ room }) => {
           }
         }
       }
-      if (userInfo.room == "") {
+      if (Object.keys(userInfo?.room).length == 0) {
         event.preventDefault();
         const form = event.target;
         const email = user?.email;
@@ -62,13 +62,12 @@ const MainPayment = ({ room }) => {
         const paymentData = {
           email,
           uid,
-          due: "0",
-          rent: "0",
-          advance: "5000",
+          due: 0,
+          rent: 0,
+          advance: 5000,
           paymentHistory: [
             {
-              date: date,
-              time: currentTime,
+              time: time,
               amount: parseInt(room.cost) + 5000,
             },
           ],
