@@ -58,11 +58,10 @@ export default function Meals() {
 
     const today = new Date();
     const todayDate = today.toDateString();
-    const tomorrow = new Date(
-      `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate() + 1}`
-    );
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
     const tomorrowDate = tomorrow.toDateString();
-    console.log(todayDate < tomorrowDate);
+    console.log(today, tomorrow);
   }, [userInfo]);
 
   const handleClick = (id, type, itemPack, price) => {

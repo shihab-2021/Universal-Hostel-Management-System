@@ -9,6 +9,7 @@ const UserInformation = () => {
   const [bookedOn, setBookedOn] = useState("");
   const [bookedTill, setBookedTill] = useState("");
   const [allMeals, setAllMeals] = useState([]);
+  const [currentUserPayment, setCurrentUserPayment] = useState({});
 
   useEffect(() => {
     fetch("https://universal-hostel-api.onrender.com/meals")
@@ -20,6 +21,10 @@ const UserInformation = () => {
 
     const date2 = new Date(userInfo.bookedTill);
     setBookedTill(date2.toDateString());
+
+    fetch(`http://localhost:5000/payments/${userInfo._id}`)
+      .then((res) => res.json())
+      .then((data) => setCurrentUserPayment(data));
   }, [userInfo?.room]);
 
   const breakfast = allMeals.filter((e) => {
@@ -37,7 +42,7 @@ const UserInformation = () => {
   let total = 0;
 
   allMeals.map((meal) => {
-    return meal.bookedBy.map((user) => {
+    meal.bookedBy.map((user) => {
       if (user.uid == userInfo._id) {
         total = total + parseInt(meal.cost);
       }
@@ -148,7 +153,7 @@ const UserInformation = () => {
         </div>
 
         <div className="card w-full md:w-1/2 flex justify-between">
-          <h1 className="text-3xl underline">Current Room</h1>
+          <h1 className="text-3xl underline mb-3">Current Room</h1>
           {userInfo?.room?._id ? (
             <>
               <div className="flex flex-col items-center">
@@ -159,10 +164,15 @@ const UserInformation = () => {
                 <DashboardItem
                   first={"Room Type"}
                   second={
-                    userInfo?.room?.category === "Business" ? "Private" : "Shared"
+                    userInfo?.room?.category === "Business"
+                      ? "Private"
+                      : "Shared"
                   }
                 />
-                <DashboardItem first={"Branch"} second={userInfo?.room?.branch} />
+                <DashboardItem
+                  first={"Branch"}
+                  second={userInfo?.room?.branch}
+                />
                 <h1 className=" mt-5 text-xl text-indigo-500">
                   {bookedOn} - {bookedTill}
                 </h1>
@@ -187,7 +197,7 @@ const UserInformation = () => {
       <div className="flex flex-col md:flex-row gap-5">
         <div className="card w-full md:w-1/2 flex justify-between">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl underline">Current Meal Plan</h1>
+            <h1 className="text-3xl underline mb-3">Current Meal Plan</h1>
             {breakfast?.map((meal) => {
               idx1++;
               return meal?.bookedBy.map((user) => {
@@ -238,6 +248,28 @@ const UserInformation = () => {
           <Link href={"/meal"}>
             <button className="button my-3">View Meal Plan</button>
           </Link>
+        </div>
+        <div className="card w-full md:w-1/2 flex">
+          <h1 className="text-3xl underline mb-3">DUES</h1>
+          <div>
+            <DashboardItem
+              first={"Rent Dues"}
+              second={`Tk ${currentUserPayment.rent}`}
+              color={"red"}
+            />
+
+            <DashboardItem
+              first={"Meal Dues"}
+              second={`Tk ${currentUserPayment.due}`}
+              color={"red"}
+            />
+            <br />
+            <DashboardItem
+              first={"Paid Advance"}
+              second={`Tk ${currentUserPayment.advance}`}
+              color={"green"}
+            />
+          </div>
         </div>
       </div>
     </div>

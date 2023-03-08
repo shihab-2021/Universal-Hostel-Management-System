@@ -35,7 +35,9 @@ const Sighup = () => {
       gender: "",
       profession: "",
       birthDate: "",
-      room: "",
+      room: {},
+      bookedOn: "",
+      bookedTill: "",
       pid: "",
     };
 
