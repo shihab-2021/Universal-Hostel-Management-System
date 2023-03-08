@@ -10,7 +10,7 @@ import Reviews from "../Reviews/Reviews";
 import Rating from "../Rating";
 import BookingStages from "../BookingStages";
 import Meal from "../Meal";
-import PhotoGallery from "../Photogallery";
+import PhotoGallery from "../PhotoGallery";
 
 const MainHome = () => {
   return (
