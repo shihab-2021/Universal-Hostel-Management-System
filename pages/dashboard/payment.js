@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../Components/Dashboard/Layout";
 import authCheck from "../../Components/Firebase/authCheck";
 import MainPayment from "../../Components/Payment/MainPayment";

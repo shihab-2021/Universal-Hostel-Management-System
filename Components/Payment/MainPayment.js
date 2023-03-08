@@ -17,7 +17,7 @@ const MainPayment = ({ room }) => {
       }).then((willDelete) => {
         if (willDelete) {
           if (room?.category === "Business") {
-            if (userInfo?.room == "") {
+            if (Object.keys(userInfo?.room).length == 0) {
               fetch("https://universal-hostel-api.onrender.com/rooms", {
                 method: "PUT",
                 headers: {
@@ -36,7 +36,7 @@ const MainPayment = ({ room }) => {
               });
             }
           } else {
-            if (userInfo?.room == "") {
+            if (Object.keys(userInfo?.room).length == 0) {
               fetch("https://universal-hostel-api.onrender.com/rooms", {
                 method: "PUT",
                 headers: {
@@ -56,7 +56,7 @@ const MainPayment = ({ room }) => {
             }
           }
 
-          if (userInfo.room == "") {
+          if (Object.keys(userInfo?.room).length == 0) {
             const form = event.target;
             const email = user?.email;
             const uid = userInfo?._id;

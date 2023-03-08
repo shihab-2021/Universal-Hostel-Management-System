@@ -2,8 +2,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-import { AiFillHome, AiFillNotification, AiOutlineNotification } from "react-icons/ai";
-import { RiAdminFill } from "react-icons/ri";
+import {
+  AiFillHome,
+  AiFillNotification,
+  AiOutlineNotification,
+} from "react-icons/ai";
+import { RiAdminFill, RiMoneyDollarBoxFill } from "react-icons/ri";
 import { MdPayment } from "react-icons/md";
 import { GiHotMeal } from "react-icons/gi";
 import useAuth from "../Firebase/useAuth";
@@ -222,6 +226,17 @@ const Layout = ({ children }) => {
                             <GiHotMeal className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"></GiHotMeal>
                             <span className="ml-3 flex-1 whitespace-nowrap">
                               Meal Orders
+                            </span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/dashboard/dues"
+                            className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                          >
+                            <RiMoneyDollarBoxFill className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"></RiMoneyDollarBoxFill>
+                            <span className="ml-3 flex-1 whitespace-nowrap">
+                              Dues
                             </span>
                           </Link>
                         </li>
