@@ -3,7 +3,6 @@ import Layout from "../../Components/Dashboard/Layout";
 import authCheck from "../../Components/Firebase/authCheck";
 import MainPayment from "../../Components/Payment/MainPayment";
 import swal from "sweetalert";
-<<<<<<< HEAD
 import Loading from "../../Components/Loading/Loading";
 import useAuth from "../../Components/Firebase/useAuth";
 import { useRouter } from "next/router";
@@ -37,17 +36,6 @@ const Payment = () => {
         </div>
         {isLoading && <Loading></Loading>}
         {!isLoading && <DashboardPayment payInfo={payInfo}></DashboardPayment>}
-=======
-import useAuth from "../../Components/Firebase/useAuth";
-
-const Payment = () => {
-  return (
-    <Layout>
-      <div>
-        <h1 className="text-center text-5xl">Payment</h1>
-        <div></div>
-        {/* <MainPayment></MainPayment> */}
->>>>>>> e99a3238db79ddf2c40b6f618fe3db07bfbc1a41
       </div>
     </Layout>
   );
