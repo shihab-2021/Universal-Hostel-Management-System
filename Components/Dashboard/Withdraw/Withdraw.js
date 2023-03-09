@@ -44,9 +44,12 @@ const Withdraw = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/delete-payment/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://universal-hostel-api.onrender.com/delete-payment/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.acknowledged) {

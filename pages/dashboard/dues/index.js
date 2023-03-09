@@ -1,7 +1,11 @@
 import Layout from "../../../Components/Dashboard/Layout";
 import { useState, useEffect } from "react";
 
-export default function Dues() {
+import React from "react";
+import authCheck from "../../../Components/Firebase/authCheck";
+import adminCheck from "../../../Components/Firebase/adminCheck";
+
+const Dues = () => {
   const [dueList, setDueList] = useState([]);
 
   useEffect(() => {
@@ -41,4 +45,6 @@ export default function Dues() {
       </div>
     </Layout>
   );
-}
+};
+
+export default authCheck(adminCheck(Dues));

@@ -22,7 +22,9 @@ const PaymentInstallation = () => {
         console.log(data);
       })
       .then(() => {
-        fetch(`http://localhost:5000/payments/${userInfo?._id}`)
+        fetch(
+          `https://universal-hostel-api.onrender.com/payments/${userInfo?._id}`
+        )
           .then((res) => res.json())
           .then((data) => {
             setPayInfo(data);
@@ -41,7 +43,9 @@ const PaymentInstallation = () => {
           </h1>
         </div>
         {isLoading && <Loading></Loading>}
-        {!isLoading && <MainPayment payInfo={payInfo} room={room}></MainPayment>}
+        {!isLoading && (
+          <MainPayment payInfo={payInfo} room={room}></MainPayment>
+        )}
       </div>
     </MainLayout>
   );

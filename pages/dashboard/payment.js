@@ -3,10 +3,10 @@ import Layout from "../../Components/Dashboard/Layout";
 import authCheck from "../../Components/Firebase/authCheck";
 import MainPayment from "../../Components/Payment/MainPayment";
 import swal from "sweetalert";
-import Loading from "../../Components/Loading/Loading";
 import useAuth from "../../Components/Firebase/useAuth";
 import { useRouter } from "next/router";
 import DashboardPayment from "../../Components/Dashboard/Payment/DashboardPayment";
+import Loading from "../../Components/Shared/Loading/Loading";
 
 const Payment = () => {
   const { user, userInfo } = useAuth();
@@ -16,7 +16,7 @@ const Payment = () => {
   const [payInfo, setPayInfo] = useState();
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/payments/${userInfo?._id}`)
+    fetch(`https://universal-hostel-api.onrender.com/payments/${userInfo?._id}`)
       .then((res) => res.json())
       .then((data) => {
         setPayInfo(data);
@@ -35,7 +35,16 @@ const Payment = () => {
           </h1>
         </div>
         {isLoading && <Loading></Loading>}
-        {!isLoading && <DashboardPayment payInfo={payInfo}></DashboardPayment>}
+        {!isLoading && !payInfo && (
+          <div>
+            <h1 className="text-center py-10 my-10 text-4xl">
+              You have to book a room first to be able to pay dues or rent!
+            </h1>
+          </div>
+        )}
+        {!isLoading && payInfo && (
+          <DashboardPayment payInfo={payInfo}></DashboardPayment>
+        )}
       </div>
     </Layout>
   );

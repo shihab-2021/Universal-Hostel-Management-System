@@ -61,4 +61,4 @@ const UserDetailsPage = ({}) => {
   );
 }
 
-export default UserDetailsPage;
+export default authCheck(adminCheck(UserDetailsPage));

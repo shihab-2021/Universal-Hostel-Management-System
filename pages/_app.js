@@ -4,10 +4,14 @@ import Footer from "../Components/Home/Footer";
 import Navbar from "../Components/nav";
 import "../styles/globals.css";
 import swal from "sweetalert";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <title>Universal Hostel</title>
+      </Head>
       <AuthProvider>
         <RoomProvider>
           <Component {...pageProps} />

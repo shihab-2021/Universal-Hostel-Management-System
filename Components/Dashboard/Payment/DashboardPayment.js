@@ -5,6 +5,7 @@ import useAuth from "../../Firebase/useAuth";
 
 const DashboardPayment = ({ payInfo }) => {
   const { user, userInfo } = useAuth();
+  console.log(payInfo);
   const router = useRouter();
   const handleSubmit = (event) => {
     if (userInfo) {
@@ -22,7 +23,7 @@ const DashboardPayment = ({ payInfo }) => {
             id: payInfo?._id,
             amount: parseInt(payInfo?.rent) + parseInt(payInfo?.due),
           };
-          fetch("http://localhost:5000/payments", {
+          fetch("https://universal-hostel-api.onrender.com/payments", {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(paymentData),

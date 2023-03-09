@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../Components/Dashboard/Layout';
 import NoticeMain from '../../Components/Dashboard/Notice/NoticeMain';
+import authCheck from '../../Components/Firebase/authCheck';
 
 const notice = () => {
     return (
@@ -12,4 +13,4 @@ const notice = () => {
     );
 };
 
-export default notice;
+export default authCheck(notice);

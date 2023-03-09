@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import adminCheck from "../../Firebase/adminCheck";
 import Loading from "../../Shared/Loading/Loading";
 import Counting from "./Counting";
 import LatestCustomers from "./LatestCustomers";
@@ -58,4 +59,4 @@ const MainAdminDashboardHome = () => {
   );
 };
 
-export default MainAdminDashboardHome;
+export default adminCheck(MainAdminDashboardHome);
