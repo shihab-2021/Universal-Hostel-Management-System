@@ -432,7 +432,7 @@ const Layout = ({ children }) => {
               id="main-content"
               className="h-full w-full relative overflow-y-auto lg:ml-64"
             >
-              <main className="min-h-screen">
+              <main className="min-h-[80vh]">
                 <div className=" pt-20 px-4">{children}</div>
               </main>
               <footer className="bg-[#36393e52] md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">

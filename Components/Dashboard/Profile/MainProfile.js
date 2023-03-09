@@ -94,7 +94,7 @@ const MainProfile = (props) => {
       (startDate && startDate !== data?.birthDate) ||
       image !== data?.image ||
       (userInfo?.address && userInfo?.address !== data?.address) ||
-      (userInfo?.biography && userInfo?.biography !== data?.biography) ||
+      (userInfo?.phone && userInfo?.phone !== data?.phone) ||
       (userInfo?.displayName && userInfo?.displayName !== data?.displayName) ||
       (userInfo?.gender && userInfo?.gender !== data?.gender) ||
       (userInfo?.profession && userInfo?.profession !== data?.profession)
