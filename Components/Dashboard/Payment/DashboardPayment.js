@@ -187,25 +187,25 @@ const DashboardPayment = ({ payInfo }) => {
                       style={{ color: "orange" }}
                     ></i>
                   </div>
-                  <label htmlFor="cname">Name on Card</label>
+                  <label htmlFor="cname">Cardholder Name</label>
                   <input
                     type="text"
                     className="w-full p-3 mb-4 border rounded mt-1"
                     id="cname"
                     name="cardname"
-                    placeholder="John More Doe"
+                    placeholder="John Doe"
                     required
                   />
-                  <label htmlFor="ccnum">Credit card number</label>
+                  <label htmlFor="ccnum">Card Number</label>
                   <input
                     type="text"
                     className="w-full p-3 mb-4 border rounded mt-1"
                     id="ccnum"
                     name="cardnumber"
-                    placeholder="1111-2222-3333-4444"
+                    placeholder="xxxx-xxxx-xxxx-xxxx"
                     required
                   />
-                  <label htmlFor="expmonth">Exp Month</label>
+                  {/* <label htmlFor="expmonth">Exp Month</label>
                   <select
                     name="expmonth"
                     className=" h-14 w-full cursor-pointer rounded-lg border-2 p-3 text-lg "
@@ -223,7 +223,7 @@ const DashboardPayment = ({ payInfo }) => {
                     <option>October</option>
                     <option>November</option>
                     <option>December</option>
-                  </select>
+                  </select> */}
                   {/* <input
                     type="text"
                     className="w-full p-3 mb-4 border rounded mt-1"
@@ -234,24 +234,24 @@ const DashboardPayment = ({ payInfo }) => {
                   /> */}
                   <div className="flex flex-col md:flex-row">
                     <div className="md:pr-2 md:w-1/2">
-                      <label htmlFor="expyear">Exp Year</label>
+                      <label htmlFor="expyear">Expiry Date</label>
                       <input
                         type="text"
                         className="w-full p-3 mb-4 border rounded mt-1"
                         id="expyear"
                         name="expyear"
-                        placeholder="2018"
+                        placeholder="MM / YY"
                         required
                       />
                     </div>
                     <div className="md:pl-2 md:w-1/2">
-                      <label htmlFor="cvv">CVV</label>
+                      <label htmlFor="cvv">CVC / CVV</label>
                       <input
                         type="text"
                         className="w-full p-3 mb-4 border rounded mt-1"
                         id="cvv"
                         name="cvv"
-                        placeholder="352"
+                        placeholder="xxx"
                         required
                       />
                     </div>
