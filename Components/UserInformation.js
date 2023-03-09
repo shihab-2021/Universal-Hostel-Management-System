@@ -254,19 +254,19 @@ const UserInformation = () => {
           <div>
             <DashboardItem
               first={"Rent Dues"}
-              second={`Tk ${currentUserPayment.rent}`}
+              second={`Tk ${currentUserPayment?.rent}`}
               color={"red"}
             />
 
             <DashboardItem
               first={"Meal Dues"}
-              second={`Tk ${currentUserPayment.due}`}
+              second={`Tk ${currentUserPayment?.due}`}
               color={"red"}
             />
             <br />
             <DashboardItem
               first={"Paid Advance"}
-              second={`Tk ${currentUserPayment.advance}`}
+              second={`Tk ${currentUserPayment?.advance}`}
               color={"green"}
             />
           </div>
