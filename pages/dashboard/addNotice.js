@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import AddNoticeMain from "../../Components/Dashboard/AddNotice/AddNoticeMain";
 import Layout from "../../Components/Dashboard/Layout";
+import adminCheck from "../../Components/Firebase/adminCheck";
+import authCheck from "../../Components/Firebase/authCheck";
 
 const AddNotice = () => {
   return (
@@ -12,4 +14,4 @@ const AddNotice = () => {
   );
 };
 
-export default AddNotice;
+export default authCheck(adminCheck(AddNotice));

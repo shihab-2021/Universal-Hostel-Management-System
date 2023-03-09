@@ -5,7 +5,7 @@ const NoticeMain = () => {
   const [notices, setNotices] = useState();
   const [notice, setNotice] = useState();
   useEffect(() => {
-    fetch("http://localhost:5000/notices")
+    fetch("https://universal-hostel-api.onrender.com/notices")
       .then((res) => res.json())
       .then((data) => {
         setNotices(data.reverse());

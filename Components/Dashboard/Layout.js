@@ -290,7 +290,7 @@ const Layout = ({ children }) => {
                         </li>
                         <li>
                           <a
-                            className="block p-2 mb-2 leading-loose text-xs text-center text-white font-semibold bg-[#e61d4f] hover:bg-red-700  rounded-xl"
+                            className="block p-2 cursor-pointer mb-2 leading-loose text-xs text-center text-white font-semibold bg-[#e61d4f] hover:bg-red-700  rounded-xl"
                             onClick={logout}
                           >
                             Sign Out
@@ -412,7 +412,7 @@ const Layout = ({ children }) => {
                         </li>
                         <li>
                           <a
-                            className="block p-2 mb-2 leading-loose text-xs text-center text-white font-semibold bg-[#e61d4f] hover:bg-red-700  rounded-xl"
+                            className="block p-2 mb-2 cursor-pointer leading-loose text-xs text-center text-white font-semibold bg-[#e61d4f] hover:bg-red-700  rounded-xl"
                             onClick={logout}
                           >
                             Sign Out

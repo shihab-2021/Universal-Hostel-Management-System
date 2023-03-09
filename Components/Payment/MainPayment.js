@@ -112,7 +112,7 @@ const MainPayment = ({ room, payInfo }) => {
                 id: payInfo?._id,
                 amount: parseInt(room?.cost) + parseInt(payInfo?.due),
               };
-              fetch("http://localhost:5000/payments", {
+              fetch("https://universal-hostel-api.onrender.com/payments", {
                 method: "PUT",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(paymentData),

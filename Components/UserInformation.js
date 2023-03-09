@@ -22,7 +22,7 @@ const UserInformation = () => {
     const date2 = new Date(userInfo.bookedTill);
     setBookedTill(date2.toDateString());
 
-    fetch(`http://localhost:5000/payments/${userInfo._id}`)
+    fetch(`https://universal-hostel-api.onrender.com/payments/${userInfo._id}`)
       .then((res) => res.json())
       .then((data) => setCurrentUserPayment(data));
   }, [userInfo?.room]);
