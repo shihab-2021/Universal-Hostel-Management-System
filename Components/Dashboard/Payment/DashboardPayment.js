@@ -1,140 +1,44 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
-import useAuth from "../Firebase/useAuth";
+import useAuth from "../../Firebase/useAuth";
 
-const MainPayment = ({ room, payInfo }) => {
+const DashboardPayment = ({ payInfo }) => {
   const { user, userInfo } = useAuth();
   const router = useRouter();
   const handleSubmit = (event) => {
     if (userInfo) {
       swal({
         title: "Are you sure?",
-        text: "You want to select this?",
+        text: "You want to pay?",
         icon: "warning",
         buttons: true,
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          if (room?.category === "Business") {
-            if (Object.keys(userInfo?.room).length == 0) {
-              fetch("https://universal-hostel-api.onrender.com/rooms", {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify({
-                  roomId: room._id,
-                  currentUser: userInfo._id,
-                }),
-              })
-                .then((res) => res.json())
-                .then((data) => console.log(data));
-            } else {
-              swal("You already have a booked room!", {
-                icon: "warning",
-              });
-            }
-          } else {
-            if (Object.keys(userInfo?.room).length == 0) {
-              fetch("https://universal-hostel-api.onrender.com/rooms", {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify({
-                  roomId: room._id,
-                  currentUser: userInfo._id,
-                }),
-              })
-                .then((res) => res.json())
-                .then((data) => console.log(data));
-            } else {
-              swal("You already have a booked room!", {
-                icon: "warning",
-              });
-            }
-          }
-
-          if (Object.keys(userInfo?.room).length == 0) {
-            const form = event.target;
-            if (!payInfo) {
-              const email = user?.email;
-              const uid = userInfo?._id;
-
-              let time = new Date();
-              const date = new Date().toLocaleDateString();
-              const currentTime = time.toLocaleString("en-US", {
-                hour: "numeric",
-                minute: "numeric",
-                hour12: true,
-              });
-
-              const paymentData = {
-                email,
-                uid,
-                due: "0",
-                rent: "0",
-                advance: "5000",
-                paymentHistory: [
-                  {
-                    date: date,
-                    time: currentTime,
-                    amount: parseInt(room.cost) + 5000,
-                  },
-                ],
-              };
-              console.log(paymentData);
-              event.preventDefault();
-
-              fetch("https://universal-hostel-api.onrender.com/payment", {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify(paymentData),
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                  if (data.acknowledged) {
-                    swal("Payment successful!", {
-                      icon: "success",
-                    }).then(() => {
-                      form.reset();
-                      router.replace("/dashboard");
-                    });
-                  }
-                })
-                .catch((error) => console.error(error));
-            } else {
-              event.preventDefault();
-              const paymentData = {
-                id: payInfo?._id,
-                amount: parseInt(room?.cost) + parseInt(payInfo?.due),
-              };
-              fetch("http://localhost:5000/payments", {
-                method: "PUT",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(paymentData),
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                  if (data.acknowledged) {
-                    swal("Payment successful!", {
-                      icon: "success",
-                    }).then(() => {
-                      form.reset();
-                      router.replace("/dashboard");
-                    });
-                  }
-                })
-                .catch((error) => console.error(error));
-            }
-          } else {
-            swal("You already have a booked room!", {
-              icon: "warning",
-            });
-          }
+          const form = event.target;
+          event.preventDefault();
+          const paymentData = {
+            id: payInfo?._id,
+            amount: parseInt(payInfo?.rent) + parseInt(payInfo?.due),
+          };
+          fetch("http://localhost:5000/payments", {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(paymentData),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.acknowledged) {
+                swal("Payment successful!", {
+                  icon: "success",
+                }).then(() => {
+                  form.reset();
+                  router.replace("/dashboard");
+                });
+              }
+            })
+            .catch((error) => console.error(error));
         }
       });
     } else {
@@ -160,32 +64,18 @@ const MainPayment = ({ room, payInfo }) => {
                 <div className="px-3 md:w-1/2 w-full">
                   <h3 className="pb-5 text-3xl font-bold ">Billing</h3>
                   <div className="px-3 w-full pt-5 pb-10 mx-auto">
-                    {!payInfo && (
+                    {payInfo && (
                       <h1 className="flex justify-between text-2xl">
-                        <span>Advance Fee </span>
+                        <span>Room rent </span>
                         <span>
-                          5000 <span className=" text-orange-500">Tk</span>
+                          {payInfo?.rent}
+                          <span className=" text-orange-500">Tk</span>
                         </span>
                       </h1>
                     )}
                     {payInfo && (
                       <h1 className="flex justify-between text-2xl">
-                        <span>Advance Fee </span>
-                        <span>
-                          0 <span className=" text-orange-500">Tk</span>
-                        </span>
-                      </h1>
-                    )}
-                    <h1 className="flex justify-between text-2xl">
-                      <span>Room rent </span>
-                      <span>
-                        {room?.cost}{" "}
-                        <span className=" text-orange-500">Tk</span>
-                      </span>
-                    </h1>
-                    {payInfo && parseInt(payInfo?.due) > 0 && (
-                      <h1 className="flex justify-between text-2xl">
-                        <span>Previous Due </span>
+                        <span>Due </span>
                         <span>
                           {payInfo?.due}
                           <span className=" text-orange-500">Tk</span>
@@ -197,16 +87,7 @@ const MainPayment = ({ room, payInfo }) => {
                       <h1 className="flex justify-between text-2xl">
                         <span>Total </span>
                         <span>
-                          {parseInt(room?.cost) + parseInt(payInfo?.due)}
-                          <span className=" text-orange-500">Tk</span>
-                        </span>
-                      </h1>
-                    )}
-                    {!payInfo && (
-                      <h1 className="flex justify-between text-2xl">
-                        <span>Total </span>
-                        <span>
-                          {parseInt(room?.cost) + 5000}{" "}
+                          {parseInt(payInfo?.rent) + parseInt(payInfo?.due)}
                           <span className=" text-orange-500">Tk</span>
                         </span>
                       </h1>
@@ -214,11 +95,11 @@ const MainPayment = ({ room, payInfo }) => {
                   </div>
                   <div>
                     <p className="text-xl">
-                      We take 5000Tk advance fee for security purpose. We give
+                      {/* We take 5000Tk advance fee for security purpose. We give
                       room rent in pre-paid system. So to book room you have to
                       pay in total {parseInt(room?.cost) + 5000}
                       <span className=" text-orange-500">Tk</span>. Please fill
-                      up the form to book room, and good luck.
+                      up the form to book room, and good luck. */}
                     </p>
                   </div>
                   {/* <h3 className="pb-5 text-3xl font-bold ">Billing Address</h3>
@@ -394,4 +275,4 @@ const MainPayment = ({ room, payInfo }) => {
   );
 };
 
-export default MainPayment;
+export default DashboardPayment;

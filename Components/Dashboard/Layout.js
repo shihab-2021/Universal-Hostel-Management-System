@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 import { RiAdminFill, RiMoneyDollarBoxFill } from "react-icons/ri";
 import { MdPayment } from "react-icons/md";
-import { GiHotMeal } from "react-icons/gi";
+import { GiHotMeal, GiMoneyStack } from "react-icons/gi";
 import useAuth from "../Firebase/useAuth";
 import authCheck from "../Firebase/authCheck";
 
@@ -255,7 +255,7 @@ const Layout = ({ children }) => {
                             </span>
                           </Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link
                             href="/dashboard/dues"
                             className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
@@ -263,6 +263,17 @@ const Layout = ({ children }) => {
                             <RiMoneyDollarBoxFill className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"></RiMoneyDollarBoxFill>
                             <span className="ml-3 flex-1 whitespace-nowrap">
                               Dues
+                            </span>
+                          </Link>
+                        </li> */}
+                        <li>
+                          <Link
+                            href="/dashboard/withdraw"
+                            className="text-base hover:text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
+                          >
+                            <GiMoneyStack className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" />
+                            <span className="ml-3 flex-1 whitespace-nowrap">
+                              Withdraw
                             </span>
                           </Link>
                         </li>
