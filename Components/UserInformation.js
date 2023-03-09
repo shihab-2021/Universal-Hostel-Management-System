@@ -173,9 +173,12 @@ const UserInformation = () => {
                   first={"Branch"}
                   second={userInfo?.room?.branch}
                 />
-                <h1 className=" mt-5 text-xl text-indigo-500">
+
+                <DashboardItem first={"From"} second={bookedOn} />
+                <DashboardItem first={"Till"} second={bookedTill} />
+                {/* <h1 className=" mt-5 text-xl text-indigo-500">
                   {bookedOn} - {bookedTill}
-                </h1>
+                </h1> */}
               </div>
               <div>
                 <Link href={`/rooms/${userInfo?.room?._id}`}>
@@ -205,7 +208,7 @@ const UserInformation = () => {
                   return (
                     <DashboardItem
                       first={"Breakfast"}
-                      second={`Package #${idx1}`}
+                      second={`Package - ${idx1}`}
                       key={meal?._id}
                     />
                   );
@@ -220,7 +223,7 @@ const UserInformation = () => {
                   return (
                     <DashboardItem
                       first={"Lunch"}
-                      second={`Package #${idx2}`}
+                      second={`Package - ${idx2}`}
                       key={meal?._id}
                     />
                   );
@@ -235,7 +238,7 @@ const UserInformation = () => {
                   return (
                     <DashboardItem
                       first={"Dinner"}
-                      second={`Package #${idx3}`}
+                      second={`Package - ${idx3}`}
                       key={meal?._id}
                     />
                   );
@@ -254,19 +257,21 @@ const UserInformation = () => {
           <div>
             <DashboardItem
               first={"Rent Dues"}
-              second={`Tk ${currentUserPayment.rent}`}
+              second={`Tk ${currentUserPayment ? currentUserPayment.rent : 0}`}
               color={"red"}
             />
 
             <DashboardItem
               first={"Meal Dues"}
-              second={`Tk ${currentUserPayment.due}`}
+              second={`Tk ${currentUserPayment ? currentUserPayment.due : 0}`}
               color={"red"}
             />
             <br />
             <DashboardItem
               first={"Paid Advance"}
-              second={`Tk ${currentUserPayment.advance}`}
+              second={`Tk ${
+                currentUserPayment ? currentUserPayment.advance : 0
+              }`}
               color={"green"}
             />
           </div>

@@ -61,7 +61,7 @@ export default function Meals() {
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
     const tomorrowDate = tomorrow.toDateString();
-    console.log(today, tomorrow);
+    console.log(userInfo);
   }, [userInfo]);
 
   const handleClick = (id, type, itemPack, price) => {
@@ -84,26 +84,32 @@ export default function Meals() {
 
   const confimrMealPlan = () => {
     if (userInfo) {
-      setIsLoading(true);
-      fetch("http://localhost:5000/meals", {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          breakfast,
-          lunch,
-          dinner,
-          currentUser: userInfo._id,
-        }),
-      })
-        .then((res) => res.json())
-        .then(() => setIsLoading(false));
+      if (Object.keys(userInfo.room).length == 0 || userInfo.room == "") {
+        swal("You need to book a room first to be able to book meals!", {
+          icon: "error",
+        });
+      } else {
+        setIsLoading(true);
+        fetch("http://localhost:5000/meals", {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            breakfast,
+            lunch,
+            dinner,
+            currentUser: userInfo._id,
+          }),
+        })
+          .then((res) => res.json())
+          .then(() => setIsLoading(false));
 
-      swal("Order Placed!", {
-        icon: "success",
-      });
-      router.replace("/dashboard");
+        swal("Order Placed!", {
+          icon: "success",
+        });
+        router.replace("/dashboard");
+      }
     } else {
       swal("User not found. Please refresh the page and try again.", {
         icon: "error",
