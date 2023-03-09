@@ -289,6 +289,7 @@ const MainPayment = ({ room, payInfo }) => {
                   <h3 className="pb-5 text-3xl font-bold ">Payment</h3>
                   <label htmlFor="fname">Accepted Cards</label>
                   <div className="icon-container">
+                    <FontAwesomeIcon icon="fa-brands fa-cc-visa" />
                     <i
                       className="fa fa-cc-visa p-2 rounded-l bg-white"
                       style={{ color: "navy" }}
