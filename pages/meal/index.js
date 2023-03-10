@@ -203,7 +203,7 @@ export default function Meals() {
                 / day
               </h1>
             </div>
-            {userInfo.role == "user" && (
+            {userInfo?.role == "user" && (
               <div className="my-5">
                 <button onClick={clearMealPlan} className="button m-2">
                   Clear
