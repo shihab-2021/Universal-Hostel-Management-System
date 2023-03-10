@@ -149,7 +149,7 @@ const Meals = () => {
                     Package {breakfast.itemPack}
                   </h1>
                   <h1 className="text-xl text-gray-400">
-                    Tk {breakfast.price} / day
+                    {breakfast.price} ৳ / day
                   </h1>
                 </div>
               ) : (
@@ -168,7 +168,7 @@ const Meals = () => {
                     Package {lunch.itemPack}
                   </h1>
                   <h1 className="text-xl text-gray-400">
-                    Tk {lunch.price} / day
+                    {lunch.price} ৳ / day
                   </h1>
                 </div>
               ) : (
@@ -187,21 +187,20 @@ const Meals = () => {
                     Package {dinner.itemPack}
                   </h1>
                   <h1 className="text-xl text-gray-400">
-                    Tk {dinner.price} / day
+                    {dinner.price} ৳ / day
                   </h1>
                 </div>
               ) : (
                 <h1 className="text-lg text-red-400">Not selected!</h1>
               )}
             </div>
-            <div className="flex border-t-2 justify-between text-2xl font-bold">
-              <h1>Total:</h1>
-              <h1>
-                Tk{" "}
+            <div className="flex border-t-2 justify-between text-2xl">
+              <h1 className="font-bold">Total:</h1>
+              <h1 className="text-xl">
                 {parseInt(breakfast?.price) +
                   parseInt(lunch?.price) +
                   parseInt(dinner?.price)}{" "}
-                / day
+                ৳ / day
               </h1>
             </div>
             {userInfo?.role == "user" && (

@@ -24,7 +24,7 @@ export default function RoomInfo(props) {
         </p>
         <p className="text-xs uppercase font-bold text-gray-200 pb-3">
           per month{" "}
-          <span className="text-xl text-orange-500 mx-2">{room?.cost}tk</span>
+          <span className="text-xl text-orange-500 mx-2">{room?.cost}৳</span>
         </p>
         <p className="py-3">{room?.branch}</p>
         <div className="">
@@ -64,7 +64,7 @@ export default function RoomInfo(props) {
     //   <h1>Attached bathroom: {room.attachedBathroom}</h1>
     //   <h1>Attached balcony: {room.attachedBalcony}</h1>
     //   <h1>Floor: {room.floor}</h1>
-    //   <h1>Rent per week: {room.cost} Tk</h1>
+    //   <h1>Rent per week: {room.cost} ৳</h1>
 
     //   <div>
     //     <button

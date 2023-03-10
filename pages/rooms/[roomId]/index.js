@@ -65,10 +65,10 @@ export default function RoomDetails() {
                     />
                     <div className="my-10">
                       <p className="text-xl">
-                        We take 5000Tk advance fee for security purpose. We give
+                        We take 5000৳ advance fee for security purpose. We give
                         room rent in pre-paid system. So to book room you have
                         to pay in total {parseInt(room?.cost) + 5000}
-                        <span className=" text-orange-500">Tk</span>. Please
+                        <span className=" text-orange-500">৳</span>. Please
                         click in booking if you agree.
                       </p>
                     </div>
@@ -84,7 +84,7 @@ export default function RoomDetails() {
                           Per <br /> month
                         </h1>
                         <h1 className="text-3xl tracking-tighter text-orange-500">
-                          Tk {room.cost}
+                          ৳ {room.cost}
                         </h1>
                       </div>
                     </div>

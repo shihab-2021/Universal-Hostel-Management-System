@@ -17,7 +17,7 @@ const Meal = () => {
             </h1>
             <p className=" py-10 tracking-[3px] font-bold">
               ORDER BREAKFAST JUST FOR{" "}
-              <span className="text-orange-400">100Tk</span>
+              <span className="text-orange-400">100৳</span>
               <br />
               WITH YOUR BOOKING
             </p>
@@ -32,7 +32,7 @@ const Meal = () => {
         <div className="lg:w-1/2 hidden lg:flex items-center justify-center">
           <div className=" bg-orange-500 w-40 h-40 rounded-full flex flex-col justify-center items-center">
             <h1 className=" tracking-[3px] text-sm font-bold">FROM</h1>
-            <h1 className="text-4xl font-semibold text-yellow-300">100Tk</h1>
+            <h1 className="text-4xl font-semibold text-yellow-300">100৳</h1>
           </div>
         </div>
       </div>
