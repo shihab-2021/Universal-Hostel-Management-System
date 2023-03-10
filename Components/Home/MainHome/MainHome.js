@@ -17,8 +17,8 @@ const MainHome = () => {
     <div className="text-white">
       <Carousel images={countries}></Carousel>
       <Rating></Rating>
-      <BookingStages></BookingStages>
       <HelloSection></HelloSection>
+      <BookingStages></BookingStages>
       <Rooms></Rooms>
       <Reviews></Reviews>
       <Facilities />

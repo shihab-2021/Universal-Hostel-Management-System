@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import adminCheck from "../../Firebase/adminCheck";
 import authCheck from "../../Firebase/authCheck";
+import Loading from "../../Shared/Loading/Loading";
 
 const AddRoomMain = () => {
   // const { data } = props;
@@ -11,6 +12,7 @@ const AddRoomMain = () => {
   const [image, setImage] = useState();
   const [blogData, setBlogData] = useState([]);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   // const [startDate, setStartDate] = useState(data?.birthDate);
 
   const [branch, setBranch] = useState("");
@@ -94,6 +96,7 @@ const AddRoomMain = () => {
 
   // Save User Information
   const submitHandler = (info) => {
+    setIsLoading(true)
     const roomInfo = {
       ...info,
       image: image,
@@ -121,6 +124,7 @@ const AddRoomMain = () => {
           icon: "warning",
         }
       );
+      setIsLoading(false)
       return;
     }
     fetch("https://universal-hostel-api.onrender.com/rooms", {
@@ -133,15 +137,22 @@ const AddRoomMain = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          setIsLoading(false)
           swal("Room has been submitted!", {
             icon: "success",
           });
-          router.replace("/rooms");
+          router.replace("/dashboard/manageRoom");
         }
       });
-  };
+  }
   return (
     <div>
+        {isLoading && (
+          <div className="absolute mt-[-25px] ml-[-20px] z-10 bg-[#0a2025a8] w-full h-full">
+            <div className="fixed pt-[10%] pl-[40%]">
+            <Loading></Loading></div>
+          </div>
+        )}
       <div className="container mx-auto px-3">
         <form
           onSubmit={handleSubmit(submitHandler)}
@@ -222,7 +233,7 @@ const AddRoomMain = () => {
               <input
                 // onBlur={blogTitle}
                 //   defaultValue={data?.displayName}
-                required
+                // required
                 placeholder="Title"
                 className="h-14 w-full rounded-md border-2 p-3 text-lg"
                 type="text"
@@ -310,7 +321,7 @@ const AddRoomMain = () => {
             <div className="col-span-12 flex flex-col">
               <label htmlFor="about">About</label>
               <textarea
-                className="rounded-md h-14 border-2 p-2 text-lg"
+                className="rounded-md border-2 p-2 text-lg"
                 type="text"
                 rows={5}
                 placeholder="About"

@@ -14,7 +14,7 @@ const UserInformation = () => {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http://localhost:5000/meals")
+    fetch("https://universal-hostel-api.onrender.com/meals")
       .then((res) => res.json())
       .then((data) => setAllMeals(data));
 
@@ -24,7 +24,7 @@ const UserInformation = () => {
     const date2 = new Date(userInfo.bookedTill);
     setBookedTill(date2.toDateString());
 
-    fetch(`http://localhost:5000/payments/${userInfo._id}`)
+    fetch(`https://universal-hostel-api.onrender.com/payments/${userInfo._id}`)
       .then((res) => res.json())
       .then((data) => setCurrentUserPayment(data));
   }, [userInfo?.room]);
@@ -60,7 +60,7 @@ const UserInformation = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch("http://localhost:5000/cancelRoom", {
+        fetch("https://universal-hostel-api.onrender.com/cancelRoom", {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -144,8 +144,10 @@ const UserInformation = () => {
           </Link>
         </div>
         <div className="card w-full md:w-1/2 flex justify-between">
-          <div className="h-full">
-            <h1 className="text-3xl underline mb-3">Tomorrow's Meal Plan</h1>
+          <div className="h-full flex flex-col justify-between">
+            <h1 className="text-3xl underline mb-3">
+              Tomorrow{"'"}s Meal Plan
+            </h1>
             <div className="flex flex-col items-center">
               {breakfast?.map((meal) => {
                 idx1++;
@@ -201,7 +203,7 @@ const UserInformation = () => {
               </div>
             )}
             {total !== 0 && (
-              <h1 className=" mt-5 text-xl text-center text-indigo-500">
+              <h1 className=" mt-5 text-xl text-center text-indigo-500 mb-7">
                 Tk {total} / day
               </h1>
             )}
@@ -258,29 +260,6 @@ const UserInformation = () => {
             )}
           </div>
           <div className="">
-            {/* <div>
-              <DashboardItem
-                first={"Rent Dues"}
-                second={`Tk ${
-                  currentUserPayment ? currentUserPayment.rent : 0
-                }`}
-                color={"red"}
-              />
-
-              <DashboardItem
-                first={"Meal Dues"}
-                second={`Tk ${currentUserPayment ? currentUserPayment.due : 0}`}
-                color={"red"}
-              />
-              <br />
-              <DashboardItem
-                first={"Paid Advance"}
-                second={`Tk ${
-                  currentUserPayment ? currentUserPayment.advance : 0
-                }`}
-                color={"green"}
-              />
-            </div> */}
             {currentUserPayment && (
               <div className="overflow-x-auto mt-2 mb-4 rounded-lg h-60 border border-gray-700">
                 <div className="align-middle inline-block min-w-full">

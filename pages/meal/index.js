@@ -5,8 +5,9 @@ import useAuth from "../../Components/Firebase/useAuth";
 import Layout from "../../Components/Dashboard/Layout";
 import { useRouter } from "next/router";
 import Loading from "../../Components/Shared/Loading/Loading";
+import authCheck from "../../Components/Firebase/authCheck";
 
-export default function Meals() {
+const Meals = () => {
   const [breakfast, setBreakfast] = useState({ price: "0" });
   const [lunch, setLunch] = useState({ price: "0" });
   const [dinner, setDinner] = useState({ price: "0" });
@@ -289,4 +290,6 @@ export default function Meals() {
       )}
     </Layout>
   );
-}
+};
+
+export default authCheck(Meals);

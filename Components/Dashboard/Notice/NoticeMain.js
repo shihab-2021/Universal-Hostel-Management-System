@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import authCheck from "../../Firebase/authCheck";
+import Loading from "../../Shared/Loading/Loading";
 
 const NoticeMain = () => {
   const [notices, setNotices] = useState();
@@ -16,6 +17,8 @@ const NoticeMain = () => {
   const date = new Date(notice?.date);
   return (
     <div>
+      {!notices && <Loading></Loading>}
+      {notices && 
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className=" bg-[#36393e52] shadow-lg rounded-lg p-4 sm:p-6 xl:p-8  md:col-span-2">
           <h1 className="text-3xl mb-8 font-bold underline">{notice?.title}</h1>
@@ -55,7 +58,7 @@ const NoticeMain = () => {
             );
           })}
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
