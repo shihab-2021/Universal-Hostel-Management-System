@@ -204,14 +204,16 @@ const Meals = () => {
                 / day
               </h1>
             </div>
-            <div className="my-5">
-              <button onClick={clearMealPlan} className="button m-2">
-                Clear
-              </button>
-              <button onClick={confimrMealPlan} className="button m-2">
-                Confirm
-              </button>
-            </div>
+            {userInfo?.role == "user" && (
+              <div className="my-5">
+                <button onClick={clearMealPlan} className="button m-2">
+                  Clear
+                </button>
+                <button onClick={confimrMealPlan} className="button m-2">
+                  Confirm
+                </button>
+              </div>
+            )}
           </div>
           {/* {isLoading && <h1>IS LOADING</h1>} */}
           <div className="flex flex-col items-center text-center">
