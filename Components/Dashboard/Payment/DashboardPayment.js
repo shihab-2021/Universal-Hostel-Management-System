@@ -67,7 +67,7 @@ const DashboardPayment = ({ payInfo }) => {
                   <div className="px-3 w-full pt-5 pb-10 mx-auto">
                     {payInfo && (
                       <h1 className="flex justify-between text-2xl">
-                        <span>Room rent </span>
+                        <span>Room rent: </span>
                         <span>
                           {payInfo?.rent}
                           <span className=" text-orange-500">Tk</span>
@@ -76,7 +76,7 @@ const DashboardPayment = ({ payInfo }) => {
                     )}
                     {payInfo && (
                       <h1 className="flex justify-between text-2xl">
-                        <span>Due </span>
+                        <span>Meal Due:</span>
                         <span>
                           {payInfo?.due}
                           <span className=" text-orange-500">Tk</span>
@@ -94,78 +94,6 @@ const DashboardPayment = ({ payInfo }) => {
                       </h1>
                     )}
                   </div>
-                  <div>
-                    <p className="text-xl">
-                      {/* We take 5000Tk advance fee for security purpose. We give
-                      room rent in pre-paid system. So to book room you have to
-                      pay in total {parseInt(room?.cost) + 5000}
-                      <span className=" text-orange-500">Tk</span>. Please fill
-                      up the form to book room, and good luck. */}
-                    </p>
-                  </div>
-                  {/* <h3 className="pb-5 text-3xl font-bold ">Billing Address</h3>
-                  <label htmlFor="fname">
-                    <i className="fa fa-user"></i> Full Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 mb-4 border rounded mt-1"
-                    id="fname"
-                    name="firstname"
-                    placeholder="John M. Doe"
-                  />
-                  <label htmlFor="email">
-                    <i className="fa fa-envelope"></i> Email
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 mb-4 border rounded mt-1"
-                    id="email"
-                    name="email"
-                    placeholder="john@example.com"
-                  />
-                  <label htmlFor="adr">
-                    <i className="fa fa-address-card-o"></i> Address
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 mb-4 border rounded mt-1"
-                    id="adr"
-                    name="address"
-                    placeholder="542 W. 15th Street"
-                  />
-                  <label htmlFor="city">
-                    <i className="fa fa-institution"></i> City
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full p-3 mb-4 border rounded mt-1"
-                    id="city"
-                    name="city"
-                    placeholder="New York"
-                  />
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:pr-2 md:w-1/2">
-                      <label htmlFor="state">State</label>
-                      <input
-                        type="text"
-                        className="w-full p-3 mb-4 border rounded mt-1"
-                        id="state"
-                        name="state"
-                        placeholder="NY"
-                      />
-                    </div>
-                    <div className="md:pl-2 md:w-1/2">
-                      <label htmlFor="zip">Zip</label>
-                      <input
-                        type="text"
-                        className="w-full p-3 mb-4 border rounded mt-1"
-                        id="zip"
-                        name="zip"
-                        placeholder="10001"
-                      />
-                    </div>
-                  </div> */}
                 </div>
                 <div className="px-3 md:w-1/2">
                   <h3 className="pb-5 text-3xl font-bold ">Payment</h3>

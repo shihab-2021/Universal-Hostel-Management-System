@@ -1,9 +1,11 @@
+import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import RoomContext from "../../contexts/RoomContext";
 import RoomInfo from "./RoomInfo";
 
 const ManageRoomsMain = () => {
   // const [branchValue, setBranchValue] = useState("Mirpur 2");
+  const router = useRouter();
   const [bookStatusValue, setBookStatusValue] = useState("all");
   const [unoccupiedRooms, setUnoccupiedRooms] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
@@ -20,7 +22,7 @@ const ManageRoomsMain = () => {
     fetch("https://universal-hostel-api.onrender.com/fullRooms")
       .then((res) => res.json())
       .then((data) => setFullRooms(data));
-  }, []);
+  }, [router?.isReady]);
   const { roomData, deleteItem } = useContext(RoomContext);
   return (
     <div>

@@ -143,7 +143,7 @@ const UserInformation = () => {
           </Link>
         </div>
         <div className="card w-full md:w-1/2 flex justify-between">
-          <div className="h-full">
+          <div className="h-full flex flex-col justify-between">
             <h1 className="text-3xl underline mb-3">Current Meal Plan</h1>
             <div className="flex flex-col items-center">
               {breakfast?.map((meal) => {
@@ -198,7 +198,7 @@ const UserInformation = () => {
               </div>
             )}
             {total !== 0 && (
-              <h1 className=" mt-5 text-xl text-center text-indigo-500">
+              <h1 className=" mt-5 text-xl text-center text-indigo-500 mb-7">
                 Tk {total} / day
               </h1>
             )}

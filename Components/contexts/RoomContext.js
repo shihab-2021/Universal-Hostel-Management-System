@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
 import swal from "sweetalert";
 
@@ -5,6 +6,7 @@ const RoomContext = createContext();
 
 export const RoomProvider = ({ children }) => {
   const [roomData, setRoomData] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     const getRooms = async () => {
@@ -13,11 +15,11 @@ export const RoomProvider = ({ children }) => {
       );
       const data = await res.json();
 
-      setRoomData(data);
+      setRoomData(data.reverse());
     };
 
     getRooms();
-  }, []);
+  }, [router]);
   const deleteItem = (id) => {
     swal({
       title: "Are you sure?",

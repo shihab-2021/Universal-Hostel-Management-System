@@ -4,7 +4,7 @@ import React from 'react';
 
 const BookingStages = () => {
     return (
-      <section>
+      <section className=" bg-[#12131c40]">
         <div className="container mx-auto px-4 py-24 grid lg:gap-10 lg:grid-cols-2 grid-cols-1 items-center text-white font-sansita">
           <div className="col flex items-center justify-center">
             <div className="about_stages-main max-w-lg lg:float-right ">

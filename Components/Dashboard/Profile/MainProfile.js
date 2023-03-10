@@ -278,7 +278,7 @@ const MainProfile = (props) => {
               <span className="">
                 <input
                   type="submit"
-                  className=" mt-5 rounded-lg bg-indigo-500 px-6 py-3 text-lg font-semibold text-white"
+                  className=" mt-5 cursor-pointer rounded-lg bg-indigo-500 px-6 py-3 text-lg font-semibold text-white"
                   value="Save changes"
                 />
               </span>
