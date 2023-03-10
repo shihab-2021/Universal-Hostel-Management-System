@@ -121,26 +121,26 @@ const MainProfile = (props) => {
   return (
     <div>
       <div>
-        <div className="container mx-auto my-5 font-sansita">
+        <div className="container mx-auto my-5 font-sansita card-design p-5">
           <div
-            style={{
-              // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
-              backgroundColor: "#36393e52",
-            }}
-            className="my-5 rounded px-4 py-4 text-center shadow-xl"
+            // style={{
+            //   // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
+            //   backgroundColor: "#36393e52",
+            // }}
+            className="mb-5 rounded px-4 py-4 text-center "
           >
             <h4 className="text-3xl font-bold">
-              Make Your Profile Look Batter by Filling the Form
+              Make Your Profile Look Better by Filling the Form
             </h4>
           </div>
           <div style={{}}>
             <form
               onSubmit={handleSubmit(submitHandler)}
-              style={{
-                // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
-                backgroundColor: "#36393e52",
-              }}
-              className="my-5 rounded shadow-xl bg-slate-200 dark:bg-darkBlue p-6 text-Dark dark:text-white"
+              // style={{
+              //   // boxShadow: "0 0 2rem 0 rgb(136 152 170 / 15%)",
+              //   backgroundColor: "#36393e52",
+              // }}
+              // className="my-5 rounded shadow-xl bg-slate-200 dark:bg-darkBlue p-6 text-Dark dark:text-white"
             >
               <div className="grid grid-cols-12 gap-3">
                 {/* Profile picture  */}

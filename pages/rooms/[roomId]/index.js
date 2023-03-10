@@ -28,7 +28,7 @@ export default function RoomDetails() {
         console.log(data);
       });
   }, [router.isReady]);
-  
+
   const handleClick = () => {
     if (userInfo) {
       console.log(Object.keys(userInfo.room));
@@ -122,9 +122,27 @@ export default function RoomDetails() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full flex justify-center mt-10">
-                  {room.category == "Business" ? (
-                    room.bookedBy.length ? (
+                {userInfo.role == "user" && (
+                  <div className="w-full flex justify-center mt-10">
+                    {room.category == "Business" ? (
+                      room.bookedBy.length ? (
+                        <button
+                          className="border-2 p-2 rounded mx-2 bg-gray-500 border-gray-500"
+                          type="button"
+                          disabled
+                        >
+                          Room Unavailable
+                        </button>
+                      ) : (
+                        <button className="button mx-2" onClick={handleClick}>
+                          Book Room
+                        </button>
+                      )
+                    ) : room.bookedBy.length < 4 ? (
+                      <button className="button mx-2" onClick={handleClick}>
+                        Book Bed
+                      </button>
+                    ) : (
                       <button
                         className="border-2 p-2 rounded mx-2 bg-gray-500 border-gray-500"
                         type="button"
@@ -132,25 +150,9 @@ export default function RoomDetails() {
                       >
                         Room Unavailable
                       </button>
-                    ) : (
-                      <button className="button mx-2" onClick={handleClick}>
-                        Book Room
-                      </button>
-                    )
-                  ) : room.bookedBy.length < 4 ? (
-                    <button className="button mx-2" onClick={handleClick}>
-                      Book Bed
-                    </button>
-                  ) : (
-                    <button
-                      className="border-2 p-2 rounded mx-2 bg-gray-500 border-gray-500"
-                      type="button"
-                      disabled
-                    >
-                      Room Unavailable
-                    </button>
-                  )}
-                </div>
+                    )}
+                  </div>
+                )}
               </div>
             );
           }

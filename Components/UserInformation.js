@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import DashboardItem from "./Dashboard/Profile/DashboardItem";
 import useAuth from "./Firebase/useAuth";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const UserInformation = () => {
   const { userInfo } = useAuth();
 
@@ -10,9 +11,10 @@ const UserInformation = () => {
   const [bookedTill, setBookedTill] = useState("");
   const [allMeals, setAllMeals] = useState([]);
   const [currentUserPayment, setCurrentUserPayment] = useState({});
+  const router = useRouter();
 
   useEffect(() => {
-    fetch("https://universal-hostel-api.onrender.com/meals")
+    fetch("http://localhost:5000/meals")
       .then((res) => res.json())
       .then((data) => setAllMeals(data));
 
@@ -22,7 +24,7 @@ const UserInformation = () => {
     const date2 = new Date(userInfo.bookedTill);
     setBookedTill(date2.toDateString());
 
-    fetch(`https://universal-hostel-api.onrender.com/payments/${userInfo._id}`)
+    fetch(`http://localhost:5000/payments/${userInfo._id}`)
       .then((res) => res.json())
       .then((data) => setCurrentUserPayment(data));
   }, [userInfo?.room]);
@@ -48,7 +50,6 @@ const UserInformation = () => {
       }
     });
   });
-  console.log(allMeals);
 
   const cancelRoom = () => {
     swal({
@@ -59,7 +60,7 @@ const UserInformation = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch("https://universal-hostel-api.onrender.com/cancelRoom", {
+        fetch("http://localhost:5000/cancelRoom", {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -70,7 +71,12 @@ const UserInformation = () => {
           }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .then(
+            setTimeout(() => {
+              router.replace("/dashboard");
+            }, 1000)
+          );
       }
     });
     // if (

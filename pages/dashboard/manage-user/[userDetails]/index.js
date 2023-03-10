@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Loading from "../../../../Components/Loading/Loading";
 import adminCheck from "../../../../Components/Firebase/adminCheck";
 import authCheck from "../../../../Components/Firebase/authCheck";
+import Link from "next/link";
 
 // export default function UserDetailsPage({}) {
 const UserDetailsPage = ({}) => {
@@ -21,6 +22,9 @@ const UserDetailsPage = ({}) => {
         setUser(data);
       });
   }, [id]);
+  let bday = new Date(user.birthDate);
+  bday = bday.toLocaleDateString();
+  console.log(bday);
   return (
     <Layout>
       <div className="card-design">
@@ -45,7 +49,7 @@ const UserDetailsPage = ({}) => {
           </div>
           <div className="card-design text-center p-2 py-5">
             <h1 className="text-xs text-gray-500">BIRTHDAY</h1>
-            <h1 className="text-xl">{user.birthDate}</h1>
+            <h1 className="text-xl">{bday}</h1>
           </div>
           <div className="card-design text-center p-2 py-5">
             <h1 className="text-xs text-gray-500">ADDRESS</h1>
@@ -55,10 +59,20 @@ const UserDetailsPage = ({}) => {
             <h1 className="text-xs text-gray-500">PROFESSION</h1>
             <h1 className="text-xl">{user.profession}</h1>
           </div>
+          {user.room != "" && (
+            <div className="card-design text-center p-2 py-5">
+              <h1 className="text-xs text-gray-500">ROOM</h1>
+              <Link href={`/rooms/${user?.room?._id}`}>
+                <button className="my-3 text-lg text-indigo-500 hover:underline">
+                  View Room
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </Layout>
   );
-}
+};
 
 export default authCheck(adminCheck(UserDetailsPage));
