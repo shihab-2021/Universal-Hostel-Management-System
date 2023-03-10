@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import DashboardItem from "./Dashboard/Profile/DashboardItem";
 import useAuth from "./Firebase/useAuth";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const UserInformation = () => {
   const { userInfo } = useAuth();
 
@@ -10,9 +11,10 @@ const UserInformation = () => {
   const [bookedTill, setBookedTill] = useState("");
   const [allMeals, setAllMeals] = useState([]);
   const [currentUserPayment, setCurrentUserPayment] = useState({});
+  const router = useRouter();
 
   useEffect(() => {
-    fetch("https://universal-hostel-api.onrender.com/meals")
+    fetch("http://localhost:5000/meals")
       .then((res) => res.json())
       .then((data) => setAllMeals(data));
 
@@ -22,7 +24,7 @@ const UserInformation = () => {
     const date2 = new Date(userInfo.bookedTill);
     setBookedTill(date2.toDateString());
 
-    fetch(`https://universal-hostel-api.onrender.com/payments/${userInfo._id}`)
+    fetch(`http://localhost:5000/payments/${userInfo._id}`)
       .then((res) => res.json())
       .then((data) => setCurrentUserPayment(data));
   }, [userInfo?.room]);
@@ -48,7 +50,6 @@ const UserInformation = () => {
       }
     });
   });
-  console.log(allMeals);
 
   const cancelRoom = () => {
     swal({
@@ -59,7 +60,7 @@ const UserInformation = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch("https://universal-hostel-api.onrender.com/cancelRoom", {
+        fetch("http://localhost:5000/cancelRoom", {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -144,7 +145,7 @@ const UserInformation = () => {
         </div>
         <div className="card w-full md:w-1/2 flex justify-between">
           <div className="h-full">
-            <h1 className="text-3xl underline mb-3">Current Meal Plan</h1>
+            <h1 className="text-3xl underline mb-3">Tomorrow's Meal Plan</h1>
             <div className="flex flex-col items-center">
               {breakfast?.map((meal) => {
                 idx1++;
@@ -194,7 +195,9 @@ const UserInformation = () => {
 
             {total === 0 && (
               <div className="h-full flex items-center justify-center">
-                <h1 className="text-2xl py-10 self-center uppercase ">No meal selected!</h1>
+                <h1 className="text-2xl py-10 self-center uppercase ">
+                  No meal selected!
+                </h1>
               </div>
             )}
             {total !== 0 && (
