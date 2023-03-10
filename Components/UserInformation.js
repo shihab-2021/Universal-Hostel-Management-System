@@ -96,7 +96,7 @@ const UserInformation = () => {
             <div className="sm:w-1/2">
               <img
                 src={userInfo.image}
-                className="aspect-square rounded-full max-w-[200px] w-3/4 m-auto"
+                className="aspect-square object-cover rounded-full max-w-[200px] w-3/4 m-auto"
                 alt=""
               />
             </div>
@@ -204,7 +204,7 @@ const UserInformation = () => {
             )}
             {total !== 0 && (
               <h1 className=" mt-5 text-xl text-center text-indigo-500 mb-7">
-                Tk {total} / day
+                ৳ {total} / day
               </h1>
             )}
           </div>
@@ -219,10 +219,10 @@ const UserInformation = () => {
           <div className="w-full text-xs sm:text-sm font-bold md:text-base">
             <div className="flex">
               <h1 className="w-1/2">
-                Rent Dues: {currentUserPayment ? currentUserPayment.rent : 0}Tk
+                Rent Dues: {currentUserPayment ? currentUserPayment.rent : 0}৳
               </h1>
               <h1 className="w-1/2">
-                Meal Dues: {currentUserPayment ? currentUserPayment.due : 0}Tk
+                Meal Dues: {currentUserPayment ? currentUserPayment.due : 0}৳
               </h1>
             </div>
             <div className="flex">
@@ -232,12 +232,11 @@ const UserInformation = () => {
                   ? parseInt(currentUserPayment.rent) +
                     parseInt(currentUserPayment.due)
                   : 0}
-                Tk
+                ৳
               </h1>
               <h1 className="w-1/2 text-green-500">
                 Advance payed:{" "}
-                {currentUserPayment ? currentUserPayment.advance : 0}
-                Tk
+                {currentUserPayment ? currentUserPayment.advance : 0}৳
               </h1>
             </div>
             {currentUserPayment && (
@@ -303,7 +302,7 @@ const UserInformation = () => {
                                   {singlePay?.time}
                                 </td>
                                 <td className="p-4 text-right whitespace-nowrap text-sm font-semibold text-white">
-                                  {singlePay?.amount}Tk
+                                  {singlePay?.amount}৳
                                 </td>
                               </tr>
                             );
@@ -339,8 +338,16 @@ const UserInformation = () => {
                   second={userInfo?.room?.branch}
                 />
 
-                <DashboardItem first={"From"} second={bookedOn} />
-                <DashboardItem first={"Till"} second={bookedTill} />
+                <DashboardItem
+                  color={"teal"}
+                  first={"From"}
+                  second={bookedOn}
+                />
+                <DashboardItem
+                  color={"red"}
+                  first={"Till"}
+                  second={bookedTill}
+                />
                 {/* <h1 className=" mt-5 text-xl text-indigo-500">
                   {bookedOn} - {bookedTill}
                 </h1> */}

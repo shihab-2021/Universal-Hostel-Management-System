@@ -170,12 +170,12 @@ const AddMealMain = () => {
                           })}
                         </div>
                         <h1 className="pt-2 border-t-2 text-indigo-300">
-                          Tk {meal?.cost} / day
+                          ৳ {meal?.cost} / day
                         </h1>
                       </div>
                       <button
                         onClick={() => deleteItem(meal._id)}
-                        className="button mt-3 px-4"
+                        className="button-danger mt-3 px-4"
                       >
                         Delete
                       </button>
@@ -207,12 +207,12 @@ const AddMealMain = () => {
                           })}
                         </div>
                         <h1 className="pt-2 border-t-2 text-indigo-300">
-                          Tk {meal?.cost} / day
+                          ৳ {meal?.cost} / day
                         </h1>
                       </div>
                       <button
                         onClick={() => deleteItem(meal._id)}
-                        className="button mt-3 px-4"
+                        className="button-danger mt-3 px-4"
                       >
                         Delete
                       </button>
@@ -244,12 +244,12 @@ const AddMealMain = () => {
                           })}
                         </div>
                         <h1 className="pt-2 border-t-2 text-indigo-300">
-                          Tk {meal?.cost} / day
+                          ৳ {meal?.cost} / day
                         </h1>
                       </div>
                       <button
                         onClick={() => deleteItem(meal._id)}
-                        className="button mt-3 px-4"
+                        className="button-danger mt-3 px-4"
                       >
                         Delete
                       </button>

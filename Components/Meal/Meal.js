@@ -11,7 +11,7 @@ const Meal = ({ itemPack, price, items, handleClick, id, type }) => {
             return <h1 key={i}>{element}</h1>;
           })}
         </div>
-        <h1 className="pt-2 border-t-2 text-indigo-300">Tk {price} / day</h1>
+        <h1 className="pt-2 border-t-2 text-indigo-300">৳ {price} / day</h1>
       </div>
       <button
         onClick={() => handleClick(id, type, itemPack, price)}

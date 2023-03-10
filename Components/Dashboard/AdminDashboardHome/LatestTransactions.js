@@ -65,7 +65,7 @@ const LatestTransactions = ({ rooms }) => {
                               {room?.category}
                             </td>
                             <td className="p-4 whitespace-nowrap text-sm font-semibold text-white">
-                              {room?.cost}Tk
+                              {room?.cost}৳
                             </td>
                           </tr>
                         );

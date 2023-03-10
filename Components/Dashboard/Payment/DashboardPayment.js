@@ -70,7 +70,7 @@ const DashboardPayment = ({ payInfo }) => {
                         <span>Room rent: </span>
                         <span>
                           {payInfo?.rent}
-                          <span className=" text-orange-500">Tk</span>
+                          <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}
@@ -79,7 +79,7 @@ const DashboardPayment = ({ payInfo }) => {
                         <span>Meal Due:</span>
                         <span>
                           {payInfo?.due}
-                          <span className=" text-orange-500">Tk</span>
+                          <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}
@@ -89,7 +89,7 @@ const DashboardPayment = ({ payInfo }) => {
                         <span>Total </span>
                         <span>
                           {parseInt(payInfo?.rent) + parseInt(payInfo?.due)}
-                          <span className=" text-orange-500">Tk</span>
+                          <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}

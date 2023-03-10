@@ -22,7 +22,7 @@ export default function Room(props) {
         </p>
         <p className="text-xl uppercase font-bold text-gray-200 pb-6">
           per month{" "}
-          <span className="text-3xl text-orange-500">{room?.cost}tk</span>
+          <span className="text-3xl text-orange-500">{room?.cost}৳</span>
         </p>
         <div>
           <Link href={`/rooms/${room._id}`}>
@@ -40,7 +40,7 @@ export default function Room(props) {
     //   <h1>Attached bathroom: {room.attachedBathroom}</h1>
     //   <h1>Attached balcony: {room.attachedBalcony}</h1>
     //   <h1>Floor: {room.floor}</h1>
-    //   <h1>Rent per week: {room.cost} Tk</h1>
+    //   <h1>Rent per week: {room.cost} ৳</h1>
 
     //   <div>
     //     <Link href={`/rooms/${room._id}`}>

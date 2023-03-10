@@ -68,7 +68,7 @@ const RoomRequests = ({ payments }) => {
                             {date.toDateString()}
                           </td>
                           <td className="p-4 whitespace-nowrap text-sm font-semibold text-white">
-                            {payment?.paymentHistory[0]?.amount}Tk
+                            {payment?.paymentHistory[0]?.amount}৳
                           </td>
                         </tr>
                       );

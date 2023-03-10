@@ -101,14 +101,14 @@ const Withdraw = () => {
                     <span>Room rent </span>
                     <span>
                       {payData?.rent}
-                      <span className=" text-orange-500">Tk</span>
+                      <span className=" text-orange-500">৳</span>
                     </span>
                   </h1>
                   <h1 className="flex justify-between text-xl">
                     <span>Due </span>
                     <span>
                       {payData?.due}
-                      <span className=" text-orange-500">Tk</span>
+                      <span className=" text-orange-500">৳</span>
                     </span>
                   </h1>
                   <hr className="my-1" />
@@ -116,7 +116,7 @@ const Withdraw = () => {
                     <span>Total Due </span>
                     <span>
                       {parseInt(payData?.rent) + parseInt(payData?.due)}
-                      <span className=" text-orange-500">Tk</span>
+                      <span className=" text-orange-500">৳</span>
                     </span>
                   </h1>
                 </div>
@@ -124,7 +124,7 @@ const Withdraw = () => {
                   Able to withdraw{" "}
                   <span className=" text-red-500">
                     {5000 - (parseInt(payData?.rent) + parseInt(payData?.due))}
-                    Tk
+                    ৳
                   </span>{" "}
                   only.
                 </h1>
@@ -189,7 +189,7 @@ const Withdraw = () => {
                                     {singlePay?.time}
                                   </td>
                                   <td className="p-4 text-right whitespace-nowrap text-sm font-semibold text-white">
-                                    {singlePay?.amount}Tk
+                                    {singlePay?.amount}৳
                                   </td>
                                 </tr>
                               );

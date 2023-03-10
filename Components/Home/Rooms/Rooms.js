@@ -76,7 +76,7 @@ const Rooms = () => {
                       <p className="text-xl uppercase font-bold text-gray-200 pb-6">
                         per month{" "}
                         <span className="text-3xl text-orange-500">
-                          {singleData?.cost}tk
+                          {singleData?.cost}৳
                         </span>
                       </p>
                       <p>

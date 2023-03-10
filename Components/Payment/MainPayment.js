@@ -164,7 +164,7 @@ const MainPayment = ({ room, payInfo }) => {
                       <h1 className="flex justify-between text-2xl">
                         <span>Advance Fee </span>
                         <span>
-                          5000 <span className=" text-orange-500">Tk</span>
+                          5000 <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}
@@ -172,7 +172,7 @@ const MainPayment = ({ room, payInfo }) => {
                       <h1 className="flex justify-between text-2xl">
                         <span>Advance Fee </span>
                         <span>
-                          0 <span className=" text-orange-500">Tk</span>
+                          0 <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}
@@ -180,7 +180,7 @@ const MainPayment = ({ room, payInfo }) => {
                       <span>Room rent </span>
                       <span>
                         {room?.cost}{" "}
-                        <span className=" text-orange-500">Tk</span>
+                        <span className=" text-orange-500">৳</span>
                       </span>
                     </h1>
                     {payInfo && parseInt(payInfo?.due) > 0 && (
@@ -188,7 +188,7 @@ const MainPayment = ({ room, payInfo }) => {
                         <span>Previous Due </span>
                         <span>
                           {payInfo?.due}
-                          <span className=" text-orange-500">Tk</span>
+                          <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}
@@ -198,7 +198,7 @@ const MainPayment = ({ room, payInfo }) => {
                         <span>Total </span>
                         <span>
                           {parseInt(room?.cost) + parseInt(payInfo?.due)}
-                          <span className=" text-orange-500">Tk</span>
+                          <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}
@@ -207,17 +207,17 @@ const MainPayment = ({ room, payInfo }) => {
                         <span>Total </span>
                         <span>
                           {parseInt(room?.cost) + 5000}{" "}
-                          <span className=" text-orange-500">Tk</span>
+                          <span className=" text-orange-500">৳</span>
                         </span>
                       </h1>
                     )}
                   </div>
                   <div>
                     <p className="text-xl">
-                      We take 5000Tk advance fee for security purpose. We give
+                      We take 5000৳ advance fee for security purpose. We give
                       room rent in pre-paid system. So to book room you have to
                       pay in total {parseInt(room?.cost) + 5000}
-                      <span className=" text-orange-500">Tk</span>. Please fill
+                      <span className=" text-orange-500">৳</span>. Please fill
                       up the form to book room, and good luck.
                     </p>
                   </div>

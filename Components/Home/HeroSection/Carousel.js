@@ -61,7 +61,7 @@ function Carousel({ images }) {
                     <p className="text-xl">
                       FOR{" "}
                       <span className="text-4xl text-orange-500">
-                        {image.price}
+                        {image.price}৳
                       </span>{" "}
                       PER MONTH
                     </p>
