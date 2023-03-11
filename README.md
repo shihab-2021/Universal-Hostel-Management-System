@@ -12,16 +12,16 @@ Universal Hostel Management System is a complete solution that will be offered t
 <br><br>
 <ul>
   <li>
-    General User (resident) can: 
-        1. Sign up/login
-        2. Modify profile
-        3. Choose rooms, meals
-        4. Pay dues
-        5. Receive notifications from managers
+    General User (resident) can: <br>
+        1. Sign up/login<br>
+        2. Modify profile<br>
+        3. Choose rooms, meals<br>
+        4. Pay dues<br>
+        5. Receive notifications from managers<br>
   </li>
   <li>
-    Admin can:
-        1. Do everything a manager role can
-        2. Assign/remove manager role
+    Admin can:<br>
+        1. Do everything a manager role can<br>
+        2. Assign/remove manager role<br>
   </li>
 </ul>
