@@ -1,8 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-<h1>Getting Started</h1>
-
 <h1>Universal Hostel Management System</h1>
 
 Project presentation [`video`](https://drive.google.com/file/d/1YiNu9QPpGn-2Ujd5KRPkzPcoZjS0L9S4/view?usp=sharing).
