@@ -73,7 +73,7 @@ const OccupantDetails = () => {
             : "Private Room Occupants"}
         </h1>
         <div className="mx-auto overflow-x-auto w-full">
-          <table class="table-auto text-left border-collapse mx-auto card-design w-full min-h-[100px]">
+          <table className="table-auto text-left border-collapse mx-auto card-design w-full min-h-[100px]">
             <thead className="">
               <tr className="border-b-2 py-3">
                 <th>Name</th>

@@ -27,7 +27,7 @@ const ManageUserMain = () => {
         <h1 className="text-center text-2xl mb-3">Manage Users</h1>
       </div>
       <div className="mx-auto overflow-x-auto w-full">
-        <table class="table-auto text-left border-collapse mx-auto card-design w-full min-h-[100px]">
+        <table className="table-auto text-left border-collapse mx-auto card-design w-full min-h-[100px]">
           <thead className="">
             <tr className="border-b-2 py-3">
               <th>Name</th>

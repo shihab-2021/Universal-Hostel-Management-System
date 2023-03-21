@@ -21,14 +21,14 @@ const ManageAdmins = () => {
   const remainingUsers = (id) => {
     const remaining = users.filter((user) => user._id !== id);
     setUsers(remaining);
-  }
+  };
   return (
     <div className="md:p-10 p-2">
       <div className="flex items-center justify-center">
         <h1 className="text-center text-2xl mb-3">Manage Admins</h1>
       </div>
       <div className="mx-auto overflow-x-auto w-full">
-        <table class="table-auto text-left border-collapse mx-auto card-design w-full min-h-[100px]">
+        <table className="table-auto text-left border-collapse mx-auto card-design w-full min-h-[100px]">
           <thead className="">
             <tr className="border-b-2 py-3">
               <th>Name</th>
