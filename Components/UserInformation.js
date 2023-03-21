@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 const UserInformation = () => {
   const { userInfo } = useAuth();
 
+  const [client, setClient] = useState(true);
   const [bookedOn, setBookedOn] = useState("");
   const [bookedTill, setBookedTill] = useState("");
   const [allMeals, setAllMeals] = useState([]);
@@ -73,6 +74,7 @@ const UserInformation = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.acknowledged) {
+              setClient(false);
               swal("Room has been removed!", {
                 icon: "success",
               });
@@ -149,60 +151,63 @@ const UserInformation = () => {
               Tomorrow{"'"}s Meal Plan
             </h1>
             <div className="flex flex-col items-center">
-              {breakfast?.map((meal) => {
-                idx1++;
-                return meal?.bookedBy.map((user) => {
-                  if (user?.uid == userInfo?._id) {
-                    return (
-                      <DashboardItem
-                        first={"Breakfast"}
-                        second={`Package - ${idx1}`}
-                        key={meal?._id}
-                      />
-                    );
-                  }
-                });
-              })}
+              {client &&
+                breakfast?.map((meal) => {
+                  idx1++;
+                  return meal?.bookedBy.map((user) => {
+                    if (user?.uid == userInfo?._id) {
+                      return (
+                        <DashboardItem
+                          first={"Breakfast"}
+                          second={`Package - ${idx1}`}
+                          key={meal?._id}
+                        />
+                      );
+                    }
+                  });
+                })}
 
-              {lunch?.map((meal) => {
-                idx2++;
-                return meal?.bookedBy?.map((user) => {
-                  if (user?.uid == userInfo?._id) {
-                    return (
-                      <DashboardItem
-                        first={"Lunch"}
-                        second={`Package - ${idx2}`}
-                        key={meal?._id}
-                      />
-                    );
-                  }
-                });
-              })}
+              {client &&
+                lunch?.map((meal) => {
+                  idx2++;
+                  return meal?.bookedBy?.map((user) => {
+                    if (user?.uid == userInfo?._id) {
+                      return (
+                        <DashboardItem
+                          first={"Lunch"}
+                          second={`Package - ${idx2}`}
+                          key={meal?._id}
+                        />
+                      );
+                    }
+                  });
+                })}
 
-              {dinner?.map((meal) => {
-                idx3++;
-                return meal?.bookedBy?.map((user) => {
-                  if (user?.uid == userInfo?._id) {
-                    return (
-                      <DashboardItem
-                        first={"Dinner"}
-                        second={`Package - ${idx3}`}
-                        key={meal?._id}
-                      />
-                    );
-                  }
-                });
-              })}
+              {client &&
+                dinner?.map((meal) => {
+                  idx3++;
+                  return meal?.bookedBy?.map((user) => {
+                    if (user?.uid == userInfo?._id) {
+                      return (
+                        <DashboardItem
+                          first={"Dinner"}
+                          second={`Package - ${idx3}`}
+                          key={meal?._id}
+                        />
+                      );
+                    }
+                  });
+                })}
             </div>
 
-            {total === 0 && (
+            {(total === 0 || !client) && (
               <div className="h-full flex items-center justify-center">
                 <h1 className="text-2xl py-10 self-center uppercase ">
                   No meal selected!
                 </h1>
               </div>
             )}
-            {total !== 0 && (
+            {total !== 0 && client && (
               <h1 className=" mt-5 text-xl text-center text-indigo-500 mb-7">
                 ৳ {total} / day
               </h1>
@@ -318,7 +323,7 @@ const UserInformation = () => {
         </div>
         <div className="card w-full xl:w-1/2 flex justify-between min-h-[415px]">
           <h1 className="text-3xl underline mb-3">Current Room</h1>
-          {userInfo?.room?._id && (
+          {userInfo?.room?._id && client && (
             <>
               <div className="flex flex-col items-center">
                 <DashboardItem
@@ -365,12 +370,12 @@ const UserInformation = () => {
               </div>
             </>
           )}{" "}
-          {!userInfo?.room?._id && (
+          {(!userInfo?.room?._id || !client) && (
             <div className="h-full flex justify-center items-center">
               <h1 className="text-2xl">NO ROOM SELECTED!</h1>
             </div>
           )}
-          {!userInfo?.room?._id && (
+          {(!userInfo?.room?._id || !client) && (
             <Link href={"/rooms"}>
               <button className="button my-3">View Rooms</button>
             </Link>

@@ -10,8 +10,8 @@ const Reviews = () => {
       className="mt-20"
     >
       <div className="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row text-center py-20">
-          <div class="md:basis-1/4 flex items-center justify-center py-10">
+        <div className="flex flex-col lg:flex-row text-center py-20">
+          <div className="md:basis-1/4 flex items-center justify-center py-10">
             <div className="flex flex-col items-center font-bold">
               <div className="text-center flex flex-col items-center h-fit bg-white w-48 p-11 text-8xl rounded-full border border-white">
                 <h1
@@ -31,7 +31,7 @@ const Reviews = () => {
             </div>
           </div>
           <div
-            class="md:basis-1/2 flex justify-center items-center"
+            className="md:basis-1/2 flex justify-center items-center"
             style={{ maxWidth: "800px", minWidth: "300px" }}
           >
             <div style={{ maxWidth: "550px", minWidth: "300px" }}>
@@ -48,7 +48,7 @@ const Reviews = () => {
               </div>
             </div>
           </div>
-          <div class="md:basis-1/4 flex items-center justify-center py-10">
+          <div className="md:basis-1/4 flex items-center justify-center py-10">
             <div style={{ maxWidth: "400px", minWidth: "200px" }} className="">
               <img
                 className="object-cover border rounded-full"
