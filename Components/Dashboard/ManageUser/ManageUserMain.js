@@ -21,6 +21,7 @@ const ManageUserMain = () => {
     const remaining = users.filter((user) => user._id !== id);
     setUsers(remaining);
   };
+  let i = 0;
   return (
     <div className="md:p-10 p-2 card-design">
       <div className="flex items-center justify-center">
@@ -40,10 +41,12 @@ const ManageUserMain = () => {
               <Loading />
             ) : (
               users.map((user) => {
+                if (user.role == "user") i++;
                 return user.role == "user" ? (
                   <ManageUserElement
                     remainingUsers={remainingUsers}
                     data={user}
+                    i={i}
                     key={user._id}
                   />
                 ) : (
