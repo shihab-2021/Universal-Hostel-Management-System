@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const ManageAdminElement = ({ data, remainingUsers }) => {
+const ManageAdminElement = ({ data, remainingUsers, i }) => {
   const removeAdmin = () => {
     swal({
       title: "Are you sure?",
@@ -48,7 +48,7 @@ const ManageAdminElement = ({ data, remainingUsers }) => {
   //   }
   };
   return (
-    <tr>
+    <tr className={`${i % 2 && "bg-[#36393e82]"}`}>
       <td>{data.displayName}</td>
       <td>{data.email}</td>
       <td>{data.phone}</td>

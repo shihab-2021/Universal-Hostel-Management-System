@@ -41,6 +41,9 @@ const MealOrders = () => {
   let idx1 = 0;
   let idx2 = 0;
   let idx3 = 0;
+  let i1 = 0;
+  let i2 = 0;
+  let i3 = 0;
   return (
     <Layout>
       <div>
@@ -65,11 +68,14 @@ const MealOrders = () => {
                   idx1++;
                   return item.bookedBy?.map((e) => {
                     const data = findUser(e.uid);
-
+                    i1++
                     const date = new Date(e.mealDay);
                     console.log(e);
                     return (
-                      <tr key={e.uid}>
+                      <tr
+                        className={`${i1 % 2 && "bg-[#36393e82]"}`}
+                        key={e.uid}
+                      >
                         <td>{idx1}</td>
                         <td>{data.displayName}</td>
                         <td>{data.room?.branch}</td>
@@ -101,11 +107,14 @@ const MealOrders = () => {
                   idx2++;
                   return item.bookedBy?.map((e) => {
                     const data = findUser(e.uid);
-
+                    i2++
                     const date = new Date(e.mealDay);
                     console.log(e);
                     return (
-                      <tr key={e.uid}>
+                      <tr
+                        className={`${i2 % 2 && "bg-[#36393e82]"}`}
+                        key={e.uid}
+                      >
                         <td>{idx2}</td>
                         <td>{data.displayName}</td>
                         <td>{data.room?.branch}</td>
@@ -137,11 +146,14 @@ const MealOrders = () => {
                   idx3++;
                   return item.bookedBy?.map((e) => {
                     const data = findUser(e.uid);
-
+                    i3++
                     const date = new Date(e.mealDay);
                     console.log(e);
                     return (
-                      <tr key={e.uid}>
+                      <tr
+                        className={`${i3 % 2 && "bg-[#36393e82]"}`}
+                        key={e.uid}
+                      >
                         <td>{idx3}</td>
                         <td>{data.displayName}</td>
                         <td>{data.room?.branch}</td>
