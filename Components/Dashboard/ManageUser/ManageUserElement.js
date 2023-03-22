@@ -36,7 +36,7 @@ const ManageUserElement = ({ data, remainingUsers, i }) => {
   };
   return (
     <tr className={`${i % 2 && "bg-[#36393e82]"}`}>
-      <td>{data.displayName}{i}</td>
+      <td>{data.displayName}</td>
       <td>{data.email}</td>
       <td>{data.phone}</td>
       <td className="float-right">
