@@ -1,18 +1,17 @@
 # Universal Hostel Management System
 
-## Project Overview
-
 Universal Hostel Management System is a comprehensive solution designed to streamline hostel management operations. With the rapid increase in educational institutions and hostel facilities, this system aims to reduce the administrative burden on hostel management while enhancing the experience for residents.
 
 ![Hostel Management System Preview](https://i.ibb.co.com/dDnpT4V/e8cd3148-4887-4c5c-9ad2-e95d43df04c6.png)
 
-## Project Links
+## 🌐 Project Links
 - **Live Demo**: [Universal Hostel Management System](https://universal-hostel-management-system.vercel.app/)
 - **Client-Side Repository**: [GitHub Client Repo](https://github.com/shihab-2021/Universal-Hostel-Management-System/tree/main)
 - **Server-Side Repository**: [GitHub Server Repo](https://github.com/shihab-2021/Universal-Hostel-Server-Side-Code)
 
-## Project Presentation
-🎥 **Project Video**: [Watch Project Presentation](https://drive.google.com/file/d/1YiNu9QPpGn-2Ujd5KRPkzPcoZjS0L9S4/view)
+## 🎥 Project Presentation
+  - 🎥 **Project Video**: [Watch Project Presentation](https://drive.google.com/file/d/1YiNu9QPpGn-2Ujd5KRPkzPcoZjS0L9S4/view)
+
 
 ## 📋 Key Features
 
